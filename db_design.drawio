@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-04-20T23:45:01.580Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/112.0" etag="PyDCeBCYrvnK6bCuFYya" version="21.2.1" type="google">
+<mxfile host="app.diagrams.net" modified="2023-04-22T22:43:37.695Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="nFgg0xn4l1oqlfJ4u5Hj" version="21.2.1" type="google">
   <diagram name="Page-1" id="_qzpgqdYXn0mFELdj1Vi">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -65,7 +65,7 @@
             <mxRectangle width="140" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="S8dC5ezdZBw-H-QVNp85-99" value="Ingresos/Egresos Mensuales" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;whiteSpace=wrap;columnLines=1;" vertex="1" parent="1">
+        <mxCell id="S8dC5ezdZBw-H-QVNp85-99" value="Estado de Cuenta" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;whiteSpace=wrap;columnLines=1;" vertex="1" parent="1">
           <mxGeometry x="285" y="270" width="180" height="240" as="geometry">
             <mxRectangle x="590" y="60" width="210" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -132,19 +132,10 @@
             <mxPoint x="230" y="315" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="S8dC5ezdZBw-H-QVNp85-117" value="&lt;div&gt;La idea sería dividir los ingresos y egresos por separados, es decir, dos tablas, donde cada ingreso/egreso&lt;/div&gt;&lt;div&gt;posee su fecha de creacion (usuario ingresa el dato) y la fecha en la cual se estableció la accion (por ej. compré&lt;/div&gt;&lt;div&gt;un helado el 04 de abril, por lo que FechaEstablecido seria 04-04-2023)&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="120" y="540" width="620" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="S8dC5ezdZBw-H-QVNp85-118" value="&lt;div&gt;En la tabla Ingresos/Egresos se encuentra la info de Ingresos/Egresos Mensuales que deberia mostrarse en la interfaz &lt;br&gt;&lt;/div&gt;&lt;div&gt;principal a la hora de logearse, la info se obtiene por mes desde las otras dos tablas (por eso las relaciones one to many). Mas o menos este diseño&lt;/div&gt;&lt;div&gt;siguen los bancos.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="20" y="600" width="810" height="60" as="geometry" />
-        </mxCell>
         <mxCell id="S8dC5ezdZBw-H-QVNp85-119" value="SaldoActual (int)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=1;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;whiteSpace=wrap;labelBorderColor=none;" vertex="1" parent="1">
           <mxGeometry x="345" y="480" width="120" height="30" as="geometry">
             <mxRectangle width="120" height="30" as="alternateBounds" />
           </mxGeometry>
-        </mxCell>
-        <mxCell id="S8dC5ezdZBw-H-QVNp85-120" value="&lt;div&gt;Para la tabla Users se me ocurre que lo mejor es guardar el username,&lt;/div&gt;&lt;div&gt;pedir/guardar mail o rut del usuario igual creo que es mantener&lt;/div&gt;&lt;div&gt;info delicada que quiza no quieran entregar.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="460" y="70" width="400" height="60" as="geometry" />
         </mxCell>
         <mxCell id="trlPcw0KU7SwA2rKv600-1" value="Egresos" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry x="540" y="270" width="180" height="200" as="geometry" />
@@ -170,7 +161,7 @@
             <mxRectangle width="60" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="trlPcw0KU7SwA2rKv600-7" value="UserId" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;html=1;whiteSpace=wrap;" vertex="1" parent="trlPcw0KU7SwA2rKv600-5">
+        <mxCell id="trlPcw0KU7SwA2rKv600-7" value="EstadoDeCuentaId" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;html=1;whiteSpace=wrap;" vertex="1" parent="trlPcw0KU7SwA2rKv600-5">
           <mxGeometry x="60" width="120" height="20" as="geometry">
             <mxRectangle width="120" height="20" as="alternateBounds" />
           </mxGeometry>
@@ -227,7 +218,7 @@
             <mxRectangle width="60" height="20" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="trlPcw0KU7SwA2rKv600-20" value="UserId" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;html=1;whiteSpace=wrap;" vertex="1" parent="trlPcw0KU7SwA2rKv600-18">
+        <mxCell id="trlPcw0KU7SwA2rKv600-20" value="EstadoDeCuentaId" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;overflow=hidden;html=1;whiteSpace=wrap;" vertex="1" parent="trlPcw0KU7SwA2rKv600-18">
           <mxGeometry x="60" width="120" height="20" as="geometry">
             <mxRectangle width="120" height="20" as="alternateBounds" />
           </mxGeometry>
@@ -268,8 +259,11 @@
             <mxRectangle width="120" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Lw3j4jHOymmUJPmFxTVR-1" value="&lt;div&gt;&lt;b&gt;&lt;u&gt;OBS&lt;/u&gt;&lt;/b&gt;: Hay que modificar este diagrama o ver bien como manejar bien la tabla Ingresos/Egresos Mensuales.&lt;/div&gt;&lt;div&gt;Si se fijan las FK EgresoId/IngresoId una de las dos sera NULL pues no puede existir un item que posea ambas,&lt;/div&gt;&lt;div&gt;esto no deberia ser un problema y tampoco es algo feo simplemente se setea a que puede ser NULL pero igual podriamos&lt;/div&gt;&lt;div&gt;ver otros disenhos.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="85" y="660" width="680" height="90" as="geometry" />
+        <mxCell id="pKp2vdEC8vSeTQTq91R6-1" value="Alias (str)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="330" y="130" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="pKp2vdEC8vSeTQTq91R6-2" value="Al tener multiples item en la tabla Estado de Cuenta asi como en Ingresos y Egresos lo ideal a futuro seria enviar a una BD de respaldo&lt;br&gt;los valores de estas tablas que posean una antiguedad mayor a 3 meses, asi la BD principal no se vera sobrecargada&lt;br&gt;de informacion no relevante para el usuario." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="35" y="550" width="740" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
