@@ -1,0 +1,12 @@
+{% extends "templates/base.html" %}
+{% block content %}
+    {% for transaction_date in transactions_date_ordered %}
+        <tr>
+            <th scope="row">transaction_date.date</th>
+            <td>transaction_date.name</td>
+            <td>transaction_date.value</td>
+            <td>transaction_date.category</td>
+            <td>transaction_date.type</td>
+        </tr>
+    {% endfor %}
+{% endblock content %}
