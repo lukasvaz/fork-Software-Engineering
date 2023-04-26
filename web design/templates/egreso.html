@@ -1,12 +1,14 @@
 {% extends "templates/base.html" %}
+{% block content %}Egresos{% endblock %}
+
 {% block content %}
-    {% for transaction_income in transactions_incomes %}
+    {% for transaction_expense in transactions_ %}
         <tr>
-            <th scope="row">transaction_income.date</th>
-            <td>transaction_income.name</td>
-            <td>transaction_income.value</td>
-            <td>transaction_income.category</td>
-            <td>transaction_income.type</td>
+            <th scope="row">transaction_expense.date</th>
+            <td>transaction_expense.name</td>
+            <td>transaction_expense.value</td>
+            <td>transaction_expense.category</td>
+            <td>transaction_expense.type</td>
         </tr>
     {% endfor %}
 {% endblock content %}
