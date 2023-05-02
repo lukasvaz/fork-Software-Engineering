@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Ingresos y Egresos{% endblock %}
+
+
+{% block content %}
+    {% for transaction in transactions %}
+        <tr>
+            <th scope="row">transaction.date</th>
+            <td>transaction.name</td>
+            <td>transaction.value</td>
+            <td>transaction.category</td>
+            <td>transaction.type</td>
+        </tr>
+    {% endfor %}
+{% endblock content %}
