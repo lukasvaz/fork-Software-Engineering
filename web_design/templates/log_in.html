@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log_in</title>
+    <style>
+        body {
+        background-color: #f7f7f7;
+        }
+
+        /* Estilo para el contenedor principal */
+        .contenedor {
+        width: 80%;
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 100px;
+        background-color: white;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 5px #ccc;
+        text-align: center;
+        transform: translate(0px, 100px);
+        -webkit-transform: translate(0px, 100px);
+        -moz-transform: translate(0px, 100px);
+        -ms-transform: translate(0px, 100px);
+        -o-transform: translate(0px, 100px);
+        }
+
+        /* Estilo para el título */
+        h1 {
+        margin-bottom: 30px;
+        }
+
+        /* Estilo para las etiquetas de entrada */
+        label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        }
+
+        /* Estilo para los campos de entrada */
+        input[type="text"],
+        input[type="password"] {
+        width: 50%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        }
+
+        /* Estilo para el botón de enviar */
+        input[type="submit"] {
+        width: 50%;
+        padding: 10px;
+        background-color: #4b9bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-sizing: border-box;
+        }
+
+        /* Estilo para el botón de enviar al pasar el cursor */
+        input[type="submit"]:hover {
+        background-color: #1e90ff;
+        }
+
+    </style>
+</head>
+<body>  
+    <div class="contenedor">
+        <h1>Inicio de sesión</h1>
+        <form action="#" enctype="multipart/form-data">
+            <input type="text" id="usuario" name="usuario" placeholder="Usuario" value="">
+            <br><br>
+            <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" value="">
+            <br><br>
+            <input type="submit" value="Iniciar sesión">
+          </form>
+    </div>
+</body>
+</html>
