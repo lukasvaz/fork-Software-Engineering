@@ -22,32 +22,3 @@ def show(request,template):
     rendered_template=template.render(ctx)
     return HttpResponse(rendered_template)
 
-
-
-def home(request):    
-    template=loader.get_template("home.html")
-    ctx={}
-    rendered_template=template.render(ctx)
-    return HttpResponse(rendered_template)
-
-
-def ingreso(request):    
-    template=loader.get_template("ingreso.html")
-    ctx={}
-    rendered_template=template.render(ctx)
-    return HttpResponse(rendered_template)
-
-
-def egreso(request):    
-    template=loader.get_template("egreso.html")
-    ctx={}
-    rendered_template=template.render(ctx)
-    return HttpResponse(rendered_template)
-
-
-
-def fecha(request):    
-    template=loader.get_template("fecha.html")
-    ctx={}
-    rendered_template=template.render(ctx)
-    return HttpResponse(rendered_template)
