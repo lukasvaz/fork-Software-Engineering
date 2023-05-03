@@ -76,43 +76,13 @@
           background-color: #1e90ff;
       }
     </style>
-	<script src="transaccion.js"></script>
 </head>
 <body>
     <div class="contenedor_form">
-      <h1>Agregue aquí su transacción</h1>
-      <br><br>
-      <form action="#" enctype="multipart/form-data">
-          <label for="tipo">Tipo:</label>
-          <select id="tipo" name="tipo">
-            <option value="ingreso">Ingreso</option>
-            <option value="gasto">Gasto</option>
-          </select>
-          <br>
-          <label for="monto">Monto:</label>
-          <input type="number" id="monto" name="monto">
-          <label for="moneda">Moneda:</label>
-			<select id="moneda" name="moneda">
-			<option value="CLP">CLP</option>
-			<option value="USD">USD</option>
-			<option value="EUR">EUR</option>
-			</select>
-          <label for="fecha">Fecha:</label>
-          <input type="date" id="fecha" name="fecha">
-          <br>
-          <label for="categoria">Categoría:</label>
-          <select id="categoria" name="categoria">
-            <option value="comida">Comida</option>
-            <option value="transporte">Transporte</option>
-            <option value="entretenimiento">Entretenimiento</option>
-            <option value="hogar">Hogar</option>
-            <option value="salud">Salud</option>
-            <option value="ropa">Ropa</option>
-            <option value="otros">Otros</option>
-          </select>
-          <br><br>
-          <input type="submit" value="Enviar">
-      </form>
+      {% block contenido %}
+        <h1>Agregue aquí su transacción</h1>
+        {% include "formulario.html" %}
+      {% endblock %}
     </div>
 
     <script>

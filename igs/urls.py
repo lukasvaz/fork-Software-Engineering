@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from  igs.views import *
+
 urlpatterns = [
     path("",directions),
     path("admin/", admin.site.urls),
-    path("show/<str:template>",show)
+    path("show/<str:template>",show),
+    path('transaccion/', vista_form),
 ]
