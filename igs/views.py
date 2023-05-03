@@ -3,18 +3,22 @@ from django.template import Template,Context,loader
 
 
 def directions(request):
-    html = """/admin/: admin site <br>
-              /home/: home site  <br>
-              /base/: show base snipet  <br>
-              /egreso/:show egreso code snippet <br>
-              /ingreso/: show ingreso code snippet  <br>
-              /fecha/: show fecha code snippet  <br>
+    html = """<h3>Urls</h3>
+
+            <p><b>Provisionalmente</b>, cada template ubicado 
+            en web_design/templates, se pude visualizar agregando "show" a url :<br>
+              default_url/show/example.html/</p>
+              <p>Por ejemplo:<br>
+              http://127.0.0.1:8000//show/base.html
+              </p>
+
               """
     
     return HttpResponse(html)
 
-def base(request):    
-    template=loader.get_template("base.html")
+
+def show(request,template):    
+    template=loader.get_template(template)
     ctx={}
     rendered_template=template.render(ctx)
     return HttpResponse(rendered_template)

@@ -20,9 +20,5 @@ from  igs.views import *
 urlpatterns = [
     path("",directions),
     path("admin/", admin.site.urls),
-    path("home/",home),
-    path("base/",base),
-    path("ingreso/",ingreso),
-    path("egreso/",egreso),
-    path("fecha/",fecha)
+    path("show/<str:template>",show)
 ]
