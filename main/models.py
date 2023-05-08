@@ -21,7 +21,7 @@ class AccountStatus(models.Model):
 class Outcomes(models.Model):
     account_status = models.ForeignKey(AccountStatus, on_delete=models.CASCADE)
     outcome = models.PositiveBigIntegerField()
-    # category = pending, maybe a class containing the categories
+    category = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     set_at = models.DateTimeField()
 
@@ -31,7 +31,7 @@ class Outcomes(models.Model):
 class Incomes(models.Model):
     account_status = models.ForeignKey(AccountStatus, on_delete=models.CASCADE)
     income = models.PositiveBigIntegerField()
-    # category = pending, maybe a class containing the categories
+    category = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     set_at = models.DateTimeField()
 
