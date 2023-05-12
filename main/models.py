@@ -1,13 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
-
-class User(models.Model):
-    username = models.CharField(max_length=30)
-    alias = models.CharField(max_length=30)
-
-    def __str__(self):
-        return self.username
+# We are using the default class User, fits good with our model,
+# we only need the common fields: username, first_name, last_name, email and password
 
 class AccountStatus(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
