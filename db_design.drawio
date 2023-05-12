@@ -1,10 +1,10 @@
-<mxfile host="app.diagrams.net" modified="2023-04-27T18:06:52.741Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/112.0" etag="QJDpvghPkQd-jSBexdN3" version="21.2.1" type="google">
+<mxfile host="app.diagrams.net" modified="2023-05-12T21:30:45.800Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="o_k1XEwFpIjqWHNG7vTE" version="21.2.3" type="google">
   <diagram name="Page-1" id="_qzpgqdYXn0mFELdj1Vi">
     <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="0" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="S8dC5ezdZBw-H-QVNp85-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.476;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;startArrow=ERone;startFill=0;endArrow=ERzeroToMany;endFill=0;exitPerimeter=0;" edge="1" parent="1" source="S8dC5ezdZBw-H-QVNp85-11" target="S8dC5ezdZBw-H-QVNp85-99">
+        <mxCell id="S8dC5ezdZBw-H-QVNp85-114" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.476;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=default;startArrow=ERone;startFill=0;endArrow=ERone;endFill=0;exitPerimeter=0;" edge="1" parent="1" source="S8dC5ezdZBw-H-QVNp85-11" target="S8dC5ezdZBw-H-QVNp85-99">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="375" y="211" as="sourcePoint" />
             <mxPoint x="375" y="321" as="targetPoint" />
@@ -261,9 +261,6 @@
         </mxCell>
         <mxCell id="pKp2vdEC8vSeTQTq91R6-1" value="Alias (str)" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="330" y="130" width="70" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="pKp2vdEC8vSeTQTq91R6-2" value="Al tener multiples item en la tabla Estado de Cuenta asi como en Ingresos y Egresos lo ideal a futuro seria enviar a una BD de respaldo&lt;br&gt;los valores de estas tablas que posean una antiguedad mayor a 3 meses, asi la BD principal no se vera sobrecargada&lt;br&gt;de informacion no relevante para el usuario." style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
-          <mxGeometry x="50" y="500" width="740" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
