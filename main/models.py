@@ -18,12 +18,12 @@ class Outcomes(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     set_at = models.DateTimeField()
 
-    def update_balance(self, account_status: AccountStatus):
+    def update_balance(self):
         """Update the balance from the User's Account Status,
         substracting the new outcome.
         """
 
-        account_status.actual_balance -= self.outcome
+        self.account_status.actual_balance -= self.outcome
 
 
     def __str__(self):
@@ -36,12 +36,12 @@ class Incomes(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     set_at = models.DateTimeField()
 
-    def update_balance(self, account_status: AccountStatus):
+    def update_balance(self):
         """Update the balance from the User's Account Status,
         adding the new income.
         """
         
-        account_status.actual_balance += self.income
+        self.account_status.actual_balance += self.outcome
 
     def __str__(self):
         return self.income
