@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-# Create your views here.
 
 def register_user(request):
     if request.method == 'GET':
