@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 
 def register_user(request):
     if request.method == 'GET':
-        render(request, "direction")
+        return render(request, "main/register.html")
     
     elif request.method == 'POST':
         username = request.POST['username']
@@ -20,4 +20,5 @@ def register_user(request):
                                         email=email,
                                         password=password)
         
-        return HttpResponseRedirect("/account_status")
+        # This is not implemented yet
+        # return HttpResponseRedirect("/account_status")
