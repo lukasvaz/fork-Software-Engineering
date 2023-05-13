@@ -107,8 +107,10 @@
                 errores.push('-La contraseña debe tener al menos 8 caracteres y contener letras y números.');
             }
 
-            event.preventDefault();
-            alert('Por favor, corrija los siguientes errores:\n\n' + errores.join('\n'))
+            if (errores.length > 0) {
+                event.preventDefault();
+                alert('Por favor, corrija los siguientes errores:\n\n' + errores.join('\n'))
+            }
 		});
 	</script>
 	
