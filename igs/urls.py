@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
 from  main.views import home_views,log_in_views,transaction_views, registro_views
 
 urlpatterns = [
@@ -26,3 +27,5 @@ urlpatterns = [
     path("", include("main.urls")),
     path('registro/', registro_views.registro,name="registro"),
 ]
+
+
