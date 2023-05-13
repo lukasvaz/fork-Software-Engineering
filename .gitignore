@@ -7,7 +7,7 @@ __pycache__/
 *.so
 
 # Python's migrations (app still in development so migrations must be ignored)
-migrations/0*.py
+*_initial.py
 
 # Distribution / packaging
 .Python
