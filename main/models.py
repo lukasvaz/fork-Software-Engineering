@@ -16,7 +16,7 @@ class Outcomes(models.Model):
     outcome = models.PositiveBigIntegerField()
     category = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    set_at = models.DateField(input_formats=["%Y-%m-%d"])
+    set_at = models.DateField()
     description = models.CharField(max_length=100)
 
     def update_balance(self):
@@ -35,7 +35,7 @@ class Incomes(models.Model):
     income = models.PositiveBigIntegerField()
     category = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    set_at = models.DateField(input_formats=["%Y-%m-%d"])
+    set_at = models.DateField()
     description = models.CharField(max_length=100)
 
     def update_balance(self):
