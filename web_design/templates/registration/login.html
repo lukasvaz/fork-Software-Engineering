@@ -82,12 +82,11 @@
 <body>  
     <div class="contenedor">
         <h1>Inicio de sesión</h1>
-        <!--este  despues tiene que ser un django forms, cuando se haga post  agregar en log_in_views el comportamiento para  POST (ver aux 5) 
-            ///por ahora  en action voy a dejar  que se vaya  a home// -->
-        <form action="{% url 'home' %}">
-            <input type="text" id="usuario" name="usuario" placeholder="Usuario" value="">
+        <form method="post" action="{% url 'login' %}" >
+            {% csrf_token %}
+            <input type="text" id="usuario" name="username" placeholder="Usuario" value="">
             <br><br>
-            <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" value="">
+            <input type="password" id="contrasena" name="password" placeholder="Contraseña" value="">
             <br><br>
             <input type="submit" value="Iniciar sesión">
         </form>
