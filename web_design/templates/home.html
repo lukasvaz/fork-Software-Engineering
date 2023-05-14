@@ -2,17 +2,24 @@
 {% block title %}Ingresos y Egresos{% endblock %}
 
 
-{% block content %}
-    {% for transaction in transactions %}
-        <tr >
-            <th scope="row">{{transaction.set_at}}</th>
-            <td>{{transaction.description}}</td>
-            <td>{{transaction.income}}</td>
-            <td>{{transaction.category}}</td>
-            <td>{{transaction.tipo}}</td>
+{% block content %}    
+    <table>
+    <thead>
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Ingreso/Egreso</th>
         </tr>
-    {% endfor %}
+    </thead>
+    <tbody id="home-table">
+    </tbody>
+</table>
+    
 
+
+    
     <script>
         const selectType = document.getElementById('transaction_type');
         selectType.addEventListener('change', updateTable);
