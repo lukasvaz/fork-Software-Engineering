@@ -1,36 +1,52 @@
-from django.http import  HttpResponse
+from django.http import  HttpResponse , JsonResponse,HttpRequest
 from django.template import Template,Context,loader
 from django.shortcuts import render
-
-
-
-
+from main.models import Incomes,Outcomes,AccountStatus
+from django.contrib.auth.models import User
+from django.db.models import F
 ## views home 
 
-def home(request):
+def get_transactions(request,type):
+    #user_id=request.user.id
+    user_id=4
+    dict_data={}
+    print(type)
+    if(type=="Ingreso"):
+        incomes=Incomes.objects.filter(account_status__user=user_id)[:10]
+        dict_data=list(incomes.values())
+        for values in dict_data:
+            values["monto"]=values.pop("income")
+            values["tipo"]="Ingreso"
 
+
+        return JsonResponse(dict_data,safe=False)
+        
+    if(type=="Egreso"):
+        outcomes=Outcomes.objects.filter(account_status__user=user_id)[:10]
+        dict_data=list(outcomes.values())
+        for values in dict_data:
+            values["monto"]=values.pop("outcome")
+            values["tipo"]="Egreso"
+
+        return JsonResponse(dict_data,safe=False)
+
+    return JsonResponse(dict_data)
+    
+
+def home(request):
     template=loader.get_template("home.html")
-    # obtener desde  base de datos
-    #importar modelo-> from models.py import Ingresos Egresos Estado_Cuenta
+    #user_id=request.user.id
+    user_id=4
+    #outcomes=Outcomes.objects.filter(account_status__user=user_id)
+    incomes=Incomes.objects.filter(account_status__user=user_id).order_by(F("set_at").desc())[:20]
+    #union=outcomes.union(incomes).order_by(F("set_at").desc())[:20]
+
+    #data=get_transactions(HttpRequest,"Ingreso")
     
-    #obtener_saldo actual
-    #    user_id=request.user.id
-    #    Estados_cuenta_usuario= Estado_cuenta.objects.filter(user_id=user_id)
-    #   saldo_actual=   
-    #    Ingresos_sesion=Ingresos.objects.filter()
-    #    Egresos_sesion=Egresos.objects.filter()
-   
     # Test
-    transactions=[]
-    # transaction1={"date":"15/09/2023","name":"compra semanal","value":13000,"category":"Compra","type":"Egreso"}
-    # transaction2={"date":"12/10/2023","name":"compra regalo","value":25000,"category":"Otros","type":"Egreso"}
-    # transaction3={"date":"5/12/2023","name":"cena familiar","value":43000,"category":"Cena","type":"Egreso"}
-    # transactions.append(transaction1)
-    # transactions.append(transaction2)
-    # transactions.append(transaction3)
+    #transactions=union
     
-    
-    ctx={"transactions":transactions}
+    ctx={"transactions":incomes}
     rendered_template=template.render(ctx)
     return HttpResponse(rendered_template)
 

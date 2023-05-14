@@ -4,13 +4,61 @@
 
 {% block content %}
     {% for transaction in transactions %}
-        <tr id="table">
-            <th scope="row">{{transaction.date}}</th>
-            <td>{{transaction.name}}</td>
-            <td>{{transaction.value}}</td>
+        <tr >
+            <th scope="row">{{transaction.set_at}}</th>
+            <td>{{transaction.description}}</td>
+            <td>{{transaction.income}}</td>
             <td>{{transaction.category}}</td>
-            <td>{{transaction.type}}</td>
+            <td>{{transaction.tipo}}</td>
         </tr>
     {% endfor %}
-{% endblock content %}
 
+    <script>
+        
+        const selectType = document.getElementById('transaction_type');
+        selectType.addEventListener('change', updateTable);
+        
+        async function updateTable(e) {
+        var selectedType = selectType.value;
+    
+        const xhttp = new XMLHttpRequest();
+        var url = "{% url 'table' 1234 %}".replace(/1234/, selectedType.toString());
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                const response = this.response;
+                var table=document.getElementById('home-table')
+                table.innerHTML='';
+                var json_response=JSON.parse(response)
+                console.log(json_response);
+                
+                for(var i in json_response){
+                    var transaction=json_response[i];
+                    var row=document.createElement('tr');                
+                    var fecha=document.createElement('th');
+                    fecha.innerText=transaction.set_at;
+                    fecha.scope="row";
+                    row.appendChild(fecha)
+                    var nombre=document.createElement('td');
+                    nombre.innerText='';
+                    row.appendChild(nombre)
+                    var monto=document.createElement('td');
+                    monto.innerText=transaction.monto;
+                    row.appendChild(monto)                
+                    var categoria=document.createElement('td');
+                    categoria.innerText=transaction.category;
+                    row.appendChild(categoria)
+                    var tipo=document.createElement('td');
+                    tipo.innerText=transaction.tipo;
+                    row.appendChild(tipo)
+                    table.appendChild(row);
+                }
+          }
+        }
+
+        xhttp.open("GET", url);
+        xhttp.send();
+    }
+</script>
+    {% endblock content %}
+    
+    

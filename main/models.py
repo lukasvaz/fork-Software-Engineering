@@ -42,6 +42,6 @@ class Incomes(models.Model):
         """
         
         self.account_status.actual_balance += self.outcome
-
+    
     def __str__(self):
         return str(self.income)
