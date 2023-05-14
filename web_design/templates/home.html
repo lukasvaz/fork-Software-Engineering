@@ -22,7 +22,9 @@
     
     <script>
         const selectType = document.getElementById('transaction_type');
+        
         selectType.addEventListener('change', updateTable);
+        window.addEventListener('load', updateTable);
 
         async function updateTable(e) {
         var selectedType = selectType.value;
@@ -35,7 +37,6 @@
                 var table=document.getElementById('home-table')
                 table.innerHTML='';
                 var json_response=JSON.parse(response)
-                console.log(json_response);
                 
                 for(var i in json_response){
                     var transaction=json_response[i];
