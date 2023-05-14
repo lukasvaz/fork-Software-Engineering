@@ -14,7 +14,11 @@
     {% endfor %}
 
     <script>
-        
+        function createColumn(row,transaction,atr,type){
+            var column=document.createElement(type);
+            column.innerText=transaction[atr];
+            row.appendChild(column)
+        }
         const selectType = document.getElementById('transaction_type');
         selectType.addEventListener('change', updateTable);
         
@@ -22,7 +26,7 @@
         var selectedType = selectType.value;
     
         const xhttp = new XMLHttpRequest();
-        var url = "{% url 'table' 1234 %}".replace(/1234/, selectedType.toString());
+        var url = "{% url 'table' 0 %}".replace(/0/, selectedType.toString());
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 const response = this.response;
@@ -34,27 +38,17 @@
                 for(var i in json_response){
                     var transaction=json_response[i];
                     var row=document.createElement('tr');                
-                    var fecha=document.createElement('th');
-                    fecha.innerText=transaction.set_at;
-                    fecha.scope="row";
-                    row.appendChild(fecha)
-                    var nombre=document.createElement('td');
-                    nombre.innerText='';
-                    row.appendChild(nombre)
-                    var monto=document.createElement('td');
-                    monto.innerText=transaction.monto;
-                    row.appendChild(monto)                
-                    var categoria=document.createElement('td');
-                    categoria.innerText=transaction.category;
-                    row.appendChild(categoria)
-                    var tipo=document.createElement('td');
-                    tipo.innerText=transaction.tipo;
-                    row.appendChild(tipo)
+
+                    createColumn(row,transaction,'set_at','th')
+                    createColumn(row,transaction,'descripcion','td')
+                    createColumn(row,transaction,'monto','td')
+                    createColumn(row,transaction,'categoria','td')
+                    createColumn(row,transaction,'tipo','td')
+
                     table.appendChild(row);
                 }
           }
         }
-
         xhttp.open("GET", url);
         xhttp.send();
     }
