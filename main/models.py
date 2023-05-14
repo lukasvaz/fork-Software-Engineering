@@ -16,7 +16,8 @@ class Outcomes(models.Model):
     outcome = models.PositiveBigIntegerField()
     category = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    set_at = models.DateTimeField()
+    set_at = models.DateField()
+    description = models.CharField(max_length=100)
 
     def update_balance(self):
         """Update the balance from the User's Account Status,
@@ -24,6 +25,7 @@ class Outcomes(models.Model):
         """
 
         self.account_status.actual_balance -= self.outcome
+        self.save()
 
 
     def __str__(self):
@@ -34,7 +36,8 @@ class Incomes(models.Model):
     income = models.PositiveBigIntegerField()
     category = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
-    set_at = models.DateTimeField()
+    set_at = models.DateField()
+    description = models.CharField(max_length=100)
 
     def update_balance(self):
         """Update the balance from the User's Account Status,
@@ -42,6 +45,7 @@ class Incomes(models.Model):
         """
         
         self.account_status.actual_balance += self.outcome
+        self.save()
 
     def __str__(self):
         return self.income
