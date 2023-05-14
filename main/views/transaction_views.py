@@ -3,7 +3,7 @@ from django.template import Template,Context,loader
 from django.shortcuts import render
 from igs.forms import TransactionForm
 from enum import Enum
-from models import Incomes, Outcomes
+from main.models import Incomes, Outcomes
 
 # Esto es provisional (o no), con esto se pregunta el tipo de la transaccion
 class Type(Enum):
