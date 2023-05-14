@@ -41,6 +41,7 @@ def home(request):
     #user_id=request.user.id
     user_id=4
     acount=AccountStatus.objects.filter(user__id=user_id)
+    print(acount.get())
     ctx={"actual_balance":acount.get()}
     rendered_template=template.render(ctx)
     return HttpResponse(rendered_template)
