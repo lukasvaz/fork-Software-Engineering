@@ -39,8 +39,9 @@ def get_transactions(request,type):
 def home(request):
     template=loader.get_template("home.html")
     #user_id=request.user.id
-    #ctx={"Amount":}
-    ctx={}
+    user_id=4
+    acount=AccountStatus.objects.filter(user__id=user_id)
+    ctx={"actual_balance":acount.get()}
     rendered_template=template.render(ctx)
     return HttpResponse(rendered_template)
 
