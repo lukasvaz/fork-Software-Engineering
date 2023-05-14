@@ -25,6 +25,7 @@ class Outcomes(models.Model):
         """
 
         self.account_status.actual_balance -= self.outcome
+        self.save()
 
 
     def __str__(self):
@@ -44,6 +45,7 @@ class Incomes(models.Model):
         """
         
         self.account_status.actual_balance += self.outcome
+        self.save()
 
     def __str__(self):
         return self.income
