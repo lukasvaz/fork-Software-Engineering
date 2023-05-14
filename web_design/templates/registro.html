@@ -1,71 +1,9 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Registro</title>
-	<style>
-        body {
-            background-color: #f7f7f7;
-        }
-
-        /* Estilo para el contenedor principal */
-        .cont {
-            text-align: center;
-            width: 80%;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 75px;
-            background-color: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 5px #ccc;
-            margin-top: 60px;
-        }
-
-        /* Estilo para el título */
-        h1 {
-            margin-bottom: 60px;
-            font-size: 30px;
-            font-family: Arial, sans-serif;
-            font-weight: normal;
-        }
-
-        /* Estilo para las etiquetas de entrada */
-        label {
-            display: block;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        /* Estilo para los campos de entrada */
-        input[type="text"],
-        input[type="password"] {
-            width: 50%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #f2f2f2;
-        }
-
-        /* Estilo para el botón de enviar */
-        input[type="submit"] {
-            width: 50%;
-            padding: 10px;
-            background-color: #4b9bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-sizing: border-box;
-            margin-top: 25px;
-        }
-
-        /* Estilo para el botón de enviar al pasar el cursor */
-        input[type="submit"]:hover {
-            background-color: #1e90ff;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registro.css' %}">
 </head>
 <body>
     <div class="cont">
@@ -83,8 +21,7 @@
             <input type="submit" value="Registrarse">
         </form>    
     </div>
-	
-	<script src="../javascripts/registro.js"></script>
+	<script src="{% static 'js/registro.js' %}"></script>
 	
 </body>
 </html>

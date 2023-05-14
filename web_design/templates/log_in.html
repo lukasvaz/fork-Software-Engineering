@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,79 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log_in</title>
-    <style>
-        body {
-            background-color: #f7f7f7;
-        }
-
-        /* Estilo para el contenedor principal */
-        .contenedor {
-            text-align: center;
-            width: 80%;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 75px;
-            background-color: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 5px #ccc;
-            margin-top: 90px;
-        }
-
-        /* Estilo para el título */
-        h1 {
-            margin-bottom: 40px;
-        }
-
-        /* Estilo para las etiquetas de entrada */
-        label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        /* Estilo para los campos de entrada */
-        input[type="text"],
-        input[type="password"] {
-            width: 50%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-            background-color: #f2f2f2;
-        }
-
-        /* Estilo para el botón de enviar */
-        input[type="submit"] {
-            width: 50%;
-            padding: 10px;
-            background-color: #4b9bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-sizing: border-box;
-        }
-
-        /* Estilo para el botón de enviar al pasar el cursor */
-        input[type="submit"]:hover {
-            background-color: #1e90ff;
-        }
-
-        /* Estilo para el texto "Registrate" */
-        p {
-            font-weight: normal;
-            font-family: Arial, sans-serif;
-            margin-top: 40px;
-        }
-
-        p a {
-            text-decoration: underline;
-            color: #4b9bff;
-        }
-
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/log_in.css' %}">
 </head>
 <body>  
     <div class="contenedor">
