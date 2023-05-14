@@ -14,19 +14,14 @@
     {% endfor %}
 
     <script>
-        function createColumn(row,transaction,atr,type){
-            var column=document.createElement(type);
-            column.innerText=transaction[atr];
-            row.appendChild(column)
-        }
         const selectType = document.getElementById('transaction_type');
         selectType.addEventListener('change', updateTable);
-        
+
         async function updateTable(e) {
         var selectedType = selectType.value;
-    
         const xhttp = new XMLHttpRequest();
         var url = "{% url 'table' 0 %}".replace(/0/, selectedType.toString());
+        
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 const response = this.response;
@@ -38,13 +33,11 @@
                 for(var i in json_response){
                     var transaction=json_response[i];
                     var row=document.createElement('tr');                
-
                     createColumn(row,transaction,'set_at','th')
                     createColumn(row,transaction,'descripcion','td')
                     createColumn(row,transaction,'monto','td')
                     createColumn(row,transaction,'categoria','td')
                     createColumn(row,transaction,'tipo','td')
-
                     table.appendChild(row);
                 }
           }
@@ -52,6 +45,13 @@
         xhttp.open("GET", url);
         xhttp.send();
     }
+
+    function createColumn(row,transaction,atr,type){
+            var column=document.createElement(type);
+            column.innerText=transaction[atr];
+            row.appendChild(column)
+        }
+
 </script>
     {% endblock content %}
     
