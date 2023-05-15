@@ -25,18 +25,22 @@
           </div>
         {% endif %}
     </div>
-    <div class="container">
-      <select onchange="request()" style="margin-left: auto;">
-        <option value="Ingreso">Ingreso</option>
-        <option value="Egreso">Egreso</option>
-      </select>
-      <div class="btn-group" style="margin-left: 50%;"  >
-        <a>
-          <button type="button" class="btn btn-primary">Ordenar por Fecha</button>
-        </a>
-        <a href="{% url 'transaction' %}">
-          <button type="button" class="btn btn-primary">Agregar Transacción</button>
-        </a>
+    <div class="btn-group d-flex align-items-center justify-content-center" style="margin-left: 0 auto;">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          Filtrar por Ingreso o Egreso
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Ingreso</a></li>
+          <li><a class="dropdown-item" href="#">Egreso</a></li>
+        </ul>
+      </div>
+      <a>
+        <button type="button" class="btn btn-primary">Ordenar por Fecha</button>
+      </a>
+      <a href="{% url 'transaction' %}">
+        <button type="button" class="btn btn-primary">Agregar Transacción</button>
+      </a>
       </div>
     </div>
     <div class="table-responsive justify-content-center" style="margin-top:20px;">
