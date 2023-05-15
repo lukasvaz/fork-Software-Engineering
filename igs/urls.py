@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from  main.views import home_views,log_in_views,transaction_views, registro_views
+from  main.views import home_views,log_in_views,transaction_views, registro_views, register_view
 
 urlpatterns = [
     path("", log_in_views.log_in),
@@ -26,6 +26,7 @@ urlpatterns = [
     path('transaction/', transaction_views.transaction,name="transaction"),
     path("", include("main.urls")),
     path('registro/', registro_views.registro,name="registro"),
+    path("register/", register_view.register_user, name="register"),
 ]
 
 
