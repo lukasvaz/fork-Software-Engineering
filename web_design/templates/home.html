@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Ingresos y Egresos{% endblock %}
+{% block title %}Home{% endblock %}
 
 
 {% block content %}
@@ -10,6 +10,7 @@
             <td>{{transaction.value}}</td>
             <td>{{transaction.category}}</td>
             <td>{{transaction.type}}</td>
+            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
         </tr>
     {% endfor %}
 {% endblock content %}
