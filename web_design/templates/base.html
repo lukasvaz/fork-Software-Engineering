@@ -30,9 +30,14 @@
         <option value="Ingreso">Ingreso</option>
         <option value="Egreso">Egreso</option>
       </select>
-      <a href="{% url 'transaction' %}">
-        <button type="button" style="margin-left: 60%;" class="btn btn-primary">Agregar Transacción</button>
-      </a>
+      <div class="btn-group" style="margin-left: 50%;"  >
+        <a>
+          <button type="button" class="btn btn-primary">Ordenar por Fecha</button>
+        </a>
+        <a href="{% url 'transaction' %}">
+          <button type="button" class="btn btn-primary">Agregar Transacción</button>
+        </a>
+      </div>
     </div>
     <div class="table-responsive justify-content-center" style="top:0px;">
       <table class="table table-sm table-hover table-bordered">
