@@ -1,12 +1,12 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -21,45 +21,29 @@
             <p>${{actual_balance}}</p>
           </div>
         {% else %}
-          <div class="header d-flex justify-content-center">
-            <h1>Current Budget: $0</h1>
+          <div class="header">
+            <h1>Current Budget: </h1>
+            <p>$0</p>
           </div>
         {% endif %}
+    
+    <div>
+    <select id="transaction_type"  class="form-select">
+    <option value="All" selected>Todo</option>
+    <option value="Income" >Ingreso</option>
+    <option value="Outcome">Egreso</option>
+    
+  
+  </select>
+    <button  type="button" style="margin-left: 60%;" class="btn btn-primary"><a href="{% url 'transaction' %}" style="color:white">+ Transacción</a></button>
     </div>
-    <div class="btn-group-center d-flex align-items-center justify-content-center">
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          Filtrar por Ingreso o Egreso
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Ingreso</a></li>
-          <li><a class="dropdown-item" href="#">Egreso</a></li>
-        </ul>
-      </div>
-      <a>
-        <button type="button" class="btn btn-primary">Ordenar por Fecha</button>
-      </a>
-      <a href="{% url 'transaction' %}">
-        <button type="button" class="btn btn-primary">Agregar Transacción</button>
-      </a>
-      </div>
+
+  </div>
+    <div class="container">
+      <div class="table table-hover"> <!-- Ver como agregar table-sm -->
+      <!--here will be the  table -->
+        {% block content %}{% endblock %}            
     </div>
-    <div class="table-responsive justify-content-center" style="margin-top:20px;">
-      <table class="table table-sm table-hover table-bordered">
-          <thead>
-              <tr>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Descripción</th>
-                  <th scope="col">Valor</th>
-                  <th scope="col">Categoría</th>
-                  <th scope="col">Ingreso/Egreso</th>
-                  <th scope="col">Eliminar</th>
-              </tr>
-          </thead>
-          <tbody>
-              {% block content %}{% endblock %}
-          </tbody>
-      </table>
     </div>
     <script> 
     
@@ -70,6 +54,5 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
 </html>
