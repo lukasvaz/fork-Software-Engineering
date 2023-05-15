@@ -1,9 +1,10 @@
 import factory
 
 from factory.django import DjangoModelFactory
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 
 from main.models import AccountStatus, Incomes, Outcomes
-from django.contrib.auth.models import User
 
 import random
 import datetime
@@ -19,7 +20,7 @@ class UserFactory(DjangoModelFactory):
         model = User
     
     username = factory.Faker("user_name")
-    password = PASSWORD
+    password = make_password(PASSWORD)
 
 class AccountStatusFactory(DjangoModelFactory):
     class Meta:
