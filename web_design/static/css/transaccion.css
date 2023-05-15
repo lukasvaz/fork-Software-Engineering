@@ -11,15 +11,11 @@ body {
     border: 1px solid #ccc;
     box-shadow: 0 0 5px #ccc;
     text-align: center;
-    transform: translate(0px, 50px);
-    -webkit-transform: translate(0px, 50px);
-    -moz-transform: translate(0px, 50px);
-    -ms-transform: translate(0px, 50px);
-    -o-transform: translate(0px, 50px);
+    margin-top: 70px;
 }
 
 h1 {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 /* Estilos para el formulario */
@@ -62,8 +58,10 @@ input[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 50px;
 }
 
 input[type="submit"]:hover {
     background-color: #1e90ff;
 }
+

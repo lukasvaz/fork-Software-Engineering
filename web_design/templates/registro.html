@@ -9,6 +9,7 @@
     <div class="cont">
         <h1>Complete para crear su cuenta:</h1>
         <form action="{% url 'home' %}" id="registration-form">
+            {% csrf_token %}
             <label for="username">Nombre de usuario:</label>
             <input type="text" id="username" name="username" required>
             <br>

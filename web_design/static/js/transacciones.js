@@ -1,13 +1,11 @@
 const formulario = document.querySelector('form');
-const tipo = document.getElementById('tipo');
-const monto = document.getElementById('monto');
-const moneda = document.getElementById('moneda');
-const fecha = document.getElementById('fecha');
-const categoria = document.getElementById('categoria');
+const tipo = document.getElementById('id_tipo');
+const monto = document.getElementById('id_monto');
+const fecha = document.getElementById('id_fecha');
+const categoria = document.getElementById('id_categoria');
 
 formulario.addEventListener('submit', function(event) {
-  event.preventDefault(); // Evita que se envíe el formulario sin ser validado
-
+  
   // Validación del campo "Tipo"
   if (tipo.value === '') {
     alert('Debe seleccionar un tipo de ingreso o gasto');
@@ -17,12 +15,6 @@ formulario.addEventListener('submit', function(event) {
   // Validación del campo "Monto"
   if (monto.value === '' || isNaN(monto.value)) {
     alert('Debe ingresar un monto válido');
-    return;
-  }
-
-  // Validación del campo "Moneda"
-  if (moneda.value === '') {
-    alert('Debe seleccionar una moneda');
     return;
   }
 
@@ -38,8 +30,6 @@ formulario.addEventListener('submit', function(event) {
     return;
   }
 
-  // Si todos los campos están completos, se envía el formulario
-  formulario.submit();
 });
 
 // agregar puntos al monto:
