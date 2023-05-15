@@ -10,8 +10,8 @@ from django.db.models import F,Value,CharField
 #is it supooesed to be called  by an ajax request  in home
 # TODO: Implementing others filters and make it more extensible to other filters  
 def get_transactions(request,type):
-    #user_id=request.user.id
-    user_id=4
+    user_id=request.user.id
+    #user_id=4
     dict_data={}
     if(type=="Income"):
         incomes=Incomes.objects.filter(account_status__user=user_id).order_by(F("set_at").desc())
@@ -44,11 +44,10 @@ def get_transactions(request,type):
 def home(request):
     template=loader.get_template("home.html")
     try:
-        #user_id=request.user.id
-        user_id=4
+        user_id=request.user.id
+        #user_id=4
         acount=AccountStatus.objects.filter(user__id=user_id)
-        print(acount.get())
-        ctx={"actual_balance":acount.get()}
+        ctx={"actual_balance":acount.get().actual_balance}
     except:
         ctx={}
     rendered_template=template.render(ctx)

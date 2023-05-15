@@ -25,6 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("transaction/", transaction_views.transaction, name="transaction"),
     path("", include("main.urls")),
+     path("get-table/<str:type>", home_views.get_transactions,name="table"),
     path("registro/", register_view.register_user, name="registro"),
     path("accounts/", include("django.contrib.auth.urls"), name="accounts"),
 
