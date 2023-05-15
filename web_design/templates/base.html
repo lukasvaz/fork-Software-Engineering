@@ -26,15 +26,12 @@
           {% endif %}
       </div>
       <div class="btn-group-center d-flex align-items-center justify-content-center">
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Filtrar por Ingreso o Egreso
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Ingreso</a></li>
-            <li><a class="dropdown-item" href="#">Egreso</a></li>
-          </ul>
-        </div>
+        <select  id="transaction_type"  class="form-select" >
+        <option value="All" selected>Todo</option>
+        <option value="Income" >Ingreso</option>
+        <option value="Outcome">Egreso</option>
+      
+      </select>
         <a>
           <button type="button" class="btn btn-primary">Ordenar por Fecha</button>
         </a>
@@ -43,11 +40,11 @@
         </a>
         </div>
       </div>
+
     </div>
+    {% block content%} {%endblock%}
     </div>
-    <script> 
     
-    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
