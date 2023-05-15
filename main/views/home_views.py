@@ -4,8 +4,10 @@ from django.shortcuts import render
 from main.models import Incomes,Outcomes,AccountStatus
 from django.contrib.auth.models import User
 from django.db.models import F,Value,CharField
-## views home 
 
+
+# retrieve transaction data  filtering by Income ,Outcome, All(incomes and outcomes)
+# TODO: Implementing others filters and make it more extensible to other filters  
 def get_transactions(request,type):
     #user_id=request.user.id
     user_id=4
@@ -14,7 +16,7 @@ def get_transactions(request,type):
         incomes=Incomes.objects.filter(account_status__user=user_id).order_by(F("set_at").desc())
         incomes=incomes.annotate(type=Value('Ingreso', output_field=CharField())).annotate(amount=F('income'))[:10]        
         dict_data=list(incomes.values())
-                   
+
         return JsonResponse(dict_data,safe=False)
         
     if(type=="Outcome"):
@@ -34,16 +36,20 @@ def get_transactions(request,type):
         return JsonResponse(dict_data,safe=False)
 
     return JsonResponse(dict_data)
-    
 
+
+## render the home template  passing  the current budget as context parameter and user  
 def home(request):
     template=loader.get_template("home.html")
-    #user_id=request.user.id
-    user_id=4
-    acount=AccountStatus.objects.filter(user__id=user_id)
-    print(acount.get())
-    ctx={"actual_balance":acount.get()}
-    rendered_template=template.render(ctx)
+    try:
+        #user_id=request.user.id
+        user_id=4
+        acount=AccountStatus.objects.filter(user__id=user_id)
+        print(acount.get())
+        ctx={"actual_balance":acount.get()}
+    except:
+        ctx={}
+        rendered_template=template.render(ctx)
     return HttpResponse(rendered_template)
 
 
