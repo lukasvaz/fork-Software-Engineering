@@ -40,6 +40,7 @@ def get_transactions(request,type):
 
 
 ## render the home template  passing  the current budget as context parameter and user  
+
 def home(request):
     template=loader.get_template("home.html")
     try:
