@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from main.models import AccountStatus, Incomes, Outcomes
+
+admin.site.register(AccountStatus)
+admin.site.register(Incomes)
+admin.site.register(Outcomes)
