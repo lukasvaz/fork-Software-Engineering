@@ -7,6 +7,7 @@ from django.db.models import F,Value,CharField
 
 
 # retrieve transaction data  filtering by Income ,Outcome, All(incomes and outcomes)
+#is it supooesed to be called  by an ajax request  in home
 # TODO: Implementing others filters and make it more extensible to other filters  
 def get_transactions(request,type):
     #user_id=request.user.id
@@ -49,7 +50,7 @@ def home(request):
         ctx={"actual_balance":acount.get()}
     except:
         ctx={}
-        rendered_template=template.render(ctx)
+    rendered_template=template.render(ctx)
     return HttpResponse(rendered_template)
 
 
