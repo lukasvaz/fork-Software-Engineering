@@ -14,18 +14,18 @@
           width: 80%;
       }
     </style>
-    <div class="container" style="margin-left: 40%;">
+    <div class="container-fluid">
         {% if money %}
-          <div class="header">
+          <div class="header d-flex justify-content-center">
             <h1>Current Budget: ${{money.value}}</h1>
           </div>
         {% else %}
-          <div class="header">
+          <div class="header d-flex justify-content-center">
             <h1>Current Budget: $0</h1>
           </div>
         {% endif %}
     </div>
-    <div class="btn-group d-flex align-items-center justify-content-center" style="margin-left: 0 auto;">
+    <div class="btn-group-center d-flex align-items-center justify-content-center">
       <div class="btn-group" role="group">
         <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           Filtrar por Ingreso o Egreso
