@@ -9,7 +9,7 @@ class AccountStatus(models.Model):
     actual_balance = models.BigIntegerField(default=0)
     
     def __str__(self):
-        return self.actual_balance
+        return str(self.actual_balance)
     
 class Outcomes(models.Model):
     account_status = models.ForeignKey(AccountStatus, on_delete=models.CASCADE)
@@ -29,7 +29,7 @@ class Outcomes(models.Model):
 
 
     def __str__(self):
-        return self.outcome
+        return str(self.outcome)
 
 class Incomes(models.Model):
     account_status = models.ForeignKey(AccountStatus, on_delete=models.CASCADE)
@@ -48,4 +48,4 @@ class Incomes(models.Model):
         self.save()
 
     def __str__(self):
-        return self.income
+        return str(self.income)
