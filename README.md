@@ -26,3 +26,13 @@ The app is still in development so you may want to make migrations for the DB, y
 $ python3 manage.py makemigrations
 $ python3 manage.py migrate
 ```
+
+## Commands
+
+We created some commands for automatization, here you can see a list of them:
+
+* `set_up_dummy_data`: This command populates the database for the main app with dummy data using factory-boy. Be careful, executing this command will delete all the old data, including superusers, so you may want to create a superuser after executing this command. Ex. of execution:
+
+    ```bash
+    $ python manage.py set_up_dummy_data
+    ```
