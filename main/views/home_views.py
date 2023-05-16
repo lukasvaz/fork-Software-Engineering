@@ -6,12 +6,13 @@ from django.contrib.auth.models import User
 from django.db.models import F,Value,CharField
 
 
-# retrieve transaction data  filtering by Income ,Outcome, All(incomes and outcomes)
-#is it supooesed to be called  by an ajax request  in home
+#retrieve transaction data  filtering by Income ,Outcome, All(incomes and outcomes)
+#is it suposed to be called  by an ajax request  in home
+
 # TODO: Implementing others filters and make it more extensible to other filters  
+
 def get_transactions(request,type):
     user_id=request.user.id
-    #user_id=4
     dict_data={}
     if(type=="Income"):
         incomes=Incomes.objects.filter(account_status__user=user_id).order_by(F("set_at").desc())
@@ -39,8 +40,7 @@ def get_transactions(request,type):
     return JsonResponse(dict_data)
 
 
-## render the home template  passing  the current budget as context parameter and user  
-
+## render the home template  passing  the current budget and username as context parameter   
 def home(request):
     template=loader.get_template("home.html")
     try:

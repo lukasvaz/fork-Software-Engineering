@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from main.models import Incomes, Outcomes, AccountStatus
 
 # views transacciones
+
+##view for the transactions form , if request is GET method render the template  
+#if its POST save transaction in database
 def transaction(request):
     if request.method == "POST":
         user = request.user

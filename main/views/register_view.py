@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from main.models import AccountStatus
 
+##view for the register form , if request is GET method render the template  
+#if is POST save user in database
 def register_user(request):
     if request.method == 'GET':
         return render(request, "register.html")
