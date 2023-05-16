@@ -45,9 +45,10 @@ def home(request):
     template=loader.get_template("home.html")
     try:
         user_id=request.user.id
-        #user_id=4
         acount=AccountStatus.objects.filter(user__id=user_id)
-        ctx={"actual_balance":acount.get().actual_balance}
+        print(acount.get().actual_balance)
+
+        ctx={"actual_balance":acount.get().actual_balance,"name":request.user.username}
     except:
         ctx={}
     rendered_template=template.render(ctx)

@@ -3,8 +3,8 @@
 
 
 {% block content %}    
-    <table>
-    <thead>
+    <table class="table" >
+    <thead> 
         <tr>
             <th scope="col">Fecha</th>
             <th scope="col">Descripción</th>
@@ -17,17 +17,12 @@
     </tbody>
 </table>
     
-
-
-    
     <script>
-        
-        const selectType = document.getElementById('transaction_type');
-        
-        selectType.addEventListener('change', updateTable);
-        window.addEventListener('load', updateTable);
 
+        /* this function get the selected value in transactio_type option field and send an ajax request  to the database 
+        and  rendering the Json response into the table in an  asychronus way */
         async function updateTable(e) {
+        const selectType = document.getElementById('transaction_type');
         var selectedType = selectType.value;
         const xhttp = new XMLHttpRequest();
         var url = "{% url 'table' 0 %}".replace(/0/, selectedType.toString());
@@ -54,13 +49,12 @@
         xhttp.open("GET", url);
         xhttp.send();
     }
-
+    /* this function get a  row and add columns nodes to it */
     function createColumn(row,transaction,atr,type){
             var column=document.createElement(type);
             column.innerText=transaction[atr];
             row.appendChild(column)
         }
-
 </script>
     {% endblock content %}
     

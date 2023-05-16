@@ -15,9 +15,9 @@
         <h1>Bienvenido {{ name }}!</h1>
       </div>
       <div class="container ">
-          {% if money %}
+          {% if actual_balance %}
             <div class="header d-flex justify-content-center">
-              <h1>Current Budget: ${{money.value}}</h1>
+              <h1>Current Budget: ${{actual_balance}}</h1>
             </div>
           {% else %}
             <div class="header d-flex justify-content-center">
@@ -51,5 +51,13 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </script>
+    <script src="../static/js/home.js"></script>    
+
+    <script>
+    /* add an event listener  when the page is loaded and when  filters are aplied  to  get json data */
+      const selectType = document.getElementById('transaction_type');
+      selectType.addEventListener('change', updateTable);
+      window.addEventListener('load', updateTable);
+</script>
   </body>
 </html>
