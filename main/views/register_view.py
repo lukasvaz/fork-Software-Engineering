@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from main.models import AccountStatus
 
 def register_user(request):
     if request.method == 'GET':
@@ -12,10 +13,13 @@ def register_user(request):
         email = request.POST['email']
         password = request.POST['password']
 
-        User.objects.create_user(username=username,
+        user = User.objects.create_user(username=username,
                                  first_name=first_name,
                                  last_name=last_name,
                                  email=email,
                                  password=password)
         
-        return redirect("/")
+        user_account_status = AccountStatus(user=user)
+        user_account_status.save()
+        
+        return redirect("/accounts/login/")

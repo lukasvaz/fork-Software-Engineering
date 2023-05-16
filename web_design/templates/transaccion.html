@@ -11,13 +11,13 @@
 <body>
     <div class="contenedor_form">
         <h1>Agregue aquí su transacción</h1>
-        <form action="{% url 'home' %}" id="transaction-form" method="POST">
+        <form id="transaction-form" method="post">
           {% csrf_token %}
           <div>
             <label for="id_tipo">Tipo:</label>
             <select name="tipo" id="id_tipo">
               <option value="ingreso">Ingreso</option>
-              <option value="gasto">Gasto</option>
+              <option value="egreso">Egreso</option>
             </select>
           </div>
           <div>
@@ -42,6 +42,6 @@
           <input type="submit" value="Enviar">
         </form> 
     </div>
-    <script src="{% static 'js/transacciones.js' %}"></script>
+    <!-- <script src="{% static 'js/transacciones.js' %}"></script> -->
 </body>
 </html>
