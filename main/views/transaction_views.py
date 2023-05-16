@@ -1,39 +1,36 @@
-from django.http import  HttpResponse
-from django.template import Template,Context,loader
-from django.shortcuts import render
-from igs.forms import TransactionForm
-from enum import Enum
-from main.models import Incomes, Outcomes
-
-# Esto es provisional (o no), con esto se pregunta el tipo de la transaccion
-class Type(Enum):
-    INCOME = "income"
-    OUTCOME = "outcome"
+from django.shortcuts import render, redirect
+from main.models import Incomes, Outcomes, AccountStatus
 
 # views transacciones
 def transaction(request):
-    if request.method == 'POST':
-        #si post funciona debería imprimir en la terminal
-        form = TransactionForm(request.POST)
-        if form.is_valid():
-            # Procesar el formulario aquí
-            tipo = form.cleaned_data['tipo']
-            monto = form.cleaned_data['monto']
-            moneda = form.cleaned_data['moneda']
-            fecha = form.cleaned_data['fecha']
-            categoria = form.cleaned_data['categoria']
-            # hacer algo con los datos (almacenar en base de datos)
-            # aca se puede renderizar un html que te diga que se envio bien el formulario
-            
-            # probablemente lo que se necesite sea (aun asi ver lo del django forms pq es necesario
-            # obtener el user que viene en la request) 
-            if Type.INCOME == tipo:
-                income = Incomes()
-            
-            elif Type.OUTCOME == tipo:
-                outcome = Outcomes()
-            #return render(request, 'success.html')
-    else:
-        form = TransactionForm()
-    return render(request, 'transaccion.html', {'formulario': form})
+    if request.method == "POST":
+        user = request.user
+
+        transaction_type = request.POST['tipo']
+        mount = request.POST['monto']
+        date_set = request.POST['fecha']
+        category = request.POST['categoria']
+
+        account_status = AccountStatus.objects.get(user=user)
+
+        if "ingreso" == transaction_type:
+            income = Incomes(account_status=account_status,
+                            income=mount,
+                            category=category,
+                            set_at=date_set,
+                            description="")
+            income.save()
+        
+        elif "egreso" == transaction_type:
+            outcome = Outcomes(account_status=account_status,
+                                outcome=mount,
+                                category=category,
+                                set_at=date_set,
+                                description="Egreso")
+            outcome.save()
+        
+        return redirect("/home")
+
+    elif request.method == "GET":
+        return render(request, 'transaccion.html')
 
