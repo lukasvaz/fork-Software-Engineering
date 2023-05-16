@@ -29,9 +29,9 @@ def get_transactions(request,type):
 
     if(type=="All"):
         outcomes=Outcomes.objects.filter(account_status__user=user_id).annotate(type=Value('Egreso', output_field=CharField())).annotate(amount=F('outcome'))        
-        outcomes=outcomes.values("id","amount", "category",  "set_at", "type" )        
+        outcomes=outcomes.values("id","amount", "category",  "set_at", "type" ,"description")        
         incomes=Incomes.objects.filter(account_status__user=user_id).annotate(type=Value('Ingreso', output_field=CharField())).annotate(amount=F('income'))        
-        incomes=incomes.values("id","amount", "category", "set_at", "type" )       
+        incomes=incomes.values("id","amount", "category", "set_at", "type" ,"description")       
         union_table=outcomes.union(incomes).order_by(F("set_at").desc())[:10]
         dict_data=list(union_table)
         return JsonResponse(dict_data,safe=False)
