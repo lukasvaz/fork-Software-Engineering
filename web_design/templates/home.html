@@ -1,8 +1,12 @@
 {% extends "base.html" %}
+
 {%load static %}
 {% block title %}Home{% endblock %}
-{% block content %}    
-<table class="table" >
+{% block content %}   
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+     
+<table class="table" id="home-table" >
     <thead> 
         <tr>
             <th scope="col">Fecha</th>
@@ -12,7 +16,7 @@
             <th scope="col">Ingreso/Egreso</th>
         </tr>
     </thead>
-    <tbody id="home-table">
+    <tbody id="home-table-body" >
     </tbody>
 </table>
 <script src="{%static  'js/table.js'%}"></script>
