@@ -2,9 +2,9 @@
     async function updateTable(e) {
         const selectType = document.getElementById('transaction_type');
         var selectedType = selectType.value;
-        
         const response = await fetch(`get-table/${selectedType}`)
         const data = await response.json();
+        console.log(data)
         var tableBody=document.getElementById('home-table-body')
         tableBody.innerHTML='';
 
@@ -16,7 +16,11 @@
                             <td>${transaction['amount']}</td>\
                             <td>${transaction['category']}</td>\
                             <td>${transaction['type']}</td>
-                            </tr>`
-                        }                
+                            <td><i class="fa-solid fa-pen"></i> <i class="fa-sharp fa-solid fa-trash"></i></td></tr>`
+                            /*ultima  columna  es para  para borrar y modificar, si quieren acceder al id  de la transaccion  deben pedir transaction['id'], 
+                            como  está  todo en una tabla  se debe recuperar si  es  Ingreso o Egreso */
+                            console.log(transaction['id'])
+                        }    
+            
         $('#home-table').DataTable();}
     
