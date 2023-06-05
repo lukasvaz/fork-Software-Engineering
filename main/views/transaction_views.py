@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from main.models import Incomes, Outcomes, AccountStatus
+from igs.forms import TransactionForm
 
 # views transacciones
 
@@ -39,5 +40,6 @@ def transaction(request):
         return redirect("/home")
 
     elif request.method == "GET":
-        return render(request, 'transaccion.html')
+        form = TransactionForm()
+        return render(request, 'transaccion.html', {'form' : form})
 
