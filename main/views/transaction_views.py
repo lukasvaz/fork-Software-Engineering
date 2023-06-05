@@ -13,8 +13,12 @@ def transaction(request):
         mount = request.POST['monto']
         date_set = request.POST['fecha']
         category = request.POST['categoria']
+        custom_category = request.POST.get('custom_categoria')  # Get the custom category value
 
         account_status = AccountStatus.objects.get(user=user)
+
+        if category == "otros" and custom_category:
+                category = custom_category
 
         if "ingreso" == transaction_type:
             income = Incomes(account_status=account_status,
