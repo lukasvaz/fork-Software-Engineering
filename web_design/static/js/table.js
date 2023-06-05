@@ -2,7 +2,7 @@
     async function updateTable(e) {
         const selectType = document.getElementById('transaction_type');
         var selectedType = selectType.value;
-        const response = await fetch(`get-table/${selectedType}`)
+        const response = await fetch(`get-table`)
         const data = await response.json();
         var tableBody=document.getElementById('home-table-body')
         tableBody.innerHTML='';
