@@ -46,8 +46,11 @@
         
         var transactionType=$('#transaction_type').on('change',function() {
             console.log($(this).val());
-            table.column('tipo:name').search($(this).val()).draw();
-       
+            if($(this).val()=='All'){
+            table.column('tipo:name').search("").draw()    
+            }
+            else{
+            table.column('tipo:name').search($(this).val()).draw()}
         })
 
         //show transaction ordered by date 
