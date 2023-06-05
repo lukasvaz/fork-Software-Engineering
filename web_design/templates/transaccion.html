@@ -37,7 +37,13 @@
               <option value="hogar">Hogar</option>
               <option value="salud">Salud</option>
               <option value="ropa">Ropa</option>
+              <option value="otros">Otros</option>
             </select>
+            {% if form.categoria.value == 'otros' %}
+              <input type="text" name="custom_categoria" id="id_custom_categoria">
+            {% else %}
+              <input type="text" name="custom_categoria" id="id_custom_categoria" style="display: none;">
+            {% endif %}
           </div>
           <input type="submit" value="Enviar">
         </form> 
