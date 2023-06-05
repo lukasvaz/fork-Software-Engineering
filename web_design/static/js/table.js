@@ -4,7 +4,6 @@
         var selectedType = selectType.value;
         const response = await fetch(`get-table/${selectedType}`)
         const data = await response.json();
-        console.log(data)
         var tableBody=document.getElementById('home-table-body')
         tableBody.innerHTML='';
 
@@ -19,18 +18,38 @@
             <td><i class="fa-solid fa-pen"></i> <i class="fa-sharp fa-solid fa-trash"></i></td></tr>`
             /*ultima  columna  es para  para borrar y modificar, si quieren acceder al id  de la transaccion  deben pedir transaction['id'], 
             como  está  todo en una tabla  se debe recuperar si  es  Ingreso o Egreso */
-            console.log(transaction['id'])
+            /* console.log(transaction['id']) */
                         }    
             
         var table=$('#home-table').DataTable({
+            columns: [
+                { name: 'fecha' },
+                { name: 'descripcion'},
+                { name: 'categoria' },
+                { name: 'valor' },
+                { name: 'tipo' },
+                { name: 'opciones' }
+            ],
             paging:true,
-            searching:false,
-            ordering:false,
+            "orderFixed":[0,'desc'],
             info:false,
             searching:false,
             autowidth:true,
             lengthChange:false,
         });
-        table.column('0').order('desc').draw()
-    }
+        
+        
+        var select = $('<select><option value=""></option></select>')
+        .appendTo(
+            table.column('tipo:name').header())
+        
+        var transactionType=$('#transaction_type').on('change',function() {
+            console.log($(this).val());
+            table.column('tipo:name').search($(this).val()).draw();
+       
+        })
+
+        //show transaction ordered by date 
+        table.column(1).order('asc').draw()
+        }
     
