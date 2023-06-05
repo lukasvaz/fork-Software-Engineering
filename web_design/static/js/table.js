@@ -22,23 +22,24 @@
                         }    
             
         var table=$('#home-table').DataTable({
+            "dom":'ltpr',
             columns: [
                 { name: 'fecha' },
-                { name: 'descripcion'},
-                { name: 'categoria' },
-                { name: 'valor' },
-                { name: 'tipo' },
-                { name: 'opciones' }
+                { name: 'descripcion',"orderable":false},
+                { name: 'categoria',"orderable":false },
+                { name: 'valor',"orderable":false },
+                { name: 'tipo',"orderable":false },
+                { name: 'opciones',"orderable":false }
             ],
             paging:true,
+            info:true,
+            searching:true,
             "orderFixed":[0,'desc'],
-            info:false,
-            searching:false,
             autowidth:true,
-            lengthChange:false,
         });
-        
-        
+
+        //unable ordering after fixed in date
+        table.ordering=false;
         var select = $('<select><option value=""></option></select>')
         .appendTo(
             table.column('tipo:name').header())
