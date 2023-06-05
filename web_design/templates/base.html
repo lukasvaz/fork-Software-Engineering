@@ -35,13 +35,23 @@
             </div>
           {% endif %}
       </div>
+
       <div class="btn-group-center d-flex align-items-center justify-content-center">
         <select  id="transaction_type"  class="form-select" >
         <option value="All" selected>Todo</option>
         <option value="Ingreso" >Ingreso</option>
         <option value="Egreso">Egreso</option>
-      
       </select>
+      <div>
+        Desde:
+        <input id="min-date" type="date">
+      </div>
+
+      <div>
+        Hasta:
+        <input id="max-date" type="date">
+      </div>
+
         <a>
           <button type="button" class="btn btn-primary">Ordenar por Fecha</button>
         </a>

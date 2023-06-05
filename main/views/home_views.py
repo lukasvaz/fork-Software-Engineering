@@ -6,11 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models import F,Value,CharField
 
 
-#retrieve transaction data  filtering by Income ,Outcome, All(incomes and outcomes)
-#is it suposed to be called  by an ajax request  in home
-
-# TODO: Implementing others filters and make it more extensible to other filters  
-
+#given an authenticated user ,retrieves all transaction data asociated to him/her in Json format 
 def get_transactions(request):
     user_id=request.user.id
     if request.user.is_authenticated and request.method=='GET':

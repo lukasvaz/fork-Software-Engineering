@@ -1,4 +1,4 @@
-    
+    //updates the table, it contains listener  for  the filters
     async function updateTable(e) {
         const selectType = document.getElementById('transaction_type');
         var selectedType = selectType.value;
@@ -34,18 +34,17 @@
             paging:true,
             info:true,
             searching:true,
-            "orderFixed":[0,'desc'],
+            "orderFixed":[0,'desc'],//fixed order by date
             autowidth:true,
         });
 
-        //unable ordering after fixed in date
-        table.ordering=false;
+        //optional
         var select = $('<select><option value=""></option></select>')
         .appendTo(
             table.column('tipo:name').header())
         
-        var transactionType=$('#transaction_type').on('change',function() {
-            console.log($(this).val());
+        //filter by transaction type
+        $('#transaction_type').on('change',function() {
             if($(this).val()=='All'){
             table.column('tipo:name').search("").draw()    
             }
@@ -53,7 +52,26 @@
             table.column('tipo:name').search($(this).val()).draw()}
         })
 
-        //show transaction ordered by date 
-        table.column(1).order('asc').draw()
-        }
+        //filter by date range 
+        $('#min-date, #max-date').on('change', function () {
+            $.fn.dataTable.ext.search.push(function( settings, searchData, index, rowData, counter ){
+                var min = new Date( $('#min-date').val());
+                var max = new Date($('#max-date').val());
+                var date = new Date( searchData[0] );
+              
+                 if (
+                     ( isNaN(min.valueOf()) && isNaN(max.valueOf()) ) ||
+                     ( isNaN(min.valueOf())  && date <= max ) ||
+                     ( min <= date   && isNaN(max.valueOf())) ||
+                     ( min <= date   && date <= max )
+                 ) {
+                     return true;
+                 }
+                 return false;
+            })
+            table.draw()
+            }
+            );
+
+    }
     
