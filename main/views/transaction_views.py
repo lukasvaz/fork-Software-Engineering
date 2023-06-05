@@ -14,7 +14,7 @@ def transaction(request):
         mount = request.POST['monto']
         date_set = request.POST['fecha']
         category = request.POST['categoria']
-        custom_category = request.POST.get('custom_categoria')  # Get the custom category value
+        custom_category = request.POST.get('custom_categoria') 
 
         account_status = AccountStatus.objects.get(user=user)
 
