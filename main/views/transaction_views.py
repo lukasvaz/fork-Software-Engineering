@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from main.models import Incomes, Outcomes, AccountStatus
+from igs.forms import TransactionForm
 
 # views transacciones
 
@@ -13,8 +14,12 @@ def transaction(request):
         amount = request.POST['monto']
         date_set = request.POST['fecha']
         category = request.POST['categoria']
+        custom_category = request.POST.get('custom_categoria') 
 
         account_status = AccountStatus.objects.get(user=user)
+
+        if category == "otros" and custom_category:
+                category = custom_category
 
         if "ingreso" == transaction_type:
             income = Incomes(account_status=account_status,
@@ -40,5 +45,6 @@ def transaction(request):
         
 
     elif request.method == "GET":
-        return render(request, 'transaccion.html')
+        form = TransactionForm()
+        return render(request, 'transaccion.html', {'form' : form})
 

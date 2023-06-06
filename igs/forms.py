@@ -9,4 +9,4 @@ class TransactionForm(forms.Form):
     monto = forms.IntegerField()
     fecha = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     categoria = forms.ChoiceField(choices=CATEGORIA_CHOICES)
-
+    custom_categoria = forms.CharField(required=False)
