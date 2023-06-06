@@ -1,9 +1,12 @@
 {% extends "base.html" %}
+
+{%load static %}
 {% block title %}Home{% endblock %}
-
-
-{% block content %}    
-    <table class="table" >
+{% block content %}   
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+     
+<table class="table" id="home-table" >
     <thead> 
         <tr>
             <th scope="col">Fecha</th>
@@ -11,51 +14,13 @@
             <th scope="col">Valor</th>
             <th scope="col">Categoría</th>
             <th scope="col">Ingreso/Egreso</th>
+            <th scope="col">Opciones</th>
         </tr>
     </thead>
-    <tbody id="home-table">
+    <tbody id="home-table-body" >
     </tbody>
 </table>
-    
-    <script>
-
-        /* this function get the selected value in transactio_type option field and send an ajax request  to the database 
-        and  rendering the Json response into the table in an  asychronus way */
-        async function updateTable(e) {
-        const selectType = document.getElementById('transaction_type');
-        var selectedType = selectType.value;
-        const xhttp = new XMLHttpRequest();
-        var url = "{% url 'table' 0 %}".replace(/0/, selectedType.toString());
-        
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                const response = this.response;
-                var table=document.getElementById('home-table')
-                table.innerHTML='';
-                var json_response=JSON.parse(response)
-                
-                for(var i in json_response){
-                    var transaction=json_response[i];
-                    var row=document.createElement('tr');                
-                    createColumn(row,transaction,'set_at','th')
-                    createColumn(row,transaction,'description','td')
-                    createColumn(row,transaction,'amount','td')
-                    createColumn(row,transaction,'category','td')
-                    createColumn(row,transaction,'type','td')
-                    table.appendChild(row);
-                }
-          }
-        }
-        xhttp.open("GET", url);
-        xhttp.send();
-    }
-    /* this function get a  row and add columns nodes to it */
-    function createColumn(row,transaction,atr,type){
-            var column=document.createElement(type);
-            column.innerText=transaction[atr];
-            row.appendChild(column)
-        }
-</script>
-    {% endblock content %}
+<script src="{%static  'js/table.js'%}"></script>
+{% endblock content %}
     
     
