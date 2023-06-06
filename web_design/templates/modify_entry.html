@@ -16,7 +16,7 @@
                 {% csrf_token %}
                 <div>
                     <label for="id_monto">Monto:</label>
-                    <input type="number" name="monto" id="id_monto">
+                    <input type="text" inputmode="numeric" pattern="\d+" name="monto" id="id_monto" value="0">
                 </div>
                 <div>
                     <label for="fecha">Fecha:</label>
