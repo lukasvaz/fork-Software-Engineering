@@ -22,7 +22,7 @@
                         }    
             
         var table=$('#home-table').DataTable({
-            "dom":'ltpr',
+            "dom":'rtp',
             columns: [
                 { name: 'fecha' },
                 { name: 'descripcion',"orderable":false},
@@ -38,11 +38,6 @@
             autowidth:true,
         });
 
-        //optional
-        var select = $('<select><option value=""></option></select>')
-        .appendTo(
-            table.column('tipo:name').header())
-        
         //filter by transaction type
         $('#transaction_type').on('change',function() {
             if($(this).val()=='All'){
