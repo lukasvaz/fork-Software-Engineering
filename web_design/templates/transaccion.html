@@ -51,14 +51,14 @@
 </body>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var categoriaDropdown = document.getElementById('id_categoria');
-    var customCategoriaInput = document.getElementById('id_custom_categoria');
+    let selectCategoria = document.getElementById('id_categoria');
+    let customCategoria = document.getElementById('id_custom_categoria');
 
-    categoriaDropdown.addEventListener('change', function() {
-      if (categoriaDropdown.value === 'otros') {
-        customCategoriaInput.style.display = 'block';
+    selectCategoria.addEventListener('change', function() {
+      if (selectCategoria.value === 'otros') {
+        customCategoria.style.display = 'block';
       } else {
-        customCategoriaInput.style.display = 'none';
+        customCategoria.style.display = 'none';
       }
     });
   });
