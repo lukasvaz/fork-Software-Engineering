@@ -1,5 +1,5 @@
-    //updates the table, it contains listener  for  the filters
-    async function updateTable(e) {
+async function updateTable(e) {
+    //updates the table,contains listener  for  the filters
         const selectType = document.getElementById('transaction_type');
         var selectedType = selectType.value;
         const response = await fetch(`get-table`)
@@ -21,6 +21,7 @@
             /* console.log(transaction['id']) */
                         }    
             
+        //render  table with DataTable
         var table=$('#home-table').DataTable({
             "dom":'rtp',
             columns: [
@@ -34,7 +35,7 @@
             paging:true,
             info:true,
             searching:true,
-            "orderFixed":[0,'desc'],//fixed order by date
+            "orderFixed":[0,'desc'],//fixed order,by date
             autowidth:true,
         });
 
