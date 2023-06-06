@@ -35,16 +35,24 @@
             </div>
           {% endif %}
       </div>
+
       <div class="btn-group-center d-flex align-items-center justify-content-center">
+        Ingreso/Egreso
         <select  id="transaction_type"  class="form-select" >
         <option value="All" selected>Todo</option>
-        <option value="Income" >Ingreso</option>
-        <option value="Outcome">Egreso</option>
-      
+        <option value="Ingreso" >Ingreso</option>
+        <option value="Egreso">Egreso</option>
       </select>
-        <a>
-          <button type="button" class="btn btn-primary">Ordenar por Fecha</button>
-        </a>
+      <div>
+        Desde:
+        <input id="min-date" type="date">
+      </div>
+
+      <div>
+        Hasta:
+        <input id="max-date" type="date">
+      </div>
+
         <a href="{% url 'transaction' %}">
           <button type="button" class="btn btn-primary">Agregar Transacción</button>
         </a>
@@ -57,10 +65,8 @@
     
 
     <script>
-    /* add an event listener  when the page is loaded and when  filters are aplied  to  get json data */
       const selectType = document.getElementById('transaction_type');
-      selectType.addEventListener('change', updateTable);
-      window.addEventListener('load', updateTable);
+       window.addEventListener('load', updateTable);
 </script>
   </body>
 </html>
