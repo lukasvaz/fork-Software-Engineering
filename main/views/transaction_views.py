@@ -5,8 +5,8 @@ from django.http import HttpRequest
 
 
 def transaction(request: HttpRequest):
-    """Save the transaction (income/outcome) in database or render the template form
-    for add a new transaction depending on the request method.
+    """(`POST`) Save the transaction (income/outcome) in database and redirect to the homepage.
+    (`GET`) render the template form for add a new transaction.
     """
 
     if request.method == "POST":
