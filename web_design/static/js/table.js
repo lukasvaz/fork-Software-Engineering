@@ -9,13 +9,14 @@
 
         for(var i in data){
             var transaction=data[i];
+            const type_url_parameter = transaction['type'] == "Ingreso" ? "income" : "outcome";
             tableBody.innerHTML+=`<tr>\
             <th>${transaction['set_at']}</th>\
             <td>${transaction['description']}</td>\
             <td>${transaction['amount']}</td>\
             <td>${transaction['category']}</td>\
             <td>${transaction['type']}</td>
-            <td><i class="fa-solid fa-pen"></i> <i class="fa-sharp fa-solid fa-trash"></i></td></tr>`
+            <td><a href=${"../modify/"+type_url_parameter+"/"+transaction['id']}><i class="fa-solid fa-pen" id="edit_button"></i></a> <i class="fa-sharp fa-solid fa-trash"></i></td></tr>`
             /*ultima  columna  es para  para borrar y modificar, si quieren acceder al id  de la transaccion  deben pedir transaction['id'], 
             como  está  todo en una tabla  se debe recuperar si  es  Ingreso o Egreso */
             /* console.log(transaction['id']) */
