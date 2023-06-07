@@ -16,6 +16,6 @@ def modify_entry(request: HttpRequest):
         amount = request.POST['monto']
         category = request.POST['categoria']
         set_at = request.POST['fecha']
-        description = request.POST['description']
+        description = request.POST['descripcion']
 
-        return redirect()
+        return redirect("/home/")
