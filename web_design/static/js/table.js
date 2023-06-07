@@ -16,7 +16,7 @@ async function updateTable(e) {
                         <td>${transaction['amount']}</td>\
                         <td>${transaction['category']}</td>\
                         <td>${transaction['type']}</td>
-                        <td><a href="/modify"><i class="fa-solid fa-pen" id="edit_button"></i></a><i class="fa-sharp fa-solid fa-trash"></i></td></tr>`
+                        <td><a href={% url 'modify' transaction['id']%}><i class="fa-solid fa-pen" id="edit_button"></i></a><i class="fa-sharp fa-solid fa-trash"></i></td></tr>`
                         /*ultima  columna  es para  para borrar y modificar, si quieren acceder al id  de la transaccion  deben pedir transaction['id'], 
                         como  está  todo en una tabla  se debe recuperar si  es  Ingreso o Egreso */
                         console.log(transaction['id'])
