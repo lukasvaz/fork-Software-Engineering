@@ -27,5 +27,6 @@ urlpatterns = [
     path("home/get-table/<str:type>", home_views.get_transactions, name="table"),
     path("registro/", register_view.register_user, name="registro"),
     path("accounts/", include("django.contrib.auth.urls"), name="accounts"),
-    path("modify/", modify_view.modify_entry, name='modify'),
+    path("modify/<int:id>",
+         modify_view.modify_entry, name='modify'),
 ]
