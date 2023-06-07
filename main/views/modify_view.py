@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from django.contrib.auth.models import User
 from main.models import Incomes, Outcomes
 
 
