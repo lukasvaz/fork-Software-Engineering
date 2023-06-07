@@ -3,13 +3,14 @@ from django.http import HttpRequest
 from django.contrib.auth.models import User
 from main.models import AccountStatus
 
-def modify_entry(request: HttpRequest):
+
+def modify_entry(request: HttpRequest, id):
     """Modify the Income/Outcome entry by the new parameters given in the request.
     """
 
     if request.method == 'GET':
         return render(request, "modify_entry.html")
-    
+
     elif request.method == 'POST':
         # account_status = sacar por id
         user_id = request.user.id
@@ -17,5 +18,6 @@ def modify_entry(request: HttpRequest):
         category = request.POST['categoria']
         set_at = request.POST['fecha']
         description = request.POST['descripcion']
+        print(f"account_status_id: {id}")
 
         return redirect("/home/")
