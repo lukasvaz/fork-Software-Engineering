@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from main.models import AccountStatus
 
 
-def modify_entry(request: HttpRequest, id):
+def modify_income(request: HttpRequest, id):
     """Modify the Income/Outcome entry by the new parameters given in the request.
     """
 
@@ -18,6 +18,9 @@ def modify_entry(request: HttpRequest, id):
         category = request.POST['categoria']
         set_at = request.POST['fecha']
         description = request.POST['descripcion']
-        print(f"account_status_id: {id}")
+        account_status = AccountStatus.objects.get(pk=id)
 
         return redirect("/home/")
+
+def modify_outcome(request: HttpRequest, id):
+    ...
