@@ -5,7 +5,7 @@ from main.models import Incomes, Outcomes
 
 def modify_income(request: HttpRequest, id):
     """(`POST`) Modify the Income's fields by the new parameters given in the request form, uses the `id`
-    parameter passed in the url to get the specific income. (`GET`) Render the form template to modify
+    parameter passed in the url to get the specific income, redirects to the homepage. (`GET`) Render the form template to modify
     the income entry.
     """
 
@@ -27,7 +27,7 @@ def modify_income(request: HttpRequest, id):
 
 def modify_outcome(request: HttpRequest, id):
     """(`POST`) Modify the Outcome's fields by the new parameters given in the request form, uses
-    the `id` parameter passed by the url to get the specific outcome. (`GET`) Render the form template to modify
+    the `id` parameter passed by the url to get the specific outcome, redirects to the homepage. (`GET`) Render the form template to modify
     the outcome entry.
     """
 
