@@ -3,7 +3,7 @@ from django.template import loader
 from django.shortcuts import render
 from main.models import Incomes, Outcomes, AccountStatus
 from django.db.models import F, Value, CharField
-
+from django.core.exceptions import ObjectDoesNotExist
 
 
 def get_transactions(request: HttpRequest):
@@ -32,20 +32,13 @@ def home(request: HttpRequest):
 
     template = loader.get_template("home/table.html")
     try:
-        user_id = request.user.id
-        account = AccountStatus.objects.filter(user__id=user_id)
-        print(account.get().actual_balance)
-        print(user_id)
-
-        ctx = {"actual_balance": account.get().actual_balance,
-               "name": request.user.firstname}
-    except :
-        user_id = request.user.id
-        account = AccountStatus.objects.filter(user__id=user_id)
-        print(account.get().actual_balance)
-
-        print("except")
         
-        ctx = {}
+        user_id = request.user.id
+        account = AccountStatus.objects.filter(user__id=user_id)
+        ctx = {"actual_balance": account.get().actual_balance,
+               "name": request.user.first_name}
+    except ObjectDoesNotExist :
+        user_id = request.user.id
+        ctx = {"name": request.user.first_name}
     rendered_template = template.render(ctx)
     return HttpResponse(rendered_template)
