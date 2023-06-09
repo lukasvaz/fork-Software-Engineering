@@ -52,6 +52,14 @@
         Hasta:
         <input id="max-date" type="date">
       </div>
+      
+      <div class="btn-group-center d-flex align-items-center justify-content-center">
+        Categoría
+        <select  id="select-category"  class="form-select" >
+        <option value="All" selected>Todo</option>
+
+      </select>
+
 
         <a href="{% url 'transaction' %}">
           <button type="button" class="btn btn-primary">Agregar Transacción</button>

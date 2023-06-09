@@ -38,8 +38,14 @@ def home(request: HttpRequest):
         print(user_id)
 
         ctx = {"actual_balance": account.get().actual_balance,
-               "name": request.user.username}
-    except:
+               "name": request.user.firstname}
+    except :
+        user_id = request.user.id
+        account = AccountStatus.objects.filter(user__id=user_id)
+        print(account.get().actual_balance)
+
+        print("except")
+        
         ctx = {}
     rendered_template = template.render(ctx)
     return HttpResponse(rendered_template)

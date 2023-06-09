@@ -6,7 +6,7 @@ async function updateTable(e) {
         const data = await response.json();
         var tableBody=document.getElementById('home-table-body')
         tableBody.innerHTML='';
-
+      
         for(var i in data){
             var transaction=data[i];
             const type_url_parameter = transaction['type'] == "Ingreso" ? "income" : "outcome";
@@ -28,8 +28,8 @@ async function updateTable(e) {
             columns: [
                 { name: 'fecha' },
                 { name: 'descripcion',"orderable":false},
-                { name: 'categoria',"orderable":false },
                 { name: 'valor',"orderable":false },
+                { name: 'categoria',"orderable":false },
                 { name: 'tipo',"orderable":false },
                 { name: 'opciones',"orderable":false }
             ],
@@ -39,6 +39,12 @@ async function updateTable(e) {
             "orderFixed":[0,'desc'],//fixed order,by date
             autowidth:true,
         });
+        //adding categories in in select-button (uses  jquery due to personalized categories added by user)
+        table.column('categoria:name').data().unique().each(function(value){
+            $('#select-category').append(`<option value=${value} > ${value}</option>` )
+        })
+        
+
 
         //filter by transaction type
         $('#transaction_type').on('change',function() {
@@ -49,9 +55,18 @@ async function updateTable(e) {
             table.column('tipo:name').search($(this).val()).draw()}
         })
 
+        //filter by category
+        $('#select-category').on('change',function() {
+            if($(this).val()=='All'){
+            table.column('categoria:name').search("").draw()    
+            }
+            else{
+            table.column('categoria:name').search($(this).val()).draw()}
+        })
+
         //filter by date range 
         $('#min-date, #max-date').on('change', function () {
-            $.fn.dataTable.ext.search.push(function( settings, searchData, index, rowData, counter ){
+            $.fn.dataTable.ext.search.push(function( settings, searchData ){
                 var min = new Date( $('#min-date').val());
                 var max = new Date($('#max-date').val());
                 var date = new Date( searchData[0] );
