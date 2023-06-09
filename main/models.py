@@ -25,7 +25,7 @@ class Outcomes(models.Model):
         """
 
         self.account_status.actual_balance -= self.outcome
-        self.save()
+        self.account_status.save()
 
 
     def __str__(self):
@@ -44,7 +44,8 @@ class Incomes(models.Model):
         adding the new income.
         """
         
-        self.account_status.actual_balance += self.outcome
+        self.account_status.actual_balance += self.income
+        self.account_status.save()
 
     def __str__(self):
         return f"Ingreso asociado a usuario: {self.account_status.user.username}"
