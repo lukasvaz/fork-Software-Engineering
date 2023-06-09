@@ -22,9 +22,9 @@ from main.views import home_views, transaction_views, register_view, modify_view
 urlpatterns = [
     path('', lambda req:redirect('accounts/login'), name='root'),
     path("home/", home_views.home, name="home"),
+    path("home/get-table", home_views.get_transactions, name="table"),
     path("admin/", admin.site.urls),
     path("transaction/", transaction_views.transaction, name="transaction"),
-    path("home/get-table", home_views.get_transactions, name="table"),
     path("registro/", register_view.register_user, name="registro"),
     path("accounts/", include("django.contrib.auth.urls"), name="accounts"),
     path("modify/income/<int:id>",
