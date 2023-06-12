@@ -18,10 +18,8 @@ def modify_income(request: HttpRequest, id):
         new_income = int(request.POST['monto'])
 
         # Update actual balance in AccountStatus
-        if (new_income < income_entry.income):
-            account_status.actual_balance -= income_entry.income - new_income
-        else:
-            account_status.actual_balance += new_income - income_entry.income
+        account_status.actual_balance -= income_entry.income
+        account_status.actual_balance += new_income
         account_status.save()
 
         income_entry.income = new_income
@@ -49,10 +47,8 @@ def modify_outcome(request: HttpRequest, id):
         new_outcome = int(request.POST['monto'])
 
         # Update actual balance in AccountStatus
-        if (new_outcome < outcome_entry.outcome):
-            account_status.actual_balance += outcome_entry.outcome - new_outcome
-        else:
-            account_status.actual_balance -= new_outcome - outcome_entry.outcome
+        account_status.actual_balance += outcome_entry.outcome
+        account_status.actual_balance -= new_outcome
         account_status.save()
 
         outcome_entry.outcome = new_outcome
