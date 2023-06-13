@@ -1,7 +1,5 @@
 async function updateTable(e) {
     //updates the table,contains listener  for  the filters
-        const selectType = document.getElementById('transaction_type');
-        var selectedType = selectType.value;
         const response = await fetch(`get-table`)
         const data = await response.json();
         var tableBody=document.getElementById('home-table-body')
@@ -39,7 +37,7 @@ async function updateTable(e) {
             "orderFixed":[0,'desc'],//fixed order,by date
             autowidth:true,
         });
-        //adding categories in in select-button (uses  jquery due to personalized categories added by user)
+        //adds categories in select-button (uses  jquery for personalized categories added by user)
         table.column('categoria:name').data().unique().each(function(value){
             $('#select-category').append(`<option value=${value} > ${value}</option>` )
         })
