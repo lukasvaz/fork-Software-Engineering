@@ -1,12 +1,10 @@
-    //updates the table, it contains listener  for  the filters
-    async function updateTable(e) {
-        const selectType = document.getElementById('transaction_type');
-        var selectedType = selectType.value;
+async function updateTable(e) {
+    //updates the table,contains listener  for  the filters
         const response = await fetch(`get-table`)
         const data = await response.json();
         var tableBody=document.getElementById('home-table-body')
         tableBody.innerHTML='';
-
+      
         for(var i in data){
             var transaction=data[i];
             const type_url_parameter = transaction['type'] == "Ingreso" ? "income" : "outcome";
@@ -22,22 +20,29 @@
             /* console.log(transaction['id']) */
                         }    
             
+        //render  table with DataTable
         var table=$('#home-table').DataTable({
             "dom":'rtp',
             columns: [
                 { name: 'fecha' },
                 { name: 'descripcion',"orderable":false},
-                { name: 'categoria',"orderable":false },
                 { name: 'valor',"orderable":false },
+                { name: 'categoria',"orderable":false },
                 { name: 'tipo',"orderable":false },
                 { name: 'opciones',"orderable":false }
             ],
             paging:true,
             info:true,
             searching:true,
-            "orderFixed":[0,'desc'],//fixed order by date
+            "orderFixed":[0,'desc'],//fixed order,by date
             autowidth:true,
         });
+        //adds categories in select-button (uses  jquery for personalized categories added by user)
+        table.column('categoria:name').data().unique().each(function(value){
+            $('#select-category').append(`<option value=${value} > ${value}</option>` )
+        })
+        
+
 
         //filter by transaction type
         $('#transaction_type').on('change',function() {
@@ -48,9 +53,18 @@
             table.column('tipo:name').search($(this).val()).draw()}
         })
 
+        //filter by category
+        $('#select-category').on('change',function() {
+            if($(this).val()=='All'){
+            table.column('categoria:name').search("").draw()    
+            }
+            else{
+            table.column('categoria:name').search($(this).val()).draw()}
+        })
+
         //filter by date range 
         $('#min-date, #max-date').on('change', function () {
-            $.fn.dataTable.ext.search.push(function( settings, searchData, index, rowData, counter ){
+            $.fn.dataTable.ext.search.push(function( settings, searchData ){
                 var min = new Date( $('#min-date').val());
                 var max = new Date($('#max-date').val());
                 var date = new Date( searchData[0] );

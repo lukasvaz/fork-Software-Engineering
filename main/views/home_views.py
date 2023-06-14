@@ -3,9 +3,9 @@ from django.template import loader
 from django.shortcuts import render
 from main.models import Incomes, Outcomes, AccountStatus
 from django.db.models import F, Value, CharField
+from django.core.exceptions import ObjectDoesNotExist
 
 
-# given an authenticated user ,retrieves all transaction data asociated to him/her in Json format
 def get_transactions(request: HttpRequest):
     """Retrieves all transactions data asociated to the user in json format.
     """
@@ -21,7 +21,7 @@ def get_transactions(request: HttpRequest):
             type=Value('Ingreso', output_field=CharField())).annotate(amount=F('income'))
         incomes = incomes.values(
             "id", "amount", "category", "set_at", "type", "description")
-        union_table = outcomes.union(incomes).order_by(F("set_at").desc())[:10]
+        union_table = outcomes.union(incomes).order_by(F("set_at").desc())
         dict_data = list(union_table)
         return JsonResponse(dict_data, safe=False)
 
@@ -30,16 +30,15 @@ def home(request: HttpRequest):
     """Render the home page template with the current budget and username as context parameters.
     """
 
-    template = loader.get_template("home.html")
+    template = loader.get_template("home/table.html")
     try:
+        
         user_id = request.user.id
         account = AccountStatus.objects.filter(user__id=user_id)
-        print(account.get().actual_balance)
-        print(user_id)
-
         ctx = {"actual_balance": account.get().actual_balance,
-               "name": request.user.username}
-    except:
-        ctx = {}
+               "name": request.user.first_name}
+    except ObjectDoesNotExist :
+        user_id = request.user.id
+        ctx = {"name": request.user.first_name}
     rendered_template = template.render(ctx)
     return HttpResponse(rendered_template)
