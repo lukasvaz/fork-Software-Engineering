@@ -19,6 +19,9 @@ def delete_income(request: HttpRequest, id):
         account_status.actual_balance -= income_entry.income
         account_status.save()
 
+        # Delete the income entry
+        income_entry.delete()
+
         return redirect("/home/")
 
 def delete_outcome(request: HttpRequest, id):
@@ -34,7 +37,10 @@ def delete_outcome(request: HttpRequest, id):
         account_status = outcome_entry.account_status
 
         # Update actual balance in AccountStatus
-        account_status.actual_balance -= outcome_entry.income
+        account_status.actual_balance += outcome_entry.outcome
         account_status.save()
+
+        # Delete the outcome entry
+        outcome_entry.delete()
         
         return redirect("/home/")
