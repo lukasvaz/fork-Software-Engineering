@@ -1,25 +1,22 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Delete Transaccion</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/modify_entry.css' %}">
-    </head>
-    <body>
-        <div class="contenedor_form">
-            <h1>Modificar Transaccion</h1>
-            <form id="modify-form" method="post">
-                {% csrf_token %}
-                <div>
-                    <label for="descripcion">Descripcion:</label>
-                    <input type="text" name="descripcion" id="id_descripcion">
-                </div>
-                <input type="submit" value="Modificar">
-            </form>
-        </div>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Delete Transaccion</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/delete_transaction.css' %}">
+</head>
+<body>
+    <div class="contenedor_form">
+        <h1>¿Seguro que desea eliminar esta transacción?</h1>
+        <form id="delete-form" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Confirmar">
+        </form>
+        <a href="/home" class="cancel-button">Cancelar</a>
+    </div>
+</body>
 </html>

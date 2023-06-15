@@ -8,14 +8,33 @@ def delete_income(request: HttpRequest, id):
     parameter passed in the url to get the specific income, redirects to the homepage. (`GET`) Render the form template to modify
     the income entry.
     """
-    print("prueba")
-    return redirect("/home/")
+    if request.method == 'GET':
+        return render(request, "delete_transaction.html")
 
+    elif request.method == 'POST':
+        income_entry = Incomes.objects.get(pk=id)
+        account_status = income_entry.account_status
+
+        # Update actual balance in AccountStatus
+        account_status.actual_balance -= income_entry.income
+        account_status.save()
+
+        return redirect("/home/")
 
 def delete_outcome(request: HttpRequest, id):
     """(`POST`) Modify the Outcome's fields by the new parameters given in the request form, uses
     the `id` parameter passed by the url to get the specific outcome, redirects to the homepage. (`GET`) Render the form template to modify
     the outcome entry.
     """
-    print("prueba")
-    return redirect("/home")
+    if request.method == 'GET':
+        return render(request, "delete_transaction.html")
+
+    elif request.method == 'POST':
+        outcome_entry = Outcomes.objects.get(pk=id)
+        account_status = outcome_entry.account_status
+
+        # Update actual balance in AccountStatus
+        account_status.actual_balance -= outcome_entry.income
+        account_status.save()
+        
+        return redirect("/home/")
