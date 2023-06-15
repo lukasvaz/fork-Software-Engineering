@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
-from main.views import home_views, transaction_views, register_view, modify_view
+from main.views import home_views, transaction_views, register_view, modify_view, delete_view
 
 urlpatterns = [
     path('', lambda req:redirect('accounts/login'), name='root'),
@@ -30,4 +30,7 @@ urlpatterns = [
     path("modify/income/<int:id>",
          modify_view.modify_income, name='modify'),
     path("modify/outcome/<int:id>", modify_view.modify_outcome),
+    path("delete/income/<int:id>",
+         delete_view.delete_income, name='delete'),
+    path("delete/outcome/<int:id>", delete_view.delete_outcome),
 ]
