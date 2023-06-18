@@ -30,7 +30,8 @@ def home(request: HttpRequest):
     """Render the home page template with the current budget and username as context parameters.
     """
 
-    template = loader.get_template("home/table.html")
+    template = loader.get_template("home/home.html")
+    
     try:
         
         user_id = request.user.id
