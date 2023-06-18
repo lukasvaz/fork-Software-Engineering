@@ -49,8 +49,3 @@ def home(request: HttpRequest):
     rendered_template = template.render(ctx)
     return HttpResponse(rendered_template)
 
-
-def logout_view(request):
-    """Delete all user data, the redirects to  log in page """
-    logout(request)
-    return redirect("home")
