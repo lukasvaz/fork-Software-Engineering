@@ -23,56 +23,34 @@
         {% endif %}
     </div>
 
-    <div class="btn-group-center d-flex align-items-center justify-content-center">
-      Ingreso/Egreso
-      <select  id="transaction_type"  class="form-select" >
-      <option value="All" selected>Todo</option>
-      <option value="Ingreso" >Ingreso</option>
-      <option value="Egreso">Egreso</option>
-    </select>
-    <div>
-      Desde:
-      <input id="min-date" type="date">
-    </div>
+  <div style="display:inline-flex;">
+      <!-- table's filters -->
+    {%include "home/filters.html"%}
 
-    <div>
-      Hasta:
-      <input id="max-date" type="date">
-    </div>
-    
-    <div class="btn-group-center d-flex align-items-center justify-content-center">
-      Categoría
-      <select  id="select-category"  class="form-select" >
-      <option value="All" selected>Todo</option>
-
-    </select>
-
-
+      <!-- Add transaction button -->
       <a href="{% url 'transaction' %}">
         <button type="button" class="btn btn-primary">Agregar Transacción</button>
       </a>
-      </div>
-    </div>
+  </div>    
+      
+  <!--table -->
+  <table class="table" id="home-table" >
+      <thead> 
+          <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Ingreso/Egreso</th>
+              <th scope="col">Opciones</th>
+          </tr>
+      </thead>
+      <tbody id="home-table-body" >
+      </tbody>
+  </table>
 
-
-<table class="table" id="home-table" >
-    <thead> 
-        <tr>
-            <th scope="col">Fecha</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Valor</th>
-            <th scope="col">Categoría</th>
-            <th scope="col">Ingreso/Egreso</th>
-            <th scope="col">Opciones</th>
-        </tr>
-    </thead>
-    <tbody id="home-table-body" >
-    </tbody>
-</table>
-
-    
-<script src="{%static  'js/table.js'%}"></script>
-<script>window.addEventListener('load', updateTable);</script>
+  <script src="{%static  'js/table.js'%}"></script>
+  <script>window.addEventListener('load', updateTable);</script>
 {% endblock content %}
     
     
