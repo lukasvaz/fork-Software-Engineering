@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{%load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}   
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+ 
+<div class="container">
+    <div class="header d-flex justify-content-center">
+      <h1>Bienvenido {{ name }}!</h1>
+    </div>
+    <div class="container ">
+        {% if actual_balance %}
+          <div class="header d-flex justify-content-center">
+            <h1>Current Budget: ${{actual_balance}}</h1>
+          </div>
+        {% else %}
+          <div class="header d-flex justify-content-center">
+            <h1>Current Budget: $0</h1>
+          </div>
+        {% endif %}
+    </div>
+
+    <div class="btn-group-center d-flex align-items-center justify-content-center">
+      Ingreso/Egreso
+      <select  id="transaction_type"  class="form-select" >
+      <option value="All" selected>Todo</option>
+      <option value="Ingreso" >Ingreso</option>
+      <option value="Egreso">Egreso</option>
+    </select>
+    <div>
+      Desde:
+      <input id="min-date" type="date">
+    </div>
+
+    <div>
+      Hasta:
+      <input id="max-date" type="date">
+    </div>
+    
+    <div class="btn-group-center d-flex align-items-center justify-content-center">
+      Categoría
+      <select  id="select-category"  class="form-select" >
+      <option value="All" selected>Todo</option>
+
+    </select>
+
+
+      <a href="{% url 'transaction' %}">
+        <button type="button" class="btn btn-primary">Agregar Transacción</button>
+      </a>
+      </div>
+    </div>
+
+
+<table class="table" id="home-table" >
+    <thead> 
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Ingreso/Egreso</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody id="home-table-body" >
+    </tbody>
+</table>
+
+    
+<script src="{%static  'js/table.js'%}"></script>
+<script>window.addEventListener('load', updateTable);</script>
+{% endblock content %}
+    
+    
