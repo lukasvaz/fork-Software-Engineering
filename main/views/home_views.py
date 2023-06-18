@@ -51,5 +51,6 @@ def home(request: HttpRequest):
 
 
 def logout_view(request):
-        logout(request)
-        return redirect("home")
+    """Delete all user data, the redirects to  log in page """
+    logout(request)
+    return redirect("home")
