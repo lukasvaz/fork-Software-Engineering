@@ -23,6 +23,7 @@ urlpatterns = [
     path('', lambda req:redirect('accounts/login'), name='root'),
     path("home/", home_views.home, name="home"),
     path("home/get-table", home_views.get_transactions, name="table"),
+    path("home/log-out", home_views.logout_view, name="log-out"),
     path("admin/", admin.site.urls),
     path("transaction/", transaction_views.transaction, name="transaction"),
     path("registro/", register_view.register_user, name="registro"),

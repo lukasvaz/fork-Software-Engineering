@@ -20,12 +20,15 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-  
+    <a href="{% url 'log-out' %}">
+      <button type="button" class="btn btn-secondary">{{log}}</button>
+    </a>
+</div>
     <!-- introducir navbar -->
     <div>
       <!-- sería como \{\% include  navbar.html\%\} --> 
     </div>
-    <!-- contenido de la pagina -->      
+    <!-- content -->      
     <div>
     {% block content%} {%endblock%}
     </div>
