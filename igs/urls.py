@@ -18,11 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 from main.views import home_views, transaction_views, register_view, modify_view, delete_view
-
 urlpatterns = [
     path('', lambda req:redirect('accounts/login'), name='root'),
     path("home/", home_views.home, name="home"),
-    path("home/get-table", home_views.get_transactions, name="table"),
+    path("get-table", home_views.get_transactions, name="table"),
+    path("log-out", register_view.logout_user, name="log-out"),
     path("admin/", admin.site.urls),
     path("transaction/", transaction_views.transaction, name="transaction"),
     path("registro/", register_view.register_user, name="registro"),

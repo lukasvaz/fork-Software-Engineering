@@ -2,13 +2,17 @@ from django.shortcuts import render, redirect
 from main.models import Incomes, Outcomes, AccountStatus
 from igs.forms import TransactionForm
 from django.http import HttpRequest
+from django.views.decorators.cache import cache_control
+from django.contrib.auth.decorators import login_required
 
 
+
+@cache_control(private=True,no_cache=True, must_revalidate=True, no_store=True)
+@login_required()
 def transaction(request: HttpRequest):
     """(`POST`) Save the transaction (income/outcome) in database and redirect to the homepage.
-    (`GET`) render the template form for add a new transaction.
+    (`GET`) render the template form for add a new transaction.Disabling cache to ensure privacy
     """
-
     if request.method == "POST":
         user = request.user
 

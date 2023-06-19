@@ -20,12 +20,30 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-  
+    <!-- succes or error messages -->
+    {% if messages %}
+      {% for message in messages %}
+      <p{% if message.tags %} class="alert alert-secondary" {% endif %}>{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <!-- log button -->
+    {% if user.is_authenticated %}
+    <a href="{% url 'log-out' %}">
+      <button type="button" class="btn btn-secondary">Log out</button>
+    </a> 
+    {%else%}
+      <a href="{% url 'root' %}">
+        <button type="button" class="btn btn-secondary">Log in</button>
+      </a>
+    {% endif %}
+    
+</div>
     <!-- introducir navbar -->
     <div>
       <!-- sería como \{\% include  navbar.html\%\} --> 
     </div>
-    <!-- contenido de la pagina -->      
+    <!-- content -->      
     <div>
     {% block content%} {%endblock%}
     </div>
