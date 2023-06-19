@@ -1,11 +1,10 @@
-from django.http import HttpResponse, JsonResponse, HttpRequest
-from django.template import loader
-from django.shortcuts import render, redirect
+from django.http import  JsonResponse, HttpRequest
+from django.shortcuts import render
 from main.models import Incomes, Outcomes, AccountStatus
 from django.db.models import F, Value, CharField
 from django.core.exceptions import ObjectDoesNotExist
-from django.contrib.auth import logout
 from django.views.decorators.cache import cache_control
+from django.shortcuts import render
 
 
 def get_transactions(request: HttpRequest):
@@ -32,20 +31,17 @@ def get_transactions(request: HttpRequest):
 def home(request: HttpRequest):
     """Render the home page template with the current budget and username as context parameters.Cache was disabled to ensure user's privacy 
     """
-    template = loader.get_template("home/home.html")
     ctx={}
     if request.user.is_authenticated:
         user_id = request.user.id
         try:
             account = AccountStatus.objects.filter(user__id=user_id)
             ctx = {"actual_balance": account.get().actual_balance,
-                "name": request.user.first_name,
-                "log":"Log out"}
+                "name": request.user.first_name,}
                 
         except ObjectDoesNotExist : #Account Status not associated
             ctx = {"name": request.user.first_name}
-    else:
-        ctx={"log":"Log-in"}
-    rendered_template = template.render(ctx)
-    return HttpResponse(rendered_template)
+   
+    return render(request,"home/home.html",ctx)
+
 

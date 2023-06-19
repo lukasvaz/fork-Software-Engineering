@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib import messages
 from main.models import AccountStatus
 from django.http import HttpRequest
+from django.contrib.auth import logout
 
 
 def register_user(request: HttpRequest):
@@ -29,3 +31,10 @@ def register_user(request: HttpRequest):
         user_account_status.save()
 
         return redirect("/accounts/login/")
+
+
+def  logout_user(request:HttpRequest):
+    """Logs out  an user and redirect to home  page"""
+    logout(request)
+    messages.success(request,("Debes registrarte para ver tu contenido."))
+    return redirect('home')
