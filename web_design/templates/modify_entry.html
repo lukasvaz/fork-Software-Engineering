@@ -32,7 +32,12 @@
                         <option value="hogar">Hogar</option>
                         <option value="salud">Salud</option>
                         <option value="ropa">Ropa</option>
+                        <option value="otros">Otros</option>
                       </select>
+                </div>
+                <div id="id_custom_categoria" style="display: none;">
+                    <label for="custom_categoria">Ingresar Categoria:</label>
+                    <input type="text" name="custom_categoria" id="id_input_categoria">
                 </div>
                 <div>
                     <label for="descripcion">Descripcion:</label>
@@ -42,4 +47,18 @@
             </form>
         </div>
     </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          let selectCategoria = document.getElementById('id_categoria');
+          let customCategoria = document.getElementById('id_custom_categoria');
+      
+          selectCategoria.addEventListener('change', function() {
+            if (selectCategoria.value === 'otros') {
+              customCategoria.style.display = 'block';
+            } else {
+              customCategoria.style.display = 'none';
+            }
+          });
+        });
+      </script>
 </html>

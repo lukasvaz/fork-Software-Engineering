@@ -28,6 +28,9 @@ def modify_income(request: HttpRequest, id):
 
         income_entry.income = new_income
         income_entry.category = request.POST['categoria']
+        custom_category = request.POST.get('custom_categoria')
+        if income_entry.category == "otros" and custom_category:
+            income_entry.category = custom_category
         income_entry.set_at = request.POST['fecha']
         income_entry.description = request.POST['descripcion']
 
@@ -59,6 +62,9 @@ def modify_outcome(request: HttpRequest, id):
 
         outcome_entry.outcome = new_outcome
         outcome_entry.category = request.POST['categoria']
+        custom_category = request.POST.get('custom_categoria')
+        if outcome_entry.category == "otros" and custom_category:
+            outcome_entry.category = custom_category
         outcome_entry.set_at = request.POST['fecha']
         outcome_entry.description = request.POST['descripcion']
 
