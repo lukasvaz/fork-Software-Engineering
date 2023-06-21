@@ -3,6 +3,7 @@ from django.http import HttpRequest
 from main.models import Incomes, Outcomes
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 
 @cache_control(private=True,no_cache=True, must_revalidate=True, no_store=True)
@@ -14,7 +15,11 @@ def modify_income(request: HttpRequest, id):
     """
 
     if request.method == 'GET':
-        return render(request, "modify_entry.html")
+        income_entry = get_object_or_404(Incomes, pk=id)
+        context = {
+            'income_entry': income_entry,
+        }
+        return render(request, "modify_entry.html", context)
 
     elif request.method == 'POST':
         income_entry = Incomes.objects.get(pk=id)
@@ -48,7 +53,12 @@ def modify_outcome(request: HttpRequest, id):
     """
 
     if request.method == 'GET':
-        return render(request, "modify_entry.html")
+        outcome_entry = get_object_or_404(Outcomes, pk=id)
+        context = {
+            'outcome_entry': outcome_entry,
+        }
+        return render(request, "modify_entry.html", context)
+
 
     elif request.method == 'POST':
         outcome_entry = Outcomes.objects.get(pk=id)
