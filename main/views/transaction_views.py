@@ -21,6 +21,7 @@ def transaction(request: HttpRequest):
         date_set = request.POST['fecha']
         category = request.POST['categoria']
         custom_category = request.POST.get('custom_categoria')
+        descr = request.POST['description']
 
         account_status = AccountStatus.objects.get(user=user)
 
@@ -32,7 +33,7 @@ def transaction(request: HttpRequest):
                              income=int(amount),
                              category=category,
                              set_at=date_set,
-                             description="")
+                             description=descr)
             income.save()
 
             income.update_balance()
@@ -42,7 +43,7 @@ def transaction(request: HttpRequest):
                                outcome=int(amount),
                                category=category,
                                set_at=date_set,
-                               description="")
+                               description=descr)
             outcome.save()
             outcome.update_balance()
 
