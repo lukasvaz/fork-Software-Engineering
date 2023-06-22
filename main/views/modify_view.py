@@ -15,9 +15,9 @@ def modify_income(request: HttpRequest, id):
     """
 
     if request.method == 'GET':
-        income_entry = get_object_or_404(Incomes, pk=id)
+        entry = get_object_or_404(Incomes, pk=id)
         context = {
-            'income_entry': income_entry,
+            'entry': entry,
         }
         return render(request, "modify_entry.html", context)
 
@@ -53,9 +53,9 @@ def modify_outcome(request: HttpRequest, id):
     """
 
     if request.method == 'GET':
-        outcome_entry = get_object_or_404(Outcomes, pk=id)
+        entry = get_object_or_404(Outcomes, pk=id)
         context = {
-            'outcome_entry': outcome_entry,
+            'entry': entry,
         }
         return render(request, "modify_entry.html", context)
 

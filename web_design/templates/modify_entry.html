@@ -14,34 +14,44 @@
     <h1>Modificar Transaccion</h1>
     <form id="modify-form" method="post">
         {% csrf_token %}
+        {% if entry.income %}
         <div>
             <label for="id_monto">Monto:</label>
-            <input type="text" inputmode="numeric" pattern="\d+" oninvalid="setCustomValidity('Debe ingresar un monto valido')" name="monto" id="id_monto" value="{{ income_entry.income }}">
+            <input type="text" inputmode="numeric" pattern="\d+" oninvalid="setCustomValidity('Debe ingresar un monto valido')" name="monto" id="id_monto" value="{{ entry.income }}">
         </div>
+        {% else %}
+        <div>
+            <label for="id_monto">Monto:</label>
+            <input type="text" inputmode="numeric" pattern="\d+" oninvalid="setCustomValidity('Debe ingresar un monto valido')" name="monto" id="id_monto" value="{{ entry.outcome }}">
+        </div>
+        {% endif %}
+
         <div>
             <label for="fecha">Fecha:</label>
-            <input type="date" name="fecha" id="id_fecha" value="{{ income_entry.set_at|date:'Y-m-d' }}">
+            <input type="date" name="fecha" id="id_fecha" value="{{ entry.set_at|date:'Y-m-d' }}">
         </div>
         <div>
             <label for="categoria">Categoria:</label>
             <select name="categoria" id="id_categoria">
-                <option value="comida" {% if income_entry.category == 'comida' %}selected{% endif %}>Comida</option>
-                <option value="trabajo" {% if income_entry.category == 'trabajo' %}selected{% endif %}>Trabajo</option>
-                <option value="transporte" {% if income_entry.category == 'transporte' %}selected{% endif %}>Transporte</option>
-                <option value="entretenimiento" {% if income_entry.category == 'entretenimiento' %}selected{% endif %}>Entretenimiento</option>
-                <option value="hogar" {% if income_entry.category == 'hogar' %}selected{% endif %}>Hogar</option>
-                <option value="salud" {% if income_entry.category == 'salud' %}selected{% endif %}>Salud</option>
-                <option value="ropa" {% if income_entry.category == 'ropa' %}selected{% endif %}>Ropa</option>
-                <option value="otros" {% if income_entry.category == 'otros' %}selected{% endif %}>Otros</option>
+                <option value="" disabled selected></option>
+                <option value="comida" {% if entry.category == 'comida' %}selected{% endif %}>Comida</option>
+                <option value="trabajo" {% if entry.category == 'trabajo' %}selected{% endif %}>Trabajo</option>
+                <option value="transporte" {% if entry.category == 'transporte' %}selected{% endif %}>Transporte</option>
+                <option value="entretenimiento" {% if entry.category == 'entretenimiento' %}selected{% endif %}>Entretenimiento</option>
+                <option value="hogar" {% if entry.category == 'hogar' %}selected{% endif %}>Hogar</option>
+                <option value="salud" {% if entry.category == 'salud' %}selected{% endif %}>Salud</option>
+                <option value="ropa" {% if entry.category == 'ropa' %}selected{% endif %}>Ropa</option>
+                <option value="otros" {% if entry.custom_categoria %}selected{% endif %}>Otros</option>
             </select>
-        </div>        
-        <div id="id_custom_categoria" style="display: none;">
-            <label for="custom_categoria">Ingresar Categoria:</label>
-            <input type="text" name="custom_categoria" id="id_input_categoria">
         </div>
+        <div id="id_custom_categoria" {% if entry.custom_categoria %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+            <label for="custom_categoria">Ingresar Categoria:</label>
+            <input type="text" name="custom_categoria" id="id_input_categoria" value="{{ entry.custom_categoria }}">
+        </div>
+        
         <div>
             <label for="descripcion">Descripcion:</label>
-            <input type="text" name="descripcion" id="id_descripcion" value="{{ income_entry.description }}">
+            <input type="text" name="descripcion" id="id_descripcion" value="{{ entry.description }}">
         </div>
         <input type="submit" value="Modificar">
     </form>
