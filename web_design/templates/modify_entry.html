@@ -1,45 +1,74 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Modificar Transaccion</title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" type="text/css" href="{% static 'css/modify_entry.css' %}">
-    </head>
-    <body>
-        <div class="contenedor_form">
-            <h1>Modificar Transaccion</h1>
-            <form id="modify-form" method="post">
-                {% csrf_token %}
-                <div>
-                    <label for="id_monto">Monto:</label>
-                    <input type="text" inputmode="numeric" pattern="\d+" oninvalid="setCustomValidity('Debe ingresar un monto valido')" name="monto" id="id_monto" value="0">
-                </div>
-                <div>
-                    <label for="fecha">Fecha:</label>
-                    <input type="date" name="fecha" id="id_fecha">
-                </div>
-                <div>
-                    <label for="categoria">Categoria:</label>
-                    <select name="categoria" id="id_categoria">
-                        <option value="comida">Comida</option>
-                        <option value="trabajo">Trabajo</option>
-                        <option value="transporte">Transporte</option>
-                        <option value="entretenimiento">Entretenimiento</option>
-                        <option value="hogar">Hogar</option>
-                        <option value="salud">Salud</option>
-                        <option value="ropa">Ropa</option>
-                      </select>
-                </div>
-                <div>
-                    <label for="descripcion">Descripcion:</label>
-                    <input type="text" name="descripcion" id="id_descripcion">
-                </div>
-                <input type="submit" value="Modificar">
-            </form>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Modificar Transaccion</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/modify_entry.css' %}">
+</head>
+<body>
+<div class="contenedor_form">
+    <h1>Modificar Transaccion</h1>
+    <form id="modify-form" method="post">
+        {% csrf_token %}
+        {% if entry.income %}
+        <div>
+            <label for="id_monto">Monto:</label>
+            <input type="text" inputmode="numeric" pattern="\d+" oninvalid="setCustomValidity('Debe ingresar un monto valido')" name="monto" id="id_monto" value="{{ entry.income }}">
         </div>
-    </body>
+        {% else %}
+        <div>
+            <label for="id_monto">Monto:</label>
+            <input type="text" inputmode="numeric" pattern="\d+" oninvalid="setCustomValidity('Debe ingresar un monto valido')" name="monto" id="id_monto" value="{{ entry.outcome }}">
+        </div>
+        {% endif %}
+
+        <div>
+            <label for="fecha">Fecha:</label>
+            <input type="date" name="fecha" id="id_fecha" value="{{ entry.set_at|date:'Y-m-d' }}">
+        </div>
+        <div>
+            <label for="categoria">Categoria:</label>
+            <select name="categoria" id="id_categoria">
+                <option value="" disabled selected></option>
+                <option value="comida" {% if entry.category == 'comida' %}selected{% endif %}>Comida</option>
+                <option value="trabajo" {% if entry.category == 'trabajo' %}selected{% endif %}>Trabajo</option>
+                <option value="transporte" {% if entry.category == 'transporte' %}selected{% endif %}>Transporte</option>
+                <option value="entretenimiento" {% if entry.category == 'entretenimiento' %}selected{% endif %}>Entretenimiento</option>
+                <option value="hogar" {% if entry.category == 'hogar' %}selected{% endif %}>Hogar</option>
+                <option value="salud" {% if entry.category == 'salud' %}selected{% endif %}>Salud</option>
+                <option value="ropa" {% if entry.category == 'ropa' %}selected{% endif %}>Ropa</option>
+                <option value="otros" {% if entry.custom_categoria %}selected{% endif %}>Otros</option>
+            </select>
+        </div>
+        <div id="id_custom_categoria" {% if entry.custom_categoria %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+            <label for="custom_categoria">Ingresar Categoria:</label>
+            <input type="text" name="custom_categoria" id="id_input_categoria" value="{{ entry.custom_categoria }}">
+        </div>
+        
+        <div>
+            <label for="descripcion">Descripcion:</label>
+            <input type="text" name="descripcion" id="id_descripcion" value="{{ entry.description }}">
+        </div>
+        <input type="submit" value="Modificar">
+    </form>
+</div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let selectCategoria = document.getElementById('id_categoria');
+        let customCategoria = document.getElementById('id_custom_categoria');
+
+        selectCategoria.addEventListener('change', function() {
+            if (selectCategoria.value === 'otros') {
+                customCategoria.style.display = 'block';
+            } else {
+                customCategoria.style.display = 'none';
+            }
+        });
+    });
+</script>
 </html>

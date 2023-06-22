@@ -3,6 +3,7 @@ from django.http import HttpRequest
 from main.models import Incomes, Outcomes
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 
 @cache_control(private=True,no_cache=True, must_revalidate=True, no_store=True)
@@ -14,7 +15,11 @@ def modify_income(request: HttpRequest, id):
     """
 
     if request.method == 'GET':
-        return render(request, "modify_entry.html")
+        entry = get_object_or_404(Incomes, pk=id)
+        context = {
+            'entry': entry,
+        }
+        return render(request, "modify_entry.html", context)
 
     elif request.method == 'POST':
         income_entry = Incomes.objects.get(pk=id)
@@ -28,6 +33,9 @@ def modify_income(request: HttpRequest, id):
 
         income_entry.income = new_income
         income_entry.category = request.POST['categoria']
+        custom_category = request.POST.get('custom_categoria')
+        if income_entry.category == "otros" and custom_category:
+            income_entry.category = custom_category
         income_entry.set_at = request.POST['fecha']
         income_entry.description = request.POST['descripcion']
 
@@ -45,7 +53,12 @@ def modify_outcome(request: HttpRequest, id):
     """
 
     if request.method == 'GET':
-        return render(request, "modify_entry.html")
+        entry = get_object_or_404(Outcomes, pk=id)
+        context = {
+            'entry': entry,
+        }
+        return render(request, "modify_entry.html", context)
+
 
     elif request.method == 'POST':
         outcome_entry = Outcomes.objects.get(pk=id)
@@ -59,6 +72,9 @@ def modify_outcome(request: HttpRequest, id):
 
         outcome_entry.outcome = new_outcome
         outcome_entry.category = request.POST['categoria']
+        custom_category = request.POST.get('custom_categoria')
+        if outcome_entry.category == "otros" and custom_category:
+            outcome_entry.category = custom_category
         outcome_entry.set_at = request.POST['fecha']
         outcome_entry.description = request.POST['descripcion']
 
