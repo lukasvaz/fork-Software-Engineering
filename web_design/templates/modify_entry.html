@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Modificar Transaccion</title>
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/modify_entry.css' %}">
+    <script src="https://kit.fontawesome.com/d261d7d154.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="contenedor_form">
@@ -15,20 +15,29 @@
     <form id="modify-form" method="post">
         {% csrf_token %}
         {% if entry.income %}
-        <div>
+        <div class="form-control">
             <label for="id_monto">Monto:</label>
-            <input type="text" inputmode="numeric" pattern="\d+" oninvalid="setCustomValidity('Debe ingresar un monto valido')" name="monto" id="id_monto" value="{{ entry.income }}">
+            <input type="text" inputmode="numeric" placeholder="Ej: 1000" name="monto" id="id_monto" value="{{ entry.income }}">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
         </div>
         {% else %}
-        <div>
+        <div class="form-control">
             <label for="id_monto">Monto:</label>
-            <input type="text" inputmode="numeric" pattern="\d+" oninvalid="setCustomValidity('Debe ingresar un monto valido')" name="monto" id="id_monto" value="{{ entry.outcome }}">
+            <input type="text" inputmode="numeric" name="monto" placeholder="Ej: 1000" id="id_monto" value="{{ entry.outcome }}">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
         </div>
         {% endif %}
 
-        <div>
+        <div class="form-control">
             <label for="fecha">Fecha:</label>
             <input type="date" name="fecha" id="id_fecha" value="{{ entry.set_at|date:'Y-m-d' }}">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
         </div>
         <div>
             <label for="categoria">Categoria:</label>
@@ -57,6 +66,7 @@
     </form>
 </div>
 </body>
+<script src="{% static 'js/modify_entry.js' %}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         let selectCategoria = document.getElementById('id_categoria');
