@@ -21,7 +21,10 @@ from main.views import home_views, stats_views, transaction_views, register_view
 urlpatterns = [
     path('', lambda req:redirect('accounts/login'), name='root'),
     path("home/", home_views.home, name="home"),
-    path("get-transactions", get_data_views.get_transactions, name="table"),
+    path("get-raw-transactions", get_data_views.get_raw_transactions),
+    path("get-filter-aggregate", get_data_views.get_filter_sum),
+    path("get-filter-aggregate/<str:type>", get_data_views.get_filter_sum),
+    path("get-filter-aggregate/<str:type>/<str:groupby>", get_data_views.get_filter_sum),
     path("log-out", register_view.logout_user, name="log-out"),
     path("admin/", admin.site.urls),
     path("transaction/", transaction_views.transaction, name="transaction"),

@@ -18,6 +18,7 @@ def home(request: HttpRequest):
             account = AccountStatus.objects.filter(user__id=user_id)
             ctx = {"actual_balance": account.get().actual_balance,
                 "name": request.user.first_name,}
+            
                 
         except ObjectDoesNotExist : #Account Status not associated
             ctx = {"name": request.user.first_name}

@@ -1,6 +1,6 @@
 async function updateTable(e) {
     // Actualiza la tabla y contiene los listeners para los filtros
-    const response = await fetch('../get-transactions');
+    const response = await fetch('../get-raw-transactions');
     const data = await response.json();
     var tableBody = document.getElementById('home-table-body');
     tableBody.innerHTML = '';

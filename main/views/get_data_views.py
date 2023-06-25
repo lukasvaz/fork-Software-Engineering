@@ -1,13 +1,13 @@
 from django.http import  JsonResponse, HttpRequest
-from django.shortcuts import render
-from main.models import Incomes, Outcomes, AccountStatus
+from main.models import Incomes, Outcomes
 from django.db.models import F, Value, CharField
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.cache import cache_control
 from django.shortcuts import render
+from django.core.serializers import serialize
+from django.db.models import Sum
 
-
-def get_transactions(request: HttpRequest):
+def get_raw_transactions(request: HttpRequest):
     """Retrieves all transactions data asociated to the user in json format.
     """
     if request.user.is_authenticated and request.method == 'GET':
@@ -26,3 +26,21 @@ def get_transactions(request: HttpRequest):
         return JsonResponse(dict_data, safe=False)
     else:
         return JsonResponse({})
+    
+def get_filter_sum(request: HttpRequest,type:str,groupby:str):
+    """Retrieves the sum of  transactions asociated to an user filtering by type (Incomes Outcomes) and grouping by "groupby"  in json format."""
+    if request.user.is_authenticated and request.method == 'GET':
+        user_id = request.user.id
+        if type=='outcomes':
+            data = Outcomes.objects.filter(account_status__user=user_id).values(groupby).annotate(total=Sum("outcome"))
+
+        elif type=='incomes':
+            data = Incomes.objects.filter(account_status__user=user_id).values(groupby).annotate(total=Sum("income"))
+        else:
+            return JsonResponse({})
+        
+        serialized_data = list( data)
+        return JsonResponse(serialized_data, safe=False)
+    else:
+        return JsonResponse({})
+    
