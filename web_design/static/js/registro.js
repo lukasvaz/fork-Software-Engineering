@@ -21,7 +21,7 @@ function checksInputs(event) {
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     if (usernameValue === "") {
-        setErrorFor(username, "Ingrese nombre de usuario.", event);
+        setErrorFor(username, "Ingrese un nombre de usuario.", event);
     } else if (usernameValue.length < 5) {
         setErrorFor(username, "El nombre de usuario debe tener al menos 5 caracteres.", event);
     }
@@ -44,7 +44,7 @@ function checksInputs(event) {
     if (emailValue === "") {
         setErrorFor(email, "Ingrese un mail.", event)
     } else if (!emailRegex.test(emailValue)) {
-        setErrorFor(email, "Ingrese un mail valido.", event);
+        setErrorFor(email, "Ingrese un mail válido.", event);
     } else {
         setSuccessFor(email);
     }

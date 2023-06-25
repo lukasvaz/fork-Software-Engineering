@@ -9,9 +9,9 @@ function checksInputs(event) {
     const amountValue = amount.value.trim();
 
     if (amountValue === "") {
-        setErrorFor(amount, "El monto no puede estar en blanco.", event);
+        setErrorFor(amount, "Ingrese un monto.", event);
     } else if (isNaN(Number(amountValue))){
-        setErrorFor(amount, "Ingrese un monto valido.", event);
+        setErrorFor(amount, "Ingrese un monto válido.", event);
     } else {
         setSuccessFor(amount);
     }
