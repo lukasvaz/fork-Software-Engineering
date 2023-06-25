@@ -20,13 +20,19 @@
               <option value="egreso">Egreso</option>
             </select>
           </div>
-          <div>
+          <div class="form-control">
             <label for="id_monto">Monto:</label>
-            <input type="number" name="monto" id="id_monto">
+            <input type="number" placeholder="Ej: 1000" name="monto" id="id_monto">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
           </div>
-          <div>
+          <div class="form-control">
             <label for="fecha">Fecha:</label>
-            <input type="date" name="fecha" id="id_fecha" required>
+            <input type="date" name="fecha" id="id_fecha">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
           </div>
           <div>
             <label for="categoria">Categoria:</label>
