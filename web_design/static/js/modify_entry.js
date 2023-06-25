@@ -1,17 +1,18 @@
-const form = document.querySelector('form')
-const amount = document.getElementById('id_monto')
-const set_date = document.getElementById('id_fecha')
-const category = document.getElementById('id_categoria')
-const description = document.getElementById('id_descripcion')
+const form = document.getElementById("modify-form");
+const amount = document.getElementById("id_monto");
 
-form.addEventListener('submit', () => {
-    if (set_date.value === '') {
-        alert('Debe ingresar una fecha');
-        return;
-    }
-
-    if (category.value === '') {
-        alert('Debe seleccionar una categoria');
-        return;
-    }
+form.addEventListener("submit", (e) => {
+    checksInputs(e);
 });
+
+function checksInputs(event) {
+    const amountValue = amount.value.trim();
+
+    if (amountValue === "") {
+        setErrorFor(amount, "Ingrese un monto.", event);
+    } else if (isNaN(Number(amountValue))){
+        setErrorFor(amount, "Ingrese un monto válido.", event);
+    } else {
+        setSuccessFor(amount);
+    }
+};
