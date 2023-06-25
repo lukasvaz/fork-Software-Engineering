@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/transaccion.css' %}">
+    <script src="https://kit.fontawesome.com/d261d7d154.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div class="contenedor_form">
@@ -22,7 +23,7 @@
         </div>
         <div class="form-control">
           <label for="id_monto">Monto:</label>
-          <input type="number" placeholder="Ej: 1000" name="monto" id="id_monto">
+          <input type="text" inputmode="numeric" placeholder="Ej: 1000" name="monto" id="id_monto">
           <i class="fas fa-check-circle"></i>
           <i class="fas fa-exclamation-circle"></i>
           <small>Error message</small>
@@ -34,7 +35,7 @@
           <i class="fas fa-exclamation-circle"></i>
           <small>Error message</small>
         </div>
-        <div>
+        <div class="form-control">
           <label for="categoria">Categoria:</label>
           <select name="categoria" id="id_categoria">
             <option value="" disabled selected></option>
@@ -47,6 +48,9 @@
             <option value="ropa">Ropa</option>
             <option value="otros">Otros</option>
           </select>
+          <i class="fas fa-check-circle"></i>
+          <i class="fas fa-exclamation-circle"></i>
+          <small>Error message</small>
         </div>
         <div id="id_custom_categoria" style="display: none;">
           <label for="custom_categoria">Ingresar Categoria:</label>
@@ -60,6 +64,7 @@
       </form> 
   </div>
 </body>
+<script src="{% static 'js/utilities.js' %}"></script>
 <script src="{% static 'js/transacciones.js' %}"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
