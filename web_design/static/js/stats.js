@@ -2,7 +2,7 @@
 
 async function loadChart1(){
 /*  Incomes Outcomes chart */
-const response = await fetch('../get-table');
+const response = await fetch('../get-transactions');
 const data = await response.json();
 const seriesData = [];
 data.forEach(element => {
@@ -16,7 +16,7 @@ data.forEach(element => {
 // Specify the configuration items and data for the chart
 var option = {
   title: {
-    text: 'ECharts Getting Started Example'
+    text: 'Análisis por Categoría'
   },
   tooltip: {
     trigger: 'item'
@@ -26,7 +26,13 @@ var option = {
       type: 'pie',
       radius: ['40%', '70%'],
       data: seriesData,
+    },
+    {
+      type: 'pie',
+      radius: ['40%', '70%'],
+      data: seriesData,
     }
+
   ],
 };
   
@@ -39,7 +45,7 @@ var option = {
 
 async function loadChart2(){
   /*  Incomes Outcomes chart */
-  const response = await fetch('../get-table');
+  const response = await fetch('../get-transactions');
   const data = await response.json();
  
   accountStatuses=[]
@@ -58,7 +64,7 @@ async function loadChart2(){
   // Specify the configuration items and data for the chart
   option = {
     title: {
-      text: 'Ahorros'
+      text: 'Ahorro'
     },
     tooltip: {
       trigger: 'axis'

@@ -17,11 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
-from main.views import home_views, stats_views, transaction_views, register_view, modify_view, delete_view,stats_views
+from main.views import home_views, stats_views, transaction_views, register_view, modify_view, delete_view,stats_views,get_data_views
 urlpatterns = [
     path('', lambda req:redirect('accounts/login'), name='root'),
     path("home/", home_views.home, name="home"),
-    path("get-table", home_views.get_transactions, name="table"),
+    path("get-transactions", get_data_views.get_transactions, name="table"),
     path("log-out", register_view.logout_user, name="log-out"),
     path("admin/", admin.site.urls),
     path("transaction/", transaction_views.transaction, name="transaction"),
