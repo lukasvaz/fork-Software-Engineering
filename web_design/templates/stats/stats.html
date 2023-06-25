@@ -11,12 +11,17 @@
     <h3 class="display-5">{{ name }} te presentamos  un resumen de lo que han sido tus transacciones</h1>
   </div>
 <!-- chart1 container -->
-  <div id="main" style="width: 600px;height:400px;"></div>
-  
+  <div id="pie-plot" style="width: 600px;height:400px;"></div>
+<!-- chart2 container -->
+<div id="line-plot" style="width: 600px;height:400px;"></div>
+
+
+
 <script src="{%static  'js/stats.js'%}"></script>
 <script>
 $(document).ready(function(){
   loadChart1();
+  loadChart2();
 })</script>
 {% endblock content %}
     
