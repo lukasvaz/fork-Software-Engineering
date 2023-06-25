@@ -3,59 +3,107 @@ body {
 }
 
 /* Estilo para el contenedor principal */
-.cont {
-    text-align: center;
-    width: 80%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 75px;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 5px #ccc;
-    margin-top: 60px;
+form {
+text-align: center;
+width: 50%;
+max-width: 500px;
+margin: 0 auto;
+padding: 50px;
+background-color: white;
+border: 1px solid #ccc;
+box-shadow: 0 0 5px #ccc;
+margin-top: 40px;
 }
 
 /* Estilo para el título */
 h1 {
-    margin-bottom: 60px;
-    font-size: 30px;
-    font-family: Arial, sans-serif;
-    font-weight: normal;
+margin-bottom: 30px;
+font-size: 30px;
+font-family: Arial, sans-serif;
+font-weight: normal;
 }
 
 /* Estilo para las etiquetas de entrada */
 label {
-    display: block;
-    margin-bottom: 15px;
-    font-weight: bold;
+display: block;
+margin-bottom: 10px;
+font-weight: bold;
+text-align: left;
+}
+
+.form-control {
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.form-control.success input {
+    border-color: #2ecc71;
+}
+
+.form-control.error input {
+    border-color: #e74c3c;
+}
+
+.form-control i {
+    visibility: hidden;
+    position: absolute;
+    top: 40px;
+    right: -20px;
+}
+
+.form-control.success i.fa-check-circle {
+    color: #2ecc71;
+    visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle {
+    color: #e74c3c;
+    visibility: visible;
+}
+
+.form-control small {
+    color: #e74c3c;
+    position: center;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
 }
 
 /* Estilo para los campos de entrada */
 input[type="text"],
-input[type="password"] {
-    width: 50%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: #f2f2f2;
+input[type="password"],
+input[type="email"] {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+border: 1px solid #ccc;
+border-radius: 5px;
+box-sizing: border-box;
+background-color: #f2f2f2;
 }
 
 /* Estilo para el botón de enviar */
-input[type="submit"] {
-    width: 50%;
-    padding: 10px;
-    background-color: #4b9bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-sizing: border-box;
-    margin-top: 25px;
+button[type="submit"] {
+width: 50%;
+padding: 10px;
+background-color: #4b9bff;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+box-sizing: border-box;
+margin-top: 20px;
+margin-bottom: 10px;
+font-weight: bold;
+text-transform: uppercase;
 }
 
 /* Estilo para el botón de enviar al pasar el cursor */
-input[type="submit"]:hover {
-    background-color: #1e90ff;
+button[type="submit"]:hover {
+background-color: #1e90ff;
 }
