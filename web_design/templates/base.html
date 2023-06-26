@@ -47,19 +47,7 @@
     <!-- content -->      
     <div>
     {% block content%} {%endblock%}
-    </div>
-
-    <!-- Modal container -->
-    <div class="help-container">
-        <button class="info-button" id="open"><i class="fa-solid fa-circle-info" style="color: #62a0ea;"></i></button>
-      <div class="modal-container" id="modal_container">
-        <div class="modal">
-          <h1>Modo de uso</h1>
-          <p>Aca puedes encontrar informacion de como usar la app de finanzas</p>
-          <button id="close">Cerrar</button>
-        </div>
-      </div>
+    {% include "tutorial_modal.html" %}
     </div>
   </body>
-  <script src="{% static 'js/modal.js'%}"></script>
 </html>
