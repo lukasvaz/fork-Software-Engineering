@@ -1,4 +1,28 @@
+@import url('https://kit.fontawesome.com/d261d7d154.js');
+
 .table {
     margin: 0 auto;
     width: 80%;
+}
+
+button {
+    background-color: #47a386;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+.help-container i {
+    visibility: hidden;
+    top: 40px;
+    right: 10px;
+}
+
+.help-container i.fa-question-circle {
+    color: rgb(83, 83, 235);
+    visibility: visible;
 }

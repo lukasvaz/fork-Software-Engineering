@@ -29,7 +29,7 @@
 
     
     
-</div>
+<!-- </div> este div que cierra???-->
     <!-- introducir navbar -->
     <div>
       <!-- sería como \{\% include  navbar.html\%\} --> 
@@ -49,5 +49,17 @@
     {% block content%} {%endblock%}
     </div>
 
+    <!-- Modal container -->
+    <div class="help-container">
+        <button id="open"><i class="fa-solid fa-circle-info" style="color: #62a0ea;"></i></button>
+      <div class="modal-container">
+        <div class="modal">
+          <h1>Modo de uso</h1>
+          <p>Aca puedes encontrar informacion de como usar la app de finanzas</p>
+          <button id="close">Cerrar</button>
+        </div>
+      </div>
+    </div>
   </body>
+  <script src="{% static 'modal.js'%}"></script>
 </html>
