@@ -7,8 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log_in</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/log_in.css' %}">
+    <style>
+        body {
+            background-image: url('{% static "texture.jpg" %}');
+        }
+    </style>
 </head>
-<body>  
+<body>
+    <h1 id="title">Bienvenido a BankApp</h1>  
     <div class="contenedor">
         <h1>Inicio de sesión</h1>
         <form method="post" action="{% url 'login' %}" >
