@@ -11,12 +11,24 @@
         body {
             background-image: url('{% static "texture.jpg" %}');
         }
+
+
+        .error-msg {
+            display: block !important;
+            text-align: center;
+            color: black;
+        }
     </style>
 </head>
 <body>
     <h1 id="title">Bienvenido a BankApp</h1>  
     <div class="contenedor">
         <h1>Inicio de sesión</h1>
+        {% if error %}
+            <div id="msg" class="error-msg">
+                <p>* Usuario o contraseña incorrecta *</p>
+            </div>
+        {% endif %}
         <form method="post" action="{% url 'login' %}" >
             {% csrf_token %}
             <input type="text" id="usuario" name="username" placeholder="Usuario" value="">
@@ -28,4 +40,6 @@
         <p>¿No tienes cuenta? <a href="{% url 'registro' %}">Registrate</a></p>
     </div>
 </body>
+<script src="{% static 'js/login.js' %}"></script>
 </html>
+
