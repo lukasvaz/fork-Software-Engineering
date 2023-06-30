@@ -34,7 +34,8 @@ console.log(IncomesPlotData)
 var colorPaletteIncomes = ['#9ef01a','#70e000','#38b000','#008000','#007200']
 var optionIncomes = {
   title: {
-    text: 'Ingresos'
+    text: 'Ingresos',
+    left: 'center'
   },
   tooltip: {
     trigger: 'item'
@@ -53,7 +54,9 @@ var optionIncomes = {
 var colorPaletteOutcomes = ['#e40b0b','#c30e0e','#a21112','#821415','#821415']
 var optionOutcomes = {
   title: {
-    text: 'Egresos'
+    text: 'Egresos',
+    left: 'center'
+
   },
   tooltip: {
     trigger: 'item'
@@ -98,7 +101,9 @@ async function loadChart2(){
   // Specify the configuration items and data for the chart
   option = {
     title: {
-      text: 'Ahorro'
+      text: 'Ahorro',
+    left: 'center'
+
     },
     tooltip: {
       trigger: 'axis'
