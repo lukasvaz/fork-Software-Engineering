@@ -8,19 +8,23 @@
 
 <!-- intro -->
 <div >
-    <h3 class="display-5">{{ name }} te presentamos  un resumen de lo que han sido tus transacciones</h1>
+    <p class="margin" style="font-size: large;"> <b  style="font-size: x-large;">{{ name }},</b > te presentamos  un resumen de lo que han sido tus transacciones</p>
   </div>
 <!-- chart1 container -->
-<div style="display: flex;width: 100% ">
-  <div id="pie-plot-incomes" style="width: 50%;height:400px;"></div>
-  <div id="pie-plot-outcomes" style="width: 50%;height:400px;"></div>
+<div style="display: flex;">
+  <div id="pie-plot-incomes" style="width: 40%;height:400px"></div>
+  <div id="pie-plot-outcomes" style="width: 40%;height:400px"></div>
+  <div style="width:20%;"><p class="margin centered" style="font-size: large;">Generaste mayores ingresos en  <b style="font-size: large;">{{max_cat_income}}</b>
+    Y tus mayores gastos fueron en <b style="font-size: large;">{{max_cat_outcome}}</b></p></div>
 </div>
-  <p>Generaste mayores ingresos en  <b>{{max_cat_income}}</b>
-  Y tus mayores gastos fueron en <b>{{max_cat_outcome}}</b></p>
+
+
 <!-- chart2 container -->
-<div id="line-plot" style="width: 100%;height:400px;"></div>
-
-
+<div style="display: flex;">
+<div id="line-plot" style="width: 80%;height:400px;"></div>
+<div style="width:20%;"><p class="margin centered" style="font-size: large;">Tu ahorro actual es de <b  style="font-size: xx-large;">{{user__AccountStatus}}</b></p></div>
+</div>
+</div>
 
 <script src="{%static  'js/stats.js'%}"></script>
 <script>
