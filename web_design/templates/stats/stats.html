@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{%load static %}
+{% block title %}Estadísticas{% endblock %}
+
+{% block content %}   
+<!-- header -->
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+
+<!-- intro -->
+<div >
+    <h3 class="display-5">{{ name }} te presentamos  un resumen de lo que han sido tus transacciones</h1>
+  </div>
+<!-- chart1 container -->
+<div style="display: flex;width: 100% ">
+  <div id="pie-plot-incomes" style="width: 50%;height:400px;"></div>
+  <div id="pie-plot-outcomes" style="width: 50%;height:400px;"></div>
+</div>
+  <p>Generaste mayores ingresos en  <b>{{max_cat_income}}</b>
+  Y tus mayores gastos fueron en <b>{{max_cat_outcome}}</b></p>
+<!-- chart2 container -->
+<div id="line-plot" style="width: 100%;height:400px;"></div>
+
+
+
+<script src="{%static  'js/stats.js'%}"></script>
+<script>
+$(document).ready(function(){
+  loadChart1();
+  loadChart2();
+})</script>
+{% endblock content %}
+    
+    
