@@ -84,19 +84,6 @@
       }
     });
   });
-
-  document.addEventListener('DOMContentLoaded', function() {
-  let montoInput = document.getElementById('id_monto');
-
-  montoInput.addEventListener('input', function() {
-    let monto = montoInput.value.replace(/\D/g, "").replace(/^0+/, ""); // Elimina todos los caracteres no numéricos y los ceros iniciales
-    monto = parseInt(monto, 10); // Convierte el valor a un entero
-
-    if (!isNaN(monto)) {
-      montoInput.value = monto.toLocaleString(); // Formatea el valor con separador de miles
-    }
-    });
-  });
 </script>
 </html>
 
