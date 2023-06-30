@@ -4,7 +4,21 @@ from main.models import Incomes, Outcomes, AccountStatus
 from django.db.models import F, Value, CharField
 from django.core.exceptions import ObjectDoesNotExist
 from django.views.decorators.cache import cache_control
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from igs.forms import UpdateUserForm
+
+def update_user(request):
+    if request.method == 'POST':
+        form = UpdateUserForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')  # Redirect to the user's profile page
+    else:
+        form = UpdateUserForm(instance=request.user)
+
+    return render(request, 'update_user.html', {'form': form})
+        
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def change_data(request: HttpRequest):
