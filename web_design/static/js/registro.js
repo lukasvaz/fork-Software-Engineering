@@ -1,27 +1,66 @@
-// Aquí va el código JavaScript para validar el formulario
-const form = document.querySelector('#registration-form');
-form.addEventListener('submit', (event) => {
-    const username = form.elements['username'].value;
-    const password = form.elements['password'].value;
-    const confirm_password = form.elements['confirm-password'].value;
-    const passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{8,}$/;
-    let errores = [];
+const form = document.getElementById("register-form");
+const username = document.getElementById("username");
+const firstName = document.getElementById("first_name");
+const lastName = document.getElementById("last_name");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const confirmPassword = document.getElementById("confirmpassword");
 
-    if (username.length < 5) {
-        // aca se podria agregar que valide que no exista el username
-        errores.push('-El nombre de usuario debe tener al menos 5 caracteres');
-    } 
-
-    if (password !== confirm_password) {
-        errores.push('-Las contraseñas no coinciden.');
-    }
-
-    if (!passwordRegex.test(password)) {
-        errores.push('-La contraseña debe tener al menos 8 caracteres y contener letras y números.');
-    }
-
-    if (errores.length > 0) {
-        event.preventDefault();
-        alert('Por favor, corrija los siguientes errores:\n\n' + errores.join('\n'))
-    }
+form.addEventListener("submit", (e) => {
+    checksInputs(e);
 });
+
+function checksInputs(event) {
+    const usernameValue = username.value;
+    const nameValue = firstName.value;
+    const lastNameValue = lastName.value;
+    const emailValue = email.value;
+    const passwordValue = password.value;
+    const confirmPasswordValue = confirmPassword.value;
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (usernameValue === "") {
+        setErrorFor(username, "Ingrese un nombre de usuario.", event);
+    } else if (usernameValue.length < 5) {
+        setErrorFor(username, "El nombre de usuario debe tener al menos 5 caracteres.", event);
+    }
+    else {
+        setSuccessFor(username);
+    }
+
+    if (nameValue === "") {
+        setErrorFor(firstName, "Ingrese un nombre.", event);
+    } else {
+        setSuccessFor(firstName);
+    }
+
+    if (lastNameValue ==="") {
+        setErrorFor(lastName, "Ingrese un apellido.", event);
+    } else {
+        setSuccessFor(lastName);
+    }
+
+    if (emailValue === "") {
+        setErrorFor(email, "Ingrese un mail.", event)
+    } else if (!emailRegex.test(emailValue)) {
+        setErrorFor(email, "Ingrese un mail válido.", event);
+    } else {
+        setSuccessFor(email);
+    }
+
+    if (passwordValue != confirmPasswordValue) {
+        setErrorFor(password, "Las contraseñas no coinciden.", event);
+        setErrorFor(confirmPassword, "Las contraseñas no coinciden.", event);
+    } else {
+        setSuccessFor(password);
+        setSuccessFor(confirmPassword);
+    }
+
+    if (!passwordRegex.test(passwordValue)) {
+        setErrorFor(password, "La contraseña debe tener al menos 8 caracteres y contener letras y números.", event)
+    } else {
+        setSuccessFor(password);
+    }
+
+};

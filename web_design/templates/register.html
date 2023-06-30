@@ -1,108 +1,71 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <title>Registro</title>
-   <style>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registro.css' %}">
+    <style>
         body {
-            background-color: #f7f7f7;
-        }
-
-        /* Estilo para el contenedor principal */
-        form {
-        text-align: center;
-        width: 80%;
-        max-width: 500px;
-        margin: 0 auto;
-        padding: 50px;
-        background-color: white;
-        border: 1px solid #ccc;
-        box-shadow: 0 0 5px #ccc;
-        margin-top: 40px;
-        }
-
-        /* Estilo para el título */
-        h1 {
-        margin-bottom: 30px;
-        font-size: 30px;
-        font-family: Arial, sans-serif;
-        font-weight: normal;
-        }
-
-        /* Estilo para las etiquetas de entrada */
-        label {
-        display: block;
-        margin-bottom: 10px;
-        font-weight: bold;
-        text-align: left;
-        }
-
-        /* Estilo para los campos de entrada */
-        input[type="text"],
-        input[type="password"],
-        input[type="email"] {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-        background-color: #f2f2f2;
-        }
-
-        /* Estilo para el botón de enviar */
-        button[type="submit"] {
-        width: 50%;
-        padding: 10px;
-        background-color: #4b9bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        box-sizing: border-box;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-weight: bold;
-        text-transform: uppercase;
-        }
-
-        /* Estilo para el botón de enviar al pasar el cursor */
-        button[type="submit"]:hover {
-        background-color: #1e90ff;
-        }
-
-   </style>
+          background-image: url('{% static "texture.jpg" %}');
+        }      
+    </style>
+    <script src="https://kit.fontawesome.com/d261d7d154.js" crossorigin="anonymous"></script>
 </head>
 <body>
-   
-   <form method="post">
+    <form id="register-form" method="post" novalidate>
     <h1> Registro </h1>
-       {% csrf_token %}
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" name="username" required>
+        {% csrf_token %}
+        <div class="form-control">
+            <label for="username">Nombre de usuario</label>
+            <input type="text" placeholder="Ej: Jose11" id="username" name="username">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
         </div>
 
-       <div class="form-group">
-           <label for="first_name">Nombre</label>
-           <input type="text" class="form-control" id="first_name" name="first_name" required>
-       </div>
+        <div class="form-control">
+            <label for="first_name">Nombre</label>
+            <input type="text" placeholder="Ej: Jose" id="first_name" name="first_name">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
 
-       <div class="form-group">
+        <div class="form-control">
             <label for="last_name">Apellido</label>
-            <input type="text" class="form-control" id="last_name" name="last_name">
-       </div>
+            <input type="text" placeholder="Ej: Perez" id="last_name" name="last_name">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
 
-       <div class="form-group">
-           <label for="password">Contraseña</label>
-           <input type="password" class="form-control" id="contraseña" name="password" required>
-       </div>
-
-        <div class="form-group">
+        <div class="form-control">
             <label for="email">Mail</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" placeholder="Ej: jose@gmail.com" id="email" name="email">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+
+        <div class="form-control">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
+        </div>
+
+        <div class="form-control">
+            <label for="confirmpassword">Confirme contraseña</label>
+            <input type="password" id="confirmpassword" name="confirmpassword">
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamation-circle"></i>
+            <small>Error message</small>
         </div>
         <button type="submit">Crear usuario</button>
-   </form>
+    </form>
 </body>
+<script src="{% static 'js/utilities.js' %}"></script>
+<script src="{% static 'js/registro.js' %}"></script>
 </html>
