@@ -28,7 +28,7 @@
         </div>
         <div class="form-control">
           <label for="id_monto">Monto:</label>
-          <input type="text" inputmode="numeric" placeholder="Ej: 1000" name="monto" id="id_monto">
+          <input type="text" inputmode="numeric" placeholder="Ej: 1.000" name="monto" id="id_monto">
           <i class="fas fa-check-circle"></i>
           <i class="fas fa-exclamation-circle"></i>
           <small>Error message</small>
@@ -82,6 +82,19 @@
       } else {
         customCategoria.style.display = 'none';
       }
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+  let montoInput = document.getElementById('id_monto');
+
+  montoInput.addEventListener('input', function() {
+    let monto = montoInput.value.replace(/\D/g, "").replace(/^0+/, ""); // Elimina todos los caracteres no numéricos y los ceros iniciales
+    monto = parseInt(monto, 10); // Convierte el valor a un entero
+
+    if (!isNaN(monto)) {
+      montoInput.value = monto.toLocaleString(); // Formatea el valor con separador de miles
+    }
     });
   });
 </script>
