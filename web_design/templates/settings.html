@@ -12,19 +12,33 @@
     {% include "navbar.html" %}
     <div class="d-flex justify-content-center flex-column position-absolute top-50 start-50 translate-middle border border-secondary-subtle">
         <h4 class="p-2">¿Desea cambiar los datos de su cuenta?</h4>
-        <form class="p-2" method="POST">
+        <form id="settings-form" class="p-2" method="POST">
             <div class="mb-3">
-                <label for="new-name" class="form-label">Nueva nombre de cuenta:</label>
-                <input type="text" class="form-control" id="new-name" placeholder="Insertar nombre">
+                <label for="new-username" class="form-label">Nueva usuario:</label>
+                <input type="text" class="form-control" id="new-username" placeholder="Insertar usuario">
+                <div class="form-text">Este corresponde al nombre que se ocupa para iniciar sesión</div>
+            </div>
+            <div class="mb-3">
+                <label for="new-first_name" class="form-label">Nueva nombre de cuenta:</label>
+                <input type="text" class="form-control" id="new-firs_name" placeholder="Insertar nombre">
                 <div class="form-text">Este corresponde al nombre que se muestra en pantalla</div>
+            </div>
+            <div class="mb-3">
+                <label for="new-last_name" class="form-label">Nueva apellido de cuenta:</label>
+                <input type="text" class="form-control" id="new-last_name" placeholder="Insertar apellido">
+                <div class="form-text">Este corresponde al apellido que se muestra en pantalla</div>
+            </div><div class="mb-3">
+                <label for="new-email" class="form-label">Nueva email de cuenta:</label>
+                <input type="text" class="form-control" id="new-last-name" placeholder="Insertar email">
+                <div class="form-text">Este corresponde al email que se guardó anteriormente</div>
             </div>
             <div class="mb-3">
               <label for="new-password" class="form-label">Nueva contraseña:</label>
               <input type="password" class="form-control" id="new-password" placeholder="Insertar contraseña">
             </div>
             <div class="mb-3">
-                <label for="new-password" class="form-label">Repetir nueva contraseña:</label>
-                <input type="password" class="form-control" id="new-password" placeholder="Insertar nueva contraseña">
+                <label for="new-confirmpassword" class="form-label">Repetir nueva contraseña:</label>
+                <input type="password" class="form-control" id="new-confirmpassword" placeholder="Insertar nueva contraseña">
               </div>
             <!-- <div class="mb-3">
                 <label for="new-photo" class="form-label">Nueva foto de perfil:</label>
@@ -34,5 +48,6 @@
           </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>    
+    <script src="{% static 'js/settings.js' %}"></script>
 </body>
 </html>
