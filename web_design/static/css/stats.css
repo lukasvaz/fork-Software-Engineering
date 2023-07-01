@@ -1,0 +1,13 @@
+
+/* add margin to object*/
+.margin {
+    margin-top:10px;
+    margin: bottom 10px;;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+/* center an object */
+.centered {
+    text-align: center;
+}
