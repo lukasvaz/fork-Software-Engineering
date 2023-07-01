@@ -11,7 +11,7 @@
 <body>
     {% include "navbar.html" %}
     <div class="d-flex justify-content-center flex-column position-absolute top-50 start-50 translate-middle border border-secondary-subtle">
-        <h4 class="p-2">¿Desea cambiar los datos de su cuenta?</h4>
+        <h4 class="p-2" style="color: red;">¿Desea cambiar los datos de su cuenta?</h4>
         <form id="settings-form" class="p-2" method="POST">
             {% csrf_token %}
             <div class="mb-3">
