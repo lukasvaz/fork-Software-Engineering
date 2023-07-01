@@ -3,8 +3,8 @@ const username = document.getElementById("username");
 const firstName = document.getElementById("first_name");
 const lastName = document.getElementById("last_name");
 const email = document.getElementById("email");
-const password = document.getElementById("password");
-const confirmPassword = document.getElementById("confirmpassword");
+const password = document.getElementById("new_password1");
+const confirmPassword = document.getElementById("new_password2");
 
 form.addEventListener("submit", (e) => {
     checksInputs(e);
