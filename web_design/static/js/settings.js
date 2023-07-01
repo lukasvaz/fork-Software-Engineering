@@ -1,9 +1,9 @@
 const form = document.getElementById("settings-form");
-const username = document.getElementById("new-username");
-const firstName = document.getElementById("new-first_name");
-const lastName = document.getElementById("new-last_name");
-const email = document.getElementById("new-mail");
-const password = document.getElementById("new-password");
+const username = document.getElementById("username");
+const firstName = document.getElementById("first_name");
+const lastName = document.getElementById("last_name");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmpassword");
 
 form.addEventListener("submit", (e) => {
