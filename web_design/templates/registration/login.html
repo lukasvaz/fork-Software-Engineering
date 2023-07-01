@@ -9,6 +9,7 @@
   
     <link rel="stylesheet" type="text/css" href="{% static 'css/log_in.css' %}">
     <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/global_styles.css' %}"> -->
+    <script src="https://kit.fontawesome.com/d261d7d154.js" crossorigin="anonymous"></script>
     <style>
         body {
             background-image: url('{% static "texture.jpg" %}');
@@ -28,20 +29,31 @@
         <h1>Inicio de sesión</h1>
         {% if error %}
             <div id="msg" class="error-msg">
-                <p>* Usuario o contraseña incorrecta *</p>
+                <p style="color: #e74c3c;">Credenciales incorrectas</p>
             </div>
         {% endif %}
         <form method="post" action="{% url 'login' %}" >
             {% csrf_token %}
-            <input type="text" id="usuario" name="username" placeholder="Usuario" value="">
+            <div class="form-control">
+                <input type="text" id="usuario" name="username" placeholder="Usuario" value="">
+                <!-- <i class="fas fa-check-circle"></i> -->
+                {% if error %}
+                    <i class="fas fa-exclamation-circle" style="color: #e74c3c; visibility: visible; position: relative; top: -25px; right: -310px;"></i>
+                {% endif %}
+            </div>
             <br><br>
-            <input type="password" id="contrasena" name="password" placeholder="Contraseña" value="">
+            <div class="form-control">
+                <input type="password" id="contrasena" name="password" placeholder="Contraseña" value="">
+                <!-- <i class="fas fa-check-circle"></i> -->
+                {% if error %}
+                    <i class="fas fa-exclamation-circle" style="color: #e74c3c; visibility: visible; position: relative; top: -25px; right: -310px;"></i>
+                {% endif %}
+            </div>
             <br><br>
             <input type="submit" value="Iniciar sesión">
         </form>
         <p>¿No tienes cuenta? <a href="{% url 'registro' %}">Registrate</a></p>
     </div>
 </body>
-<script src="{% static 'js/login.js' %}"></script>
 </html>
 

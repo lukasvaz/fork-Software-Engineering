@@ -34,19 +34,40 @@
 .botones button {
   margin-right: 50px;
   width: 200px;
+  background-color: #b91a1d;;
+  border: none;
 }
 
-.botones2 {
+.botones button:hover{
+  background-color: #b91a1d;;
+}
+
+
+.botones2 button{
   position: absolute;
   top: 65%;
   left: 15%;
+  background-color: #b91a1d;;
+  border: none;
 }
 
-.botones3 {
+.botones2 button:hover{
+  background-color: #b91a1d;;
+}
+
+
+.botones3 button{
   position: absolute;
   top: 80%;
   left: 15%;
+  background-color: #b91a1d;;
+  border: none;
 }
+
+.botones3 button:hover{
+  background-color: #b91a1d;;
+}
+
 
 
 #random-messages{
@@ -70,4 +91,12 @@ body {
 body.modo-oscuro {
   background-color: #1f1f1f;
   color: #ffffff;
+}
+
+.modo-oscuro .bienvenida {
+  color: #ffffff; /* Color deseado para el modo oscuro */
+}
+
+.modo-oscuro .monto {
+  color: #ffffff; /* Color deseado para el modo oscuro */
 }
