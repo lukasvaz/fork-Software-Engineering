@@ -1,9 +1,5 @@
-* {
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #47a386;
+/* button {
+    background-color: rgba(0, 132, 255, 0.295);
     border: 0;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -11,18 +7,18 @@ button {
     font-size: 14px;
     padding: 10px 25px;
     cursor: pointer;
-}
+} */
 
-button:hover {
+/* button:hover {
     background-color: #368a6e;
-}
+} */
 
 .info-button {
     border: 0;
     visibility: visible;
 }
 
-.modal-container {
+.popup-container {
     background-color: rgba(0, 0, 0, 0.3);
     display: flex;
     align-items: center;
@@ -38,12 +34,12 @@ button:hover {
     transition: opacity 0.3s ease;
 }
 
-.modal-container.show {
+.popup-container.show {
     pointer-events: auto;
     opacity: 1;
 }
 
-.modal {
+.modal-tutorial {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -53,11 +49,11 @@ button:hover {
     text-align: center;
 }
 
-.modal h1 {
+.modal-tutorial h1 {
     margin: 0;
 }
 
-.modal p {
+.modal-tutorial p {
     font-size: 14px;
     opacity: 0.7;
 }
