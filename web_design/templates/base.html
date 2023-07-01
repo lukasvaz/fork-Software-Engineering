@@ -23,21 +23,24 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-    <!-- succes or error messages -->
-    {% if messages %}
-      {% for message in messages %}
-      <p{% if message.tags %} class="alert alert-secondary" {% endif %}>{{ message }}</p>
-      {% endfor %}
-    {% endif %}    
+      <!-- succes or error messages -->
+      {% if messages %}
+        {% for message in messages %}
+        <p{% if message.tags %} class="alert alert-secondary" {% endif %}>{{ message }}</p>
+        {% endfor %}
+      {% endif %}    
 
-    <!-- introducir navbar -->
+      <!-- introducir navbar -->
 
-    {%include "navbar.html"%}
- 
-    <!-- content -->      
-    <div>
-    {% block content%} {%endblock%}
-    </div>
+      {%include "navbar.html"%}
 
+      <!-- content -->
+      <div>
+        {% block content%} {%endblock%}
+      </div>
+      
+      <!-- modal for tutorial web page use -->      
+      {% include "tutorial_modal.html" %}
+  
   </body>
 </html>
