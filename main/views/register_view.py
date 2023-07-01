@@ -36,5 +36,5 @@ def register_user(request: HttpRequest):
 def  logout_user(request:HttpRequest):
     """Logs out  an user and redirect to home  page"""
     logout(request)
-    messages.success(request,("Debes registrarte para ver tu contenido."))
-    return redirect('home')
+    #messages.success(request,("Debes iniciar sesión para ver tu contenido."))
+    return redirect('login')

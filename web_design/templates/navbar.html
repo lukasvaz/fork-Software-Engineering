@@ -6,7 +6,9 @@
 
 <nav class="navbar sticky-top custom-navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home' %}">The Bookstore</a> 
+      <a class="navbar-brand" href="{% url 'home' %}">
+        Financhef
+      </a> 
     <ul class="nav justify-content-end">
         <li class="nav-item">
             <a class="nav-link" href="#">
@@ -19,7 +21,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{% url 'log-out' %}">
                 <i class="bi bi-box-arrow-right"></i></i>
             </a>
         </li>
