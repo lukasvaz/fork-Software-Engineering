@@ -31,23 +31,9 @@
     {% endif %}    
 
     <!-- introducir navbar -->
-<div>
-      {%include "navbar.html"%}
-      <!-- log button( va dentro del  navbar) -->
-        {% if user.is_authenticated %}
-        <a href="{% url 'log-out' %}">
-          <button type="button" class="btn btn-secondary">Log out</button>
-        </a> 
-        {%else%}
-          <a href="{% url 'root' %}">
-            <button type="button" class="btn btn-secondary">Log in</button>
-          </a>
-        {% endif %}
-        <!-- statistics -->
-        <a href="{% url 'stats' %}">
-          <button type="button" class="btn btn-secondary">Estadísticas</button>
-        </a>
-    </div>
+
+    {%include "navbar.html"%}
+ 
     <!-- content -->      
     <div>
     {% block content%} {%endblock%}
