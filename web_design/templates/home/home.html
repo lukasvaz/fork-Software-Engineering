@@ -9,6 +9,7 @@
 <script src="{%static  'js/hide_balance.js'%}"></script>
 <script src="{%static  'js/news_of_the_world.js'%}"></script>
 <script src="{%static  'js/dark_mode.js'%}"></script>
+<script src="{%static  'js/table.js'%}"></script>
 
 
 <!-- user information -->
@@ -67,7 +68,7 @@
   </div>
       
   <!--table -->
-  <div class="table-responsive" style="position: absolute; top: 50%; left: 20%;">
+  <div class="table-responsive" style="position: absolute; top: 50%; left: 45%;">
     <table class="table" id="home-table" style="width: 50%; height: 50%; overflow: auto;">
       <thead> 
           <tr>
@@ -84,7 +85,7 @@
     </table>
   </div>
 
-  <script src="{%static  'js/table.js'%}"></script>
+  
   <script>window.addEventListener('load', updateTable);</script>
 {% endblock content %}
     

@@ -1,5 +1,5 @@
 var mensajes = [
-    "El 50% de los mechones reprobó intro al álgebra, suben las papitas y el café.",
+    "El 50% de los mechones reprobó intro al álgebra. Suben las papitas y el café.",
     "La Sonia anuncia aumento del 40% en dulces durante julio.",
     "Bajan los almuerzos veganos en la mayoría de puestos afuera de 850.",
     "Se reduce el arancel en $500.000.",
