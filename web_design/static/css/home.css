@@ -1,0 +1,73 @@
+.bienvenida {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+}
+
+.monto {
+  position: absolute;
+  top: 45%;
+  left: 3%;
+  font-size: 200%;
+}
+
+.balance {
+  position: absolute;
+  top: 53%;
+  left: 12%;
+  font-size: 250%;
+}
+
+.filtros {
+  position: absolute;
+  top: 45%;
+  left: 46%;
+}
+
+.botones {
+  margin-bottom: 10vh;
+  position: absolute;
+  top: 37%;
+  left: 47%;
+}
+
+.botones button {
+  margin-right: 50px;
+  width: 200px;
+}
+
+.botones2 {
+  position: absolute;
+  top: 65%;
+  left: 15%;
+}
+
+.botones3 {
+  position: absolute;
+  top: 80%;
+  left: 15%;
+}
+
+
+#random-messages{
+  font-size: 110%;
+  position: absolute;
+  top: 15%;
+  left: 47%;
+}
+
+.news{
+  position: absolute;
+  top: 9%;
+  left: 55%;
+}
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.modo-oscuro {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
