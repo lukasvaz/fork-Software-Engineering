@@ -1,69 +1,76 @@
 body {
-    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-color: #f2f2f2;
+    background-size: cover;
 }
 
-/* Estilo para el contenedor principal */
-.contenedor {
-    text-align: center;
-    width: 80%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 75px;
-    background-color: white;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 5px #ccc;
-    margin-top: 90px;
-}
-
-/* Estilo para el título */
 h1 {
-    margin-bottom: 40px;
+    text-align: center;
+    color: #b91a1d;;
+    padding-bottom: 15px;
 }
 
-/* Estilo para las etiquetas de entrada */
-label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
+#title {
+    font-size: 48px;
 }
 
-/* Estilo para los campos de entrada */
+.contenedor {
+    width: 300px;
+    margin: 0 auto;
+    padding: 50px;
+    padding-left: 110px;
+    padding-right: 110px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 169px;
+}
+
+form {
+    margin-top: 20px;
+}
+
 input[type="text"],
 input[type="password"] {
-    width: 50%;
+    width: 100%;
     padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #b91a1d;;
+    border-radius: 4px;
     box-sizing: border-box;
-    background-color: #f2f2f2;
 }
 
-/* Estilo para el botón de enviar */
 input[type="submit"] {
-    width: 50%;
+    width: 100%;
     padding: 10px;
-    background-color: #4b9bff;
+    background-color: #b91a1d;;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    box-sizing: border-box;
+    margin-top: 10px;
 }
 
-/* Estilo para el botón de enviar al pasar el cursor */
 input[type="submit"]:hover {
-    background-color: #1e90ff;
+    background-color: #cc0000;
 }
 
-/* Estilo para el texto "Registrate" */
 p {
-    font-weight: normal;
-    font-family: Arial, sans-serif;
-    margin-top: 40px;
+    text-align: center;
+    margin-top: 15px;
 }
 
-p a {
+a {
+    color: #b91a1d;;
+    text-decoration: none;
+}
+
+a:hover {
     text-decoration: underline;
-    color: #4b9bff;
+}
+
+.error-msg {
+    display: none !important;
+    color: red;
+    text-align: center;
 }
