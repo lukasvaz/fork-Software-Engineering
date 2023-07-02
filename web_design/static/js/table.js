@@ -18,7 +18,6 @@ async function updateTable(e) {
         <a href=${'../delete/' + type_url_parameter + '/' + transaction['id']}><i class="fa-sharp fa-solid fa-trash"></i></a></td>\
       </tr>`;
     }
-  
     // Renderiza la tabla con DataTable
     var table = $('#home-table').DataTable({
       dom: 'rtp',
