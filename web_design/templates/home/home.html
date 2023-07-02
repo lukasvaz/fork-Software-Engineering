@@ -83,7 +83,49 @@
       <a class="show-modal-tutorial" style="cursor: pointer;"><i class="fas fa-solid fa-circle-info" style="color: #b91a1d; font-size: 30px;"></i></a>
     </div>
     <div id="tutorial-modal" class="modal">
+      <p>Hola bienvenido a Financhef, acá podrás encontrar ayuda para utilizar
+        la aplicacion web número uno de Beauchef:</p>
+        <a class="show-modal-tutorial-secondary" style="cursor: pointer; color: #b91a1d;font-size: 20px; font-weight: 700;">Enseñame!</a>
     </div>
+    <div id="firts-tutorial-modal" class="modal">
+      <p>Puedes agregar una nueva transacción pinchando el botón 
+        <a href="{% url 'transaction' %}">
+          <button 
+          style="background-color: #b91a1d;"
+          type="button" 
+          class="btn btn-primary">
+          Agregar Transacción
+          </button>
+        </a>
+        <br><br>
+        <a class="show-modal-tutorial-third" style="cursor: pointer; color: #b91a1d;font-size: 20px; font-weight: 700;">Continua!</a>
+      </p>
+    </div>
+    <div id="second-tutorial-modal" class="modal">
+      <p>
+        Además, puedes ver un gráfico con tu historial de transacciones
+        para no aburrirte con datos
+        <a href="{% url 'stats' %}">
+          <button 
+          style="background-color: #b91a1d;"
+          type="button" 
+          class="btn btn-primary">
+          Ver Estadísticas
+          </button>
+        </a>
+        <br><br>
+        <a class="show-modal-tutorial-fourth" style="cursor: pointer; color: #b91a1d;font-size: 20px; font-weight: 700;">Continua!</a>
+      </p>
+    </div>
+    <div id="third-tutorial-modal" class="modal">
+      <p>
+        Por último, puedes ver tu historial de transacciones y editar (<i class="fa-solid fa-pen" id="edit_button" style="color: #b91a1d;"></i>),
+        eliminar (<i class="fa-sharp fa-solid fa-trash" style="color: #b91a1d;"></i>) o 
+        visualizar (<i class="fa-solid fa-eye" style="color: #b91a1d;"></i>)
+        cualquiera de ellas rápido y fácil! 
+      </p>
+    </div>
+
         
   </div>
   
