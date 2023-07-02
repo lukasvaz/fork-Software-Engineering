@@ -51,6 +51,11 @@ body.modo-oscuro {
   text-align: center;
 }
 
+.modo-oscuro .modal {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
 .modal p{
   font-size: 20px;
 }
