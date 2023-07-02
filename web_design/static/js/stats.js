@@ -55,8 +55,7 @@ var colorPaletteOutcomes = ['#e40b0b','#c30e0e','#a21112','#821415','#821415']
 var optionOutcomes = {
   title: {
     text: 'Egresos',
-    left: 'center'
-
+    left: 'center',
   },
   tooltip: {
     trigger: 'item'
@@ -102,8 +101,7 @@ async function loadChart2(){
   option = {
     title: {
       text: 'Ahorro',
-    left: 'center'
-
+    left: 'center',
     },
     tooltip: {
       trigger: 'axis'
