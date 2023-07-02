@@ -16,7 +16,7 @@ async function updateTable(e) {
         <td>${transaction['type']}</td>\
         <td><a href=${'../modify/' + type_url_parameter + '/' + transaction['id']}><i class="fa-solid fa-pen" id="edit_button"></i></a> \
         <a href=${'../delete/' + type_url_parameter + '/' + transaction['id']}><i class="fa-sharp fa-solid fa-trash"></i></a> \
-        <button style="border: none;"><i class="fa-solid fa-eye" style="color: #007bff;"></i></button></td>\
+        <a href="#detailed-transaction-modal" rel="modal:open"><i class="fa-solid fa-eye" style="color: #ed333b;"></i></a></td>\
       </tr>`;
     }
   
