@@ -80,6 +80,7 @@ async function updateTable(e) {
     });
     table.draw();
   });
+  
   const showModalButtons = $(".show-modal-transaction");
 
   showModalButtons.click(function() {
