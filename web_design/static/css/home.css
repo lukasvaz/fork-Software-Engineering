@@ -71,3 +71,8 @@ body.modo-oscuro {
   background-color: #1f1f1f;
   color: #ffffff;
 }
+
+.modal a.close-modal {
+  top: 0px;
+  right: 0px;
+}
