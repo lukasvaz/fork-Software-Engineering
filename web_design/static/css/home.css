@@ -1,66 +1,36 @@
-.bienvenida {
-  position: absolute;
-  top: 20%;
-  left: 10%;
-}
+.balance{
+  text-align:center;
 
+}
 .monto {
-  position: absolute;
-  top: 45%;
-  left: 3%;
   font-size: 200%;
 }
 
-.balance {
-  position: absolute;
-  top: 53%;
-  left: 12%;
-  font-size: 250%;
-}
-
-.filtros {
-  position: absolute;
-  top: 45%;
-  left: 46%;
-}
-
 .botones {
-  margin-bottom: 10vh;
-  position: absolute;
-  top: 37%;
-  left: 47%;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 3px;
 }
 
-.botones button {
-  margin-right: 50px;
-  width: 200px;
+.botones button{
+  background-color: #b91a1d;
+  border: none;
 }
 
-.botones2 {
-  position: absolute;
-  top: 65%;
-  left: 15%;
+.botones button:hover{
+  background-color: #b91a1d;
 }
 
-.botones3 {
-  position: absolute;
-  top: 80%;
-  left: 15%;
+#toggle-button{
+  background-color: #b91a1d;
+  border: none;
 }
-
 
 #random-messages{
   font-size: 110%;
-  position: absolute;
-  top: 18%;
-  left: 47%;
+text-align: center;
 }
 
-.news{
-  position: absolute;
-  top: 9%;
-  left: 55%;
-}
 
 body {
   background-color: #ffffff;
@@ -75,4 +45,12 @@ body.modo-oscuro {
 .modal a.close-modal {
   top: 0px;
   right: 0px;
+}
+
+.modo-oscuro .bienvenida {
+  color: #ffffff; /* Color deseado para el modo oscuro */
+}
+
+.modo-oscuro .monto {
+  color: #ffffff; /* Color deseado para el modo oscuro */
 }

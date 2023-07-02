@@ -2,3 +2,14 @@
     margin: 0 auto;
     width: 80%;
 }
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  body.modo-oscuro {
+    background-color: #1f1f1f;
+    color: #ffffff;
+  }
+  
