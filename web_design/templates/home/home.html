@@ -12,79 +12,76 @@
 <script src="{%static  'js/table.js'%}"></script>
 
 
-<!-- user information -->
-<div class="container-fluid">
-    <div class="header d-flex">
-      <h1 class="bienvenida">Bienvenido {{ name }}!</h1>
-    </div>
-    <div class="container">
-      <div class="header d-flex justify-content-center"></div>
+<!-- top part -->
+<div style="display: flex; margin-top:10px;">
+    <!-- user information -->
+    <div style="width: 50%;">
+         <h1  > Bienvenido {{ name }}!</h1>    
         <h1 class="monto">Monto Total de Todas las Transacciones:</h1>
-        {% if actual_balance %}
-        <h2 class="balance" data-balance-value="${{ actual_balance }}">${{ actual_balance }}</h2>
-        {% else %}
-          <h2 class="balance" data-balance-value="$0">$0</h2>
-        {% endif %}
+       <div style="display:inline-flex; ;margin-left:20% ;">
+        <div >
+          {% if actual_balance %}
+          <h2 class="balance" data-balance-value="${{ actual_balance }}">${{ actual_balance }}</h2>
+          {% else %}
+          <h2  data-balance-value="$0">$0</h2>
+          {% endif %}
+        </div>
+         <!-- Toggle Balance -->
+         <div  style="margin-left:10px;">
+           <button id="toggle-button" type="button" class="btn btn-primary" onclick="toggleBalance()">Ocultar Saldo</button>
+          </div>
+        </div>
     </div>
-</div>
-<div class="container-fluid">
-  <div class="header d-flex">
-    <h2 class="news">Noticias Financieras del Día</h2>
+    <div style="width: 50%;">
+      <h2 style="text-align: center;">Noticias Financieras del Día</h2>
+      <div id="random-messages" style="display: block; width: 100%;" ></div>    
+      </div>
   </div>
-  <div id="random-messages"></div>
-</div>
-
-
-  <div class="filtros">
-    <!-- table's filters -->
-    {%include "home/filters.html"%}
-  </div>
-
-  <div class= "botones">
+  
+<!-- bottom part -->
+  <div style="width: 100%;text-align: center; margin-top:50px;">
+  <div class= "botones" >
       <!-- Add transaction button -->
       <a href="{% url 'transaction' %}">
-        <button type="button" class="btn btn-primary">Agregar Transacción</button>
+        <button style="margin-right: 5%;margin-left: 5%;" type="button" class="btn btn-primary">Agregar Transacción</button>
       </a>
-
+      
       <!-- View Chart  -->
       <a href="{% url 'stats' %}">
-        <button type="button" class="btn btn-primary">Ver Gráfico</button>
+        <button style="margin-right: 5%;margin-left: 5%;" type="button" class="btn btn-primary">Ver Estadisticas</button>
       </a>
 
       <!-- View Transaction Details  -->
       <a href="#">
-        <button type="button" class="btn btn-primary">Ver Detalle Transacciones</button>
+        <button style="margin-right: 5%;margin-left: 5%;" type="button" class="btn btn-primary">Ver Detalle Transacciones</button>
       </a>
   </div>    
-
-  <div class= "botones2">
-      <!-- Toggle Balance -->
-      <button id="toggle-button" type="button" class="btn btn-primary" onclick="toggleBalance()">Ocultar Saldo</button>
+    <div class="filtros" style="margin-top:30px;">
+      <!-- table's filters -->
+      {%include "home/filters.html"%}
+   
+      <!--table -->
+      <div class="table-responsive" >
+        <table class="table" id="home-table" >
+          <thead> 
+              <tr>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Descripción</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Categoría</th>
+                  <th scope="col">Ingreso/Egreso</th>
+                  <th scope="col">Opciones</th>
+              </tr>
+          </thead>
+          <tbody id="home-table-body">
+          </tbody>
+        </table>
+      </div>
+   
     </div>
 
-  <div class= "botones3">
-    <!-- Toggle Dark-Mode -->
-    <button id="modo-oscuro-btn" type="button" class="btn btn-primary" onclick="activarModoOscuro()">Modo Oscuro</button>
-  </div>
-      
-  <!--table -->
-  <div class="table-responsive" style="position: absolute; top: 50%; left: 21%;">
-    <table class="table" id="home-table" style="width: 50%; height: 50%; overflow: auto;">
-      <thead> 
-          <tr>
-              <th scope="col">Fecha</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Valor</th>
-              <th scope="col">Categoría</th>
-              <th scope="col">Ingreso/Egreso</th>
-              <th scope="col">Opciones</th>
-          </tr>
-      </thead>
-      <tbody id="home-table-body">
-      </tbody>
-    </table>
-  </div>
-
+        
+</div>
   
   <script>window.addEventListener('load', updateTable);</script>
 {% endblock content %}
