@@ -40,7 +40,7 @@
   
 <!-- bottom part -->
   <div style="width: 100%;text-align: center; margin-top:50px;">
-  <div class= "botones" >
+    <div class= "botones" >
       <!-- Add transaction button -->
       <a href="{% url 'transaction' %}">
         <button style="margin-right: 5%;margin-left: 5%;" type="button" class="btn btn-primary">Agregar Transacción</button>
@@ -52,7 +52,7 @@
         <button style="margin-right: 5%;margin-left: 5%;" type="button" class="btn btn-primary">Ver Estadisticas</button>
       </a>
 
-  </div>    
+    </div>    
     <div class="filtros" style="margin-top:30px;">
       <!-- table's filters -->
       {%include "home/filters.html"%}
@@ -76,9 +76,12 @@
       </div>
    
     </div>
-
+    
+    <div id="tutorial-modal" class="show-modal-tutorial">
+      <a style="cursor: pointer;"><i class="fas fa-solid fa-circle-info" style="color: #b91a1d;"></i></a>
+    </div>
         
-</div>
+  </div>
   
   <script>window.addEventListener('load', updateTable);</script>
 {% endblock content %}
