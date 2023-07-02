@@ -14,8 +14,8 @@ async function updateTable(e) {
         <td>${transaction['amount']}</td>\
         <td>${transaction['category']}</td>\
         <td>${transaction['type']}</td>\
-        <td><a href=${'../modify/' + type_url_parameter + '/' + transaction['id']}><i class="fa-solid fa-pen" id="edit_button"></i></a> \
-        <a href=${'../delete/' + type_url_parameter + '/' + transaction['id']}><i class="fa-sharp fa-solid fa-trash"></i></a></td>\
+        <td><a href=${'../modify/' + type_url_parameter + '/' + transaction['id']}><i class="fa-solid fa-pen" id="edit_button" style="color: #b91a1d;" > </i></a> \
+        <a href=${'../delete/' + type_url_parameter + '/' + transaction['id']}><i class="fa-sharp fa-solid fa-trash" style="color: #b91a1d;"></i></a></td>\
       </tr>`;
     }
     // Renderiza la tabla con DataTable
