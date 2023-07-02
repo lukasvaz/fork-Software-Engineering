@@ -16,7 +16,7 @@ async function updateTable(e) {
       <td>${transaction['type']}</td>\
       <td><a href=${'../modify/' + type_url_parameter + '/' + transaction['id']}><i class="fa-solid fa-pen" id="edit_button" style="color: #b91a1d;"></i></a> \
       <a href=${'../delete/' + type_url_parameter + '/' + transaction['id']}><i class="fa-sharp fa-solid fa-trash" style="color: #b91a1d;"></i></a> \
-      <a class="show-modal-transaction" style="border: none; cursor: pointer"><i class="fa-solid fa-eye" style="color: #ed333b;"></i></a></td>\
+      <a class="show-modal-transaction" style="border: none; cursor: pointer"><i class="fa-solid fa-eye" style="color: #b91a1d;"></i></a></td>\
     </tr>`;
   }
 
@@ -85,11 +85,11 @@ async function updateTable(e) {
   showModalButtons.click(function() {
       const rowData = getRowData($(this).closest("tr"));
       const htmlContent = `
-      <p>Tipo: ${rowData.type}</p>
-      <p>Monto: ${rowData.amount}</p>
-      <p>Fecha: ${rowData.date}</p>
-      <p>Categoria: ${rowData.category}</p>
-      <p>Descripcion: ${rowData.description}</p>`;
+      <h1>${rowData.type}</h1>
+      <p><strong>Monto:</strong> ${rowData.amount}</p>
+      <p><strong>Fecha:</strong> ${rowData.date}</p>
+      <p><strong>Categoria:</strong> ${rowData.category}</p>
+      <p><strong>Descripcion:</strong> ${rowData.description}</p>`;
 
       $("#detailed-transaction-modal").html(htmlContent);
       $("#detailed-transaction-modal").modal({

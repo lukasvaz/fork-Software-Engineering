@@ -47,6 +47,14 @@ body.modo-oscuro {
   right: 0px;
 }
 
+.modal {
+  text-align: center;
+}
+
+.modal p{
+  font-size: 20px;
+}
+
 .modo-oscuro .bienvenida {
   color: #ffffff; /* Color deseado para el modo oscuro */
 }
