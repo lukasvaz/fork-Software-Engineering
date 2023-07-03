@@ -2,18 +2,36 @@
 
 - [Financial Web Application](#financial-web-application)
   - [General use](#general-use)
+  - [Database Model](#database-model)
   - [Setting Up](#setting-up)
   - [Commands](#commands)
 
 This project is a Financial Web Application where you can register your incomes and outcomes, keeping a record of them. For now the application is under development.
 
-In addition, here you can see the db design for the models:
-
-![db-design](db_design.drawio.png)
-
 ## General use
 
-Don't forget to run the migrations before using the app, you can follow the steps from [Setting up](#setting-up) section. To login with your user you must either go to `http://127.0.0.1:8000/register/` or click the register button from the site `http://127.0.0.1:8000/accounts/login/`.
+Don't forget to run the migrations before using the app, you can follow the steps from [Setting up](#setting-up) section.
+
+Furthermore, you must run the app using:
+
+```bash
+$ python3 manage.py runserver
+```
+
+After that you're ready to use the app!.
+
+Right now the web application is on development but we launched the first version! (this version is located in main branch), it has many features but here you can look the most relevants:
+
+- Register, edit and delete new incomes/outcomes.
+- Dashboard section, including stats about your incomes/outcomes.
+- Dark mode! always come in handy :D.
+- Financial news.
+
+## Database Model
+
+This is the E-R database model diagram used along the project:
+
+![db-design](db_design.drawio.png)
 
 ## Setting Up
 
