@@ -1,6 +1,6 @@
-# Financial Web Application
+# Financhef Web Application
 
-- [Financial Web Application](#financial-web-application)
+- [Financhef Web Application](#financhef-web-application)
   - [General use](#general-use)
   - [Database Model](#database-model)
   - [Setting Up](#setting-up)
