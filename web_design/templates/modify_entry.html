@@ -47,7 +47,7 @@
         <div>
             <label for="categoria">Categoria:</label>
             <select name="categoria" id="id_categoria">
-                <option value="" disabled selected></option>
+                <!-- <option value="" disabled selected></option> -->
                 <option value="comida" {% if entry.category == 'comida' %}selected{% endif %}>Comida</option>
                 <option value="trabajo" {% if entry.category == 'trabajo' %}selected{% endif %}>Trabajo</option>
                 <option value="transporte" {% if entry.category == 'transporte' %}selected{% endif %}>Transporte</option>
@@ -55,7 +55,7 @@
                 <option value="hogar" {% if entry.category == 'hogar' %}selected{% endif %}>Hogar</option>
                 <option value="salud" {% if entry.category == 'salud' %}selected{% endif %}>Salud</option>
                 <option value="ropa" {% if entry.category == 'ropa' %}selected{% endif %}>Ropa</option>
-                <option value="otros" {% if entry.custom_categoria %}selected{% endif %}>Otros</option>
+                <option value="{{ entry.custom_categoria }} selected"></option>
             </select>
         </div>
         <div id="id_custom_categoria" {% if entry.custom_categoria %}style="display: block;"{% else %}style="display: none;"{% endif %}>
