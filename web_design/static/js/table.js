@@ -11,7 +11,7 @@ async function updateTable(e) {
     tableBody.innerHTML += `<tr>\
       <th>${transaction['set_at']}</th>\
       <td>${transaction['description']}</td>\
-      <td>${addDots(transaction['amount'])}</td>\
+      <td>$${addDots(transaction['amount'])}</td>\
       <td>${transaction['category']}</td>\
       <td>${transaction['type']}</td>\
       <td><a href=${'../modify/' + type_url_parameter + '/' + transaction['id']}><i class="fa-solid fa-pen" id="edit_button" style="color: #b91a1d;"></i></a> \
