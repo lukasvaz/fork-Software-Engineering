@@ -7,7 +7,7 @@ function toggleBalance() {
       balanceElement.textContent = '******';
       toggleButton.textContent = 'Mostrar Saldo';
     } else {
-      balanceElement.textContent = balanceValue;
+      balanceElement.textContent = addDots(balanceValue);
       toggleButton.textContent = 'Ocultar Saldo';
     }
   }
