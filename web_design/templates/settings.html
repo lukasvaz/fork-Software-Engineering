@@ -1,58 +1,51 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cambiar Configuración</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/settings.css' %}">
-</head>
-<body>
-    {% include "navbar.html" %}
-    <div class="d-flex justify-content-center flex-column position-absolute top-50 start-50 translate-middle border border-secondary-subtle">
-        <h4 class="p-2" style="color: red;">¿Desea cambiar los datos de su cuenta?</h4>
-        <form id="settings-form" class="p-2" method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="username" class="form-label">Nuevo usuario:</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Insertar usuario">
-                <div class="form-text">Este corresponde al nombre que se ocupa para iniciar sesión</div>
-            </div>
-            <div class="mb-3">
-                <label for="first_name" class="form-label">Nuevo nombre de cuenta:</label>
-                <input type="text" class="form-control" id="firs_name" name="first_name" placeholder="Insertar nombre">
-                <div class="form-text">Este corresponde al nombre que se muestra en pantalla</div>
-            </div>
-            <div class="mb-3">
-                <label for="last_name" class="form-label">Nuevo apellido de cuenta:</label>
-                <input type="text" class="form-control" id="last_name" name="last-name" placeholder="Insertar apellido">
-                <div class="form-text">Este corresponde al apellido que se muestra en pantalla</div>
-            </div><div class="mb-3">
-                <label for="email" class="form-label">Nuevo email de cuenta:</label>
-                <input type="text" class="form-control" id="last-name" name="email" placeholder="Insertar email">
-                <div class="form-text">Este corresponde al email que se guardó anteriormente</div>
-            </div>
-            <div class="mb-3">
-                <label for="old_password" class="form-label">Actual Contraseña:</label>
-                <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Ingrese actual contraseña">
-            </div>
-            <div class="mb-3">
-                <label for="new_password1" class="form-label">Nueva Contraseña:</label>
-                <input type="password" class="form-control" id="new_password1" name="new_password1" placeholder="Ingresa nueva contraseña">
-            </div>
-            <div class="mb-3">
-                <label for="new_password2" class="form-label">Confirmar Nueva Contraseña:</label>
-                <input type="password" class="form-control" id="new_password2" name="new_password2" placeholder="Confirme nueva contraseña">
-            </div>
-            <!-- <div class="mb-3">
-                <label for="new-photo" class="form-label">Nueva foto de perfil:</label>
-                <input type="file" class="form-control" id="new-photo">
-            </div> -->
-            <button type="submit" class="btn btn-danger">Actualizar</button>
-          </form>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>    
-    <script src="{% static 'js/settings.js' %}"></script>
-</body>
-</html>
+{% block title %}Cambiar Configuración{% endblock %}
+
+{% block content %} 
+<link rel="stylesheet" type="text/css" href="{% static 'css/settings.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/settings_dark.css' %}"> 
+<div class="container">
+    <h4 style="color: #b91a1d;">¿Desea cambiar los datos de su cuenta?</h4>
+    <form id="settings-form" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username" class="form-label">Nuevo usuario:</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Insertar usuario">
+            <div class="form-text">Este corresponde al nombre que se ocupa para iniciar sesión</div>
+        </div>
+        <div class="form-group">
+            <label for="first_name" class="form-label">Nuevo nombre de cuenta:</label>
+            <input type="text" class="form-control" id="firs_name" name="first_name" placeholder="Insertar nombre">
+            <div class="form-text">Este corresponde al nombre que se muestra en pantalla</div>
+        </div>
+        <div class="form-group">
+            <label for="last_name" class="form-label">Nuevo apellido de cuenta:</label>
+            <input type="text" class="form-control" id="last_name" name="last-name" placeholder="Insertar apellido">
+            <div class="form-text">Este corresponde al apellido que se muestra en pantalla</div>
+        </div><div class="form-group">
+            <label for="email" class="form-label">Nuevo email de cuenta:</label>
+            <input type="text" class="form-control" id="last-name" name="email" placeholder="Insertar email">
+            <div class="form-text">Este corresponde al email que se guardó anteriormente</div>
+        </div>
+        <div class="form-group">
+            <label for="old_password" class="form-label">Actual Contraseña:</label>
+            <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Ingrese actual contraseña">
+        </div>
+        <div class="form-group">
+            <label for="new_password1" class="form-label">Nueva Contraseña:</label>
+            <input type="password" class="form-control" id="new_password1" name="new_password1" placeholder="Ingresa nueva contraseña">
+        </div>
+        <div class="form-group">
+            <label for="new_password2" class="form-label">Confirmar Nueva Contraseña:</label>
+            <input type="password" class="form-control" id="new_password2" name="new_password2" placeholder="Confirme nueva contraseña">
+        </div>
+        <!-- <div class="form-group">
+            <label for="new-photo" class="form-label">Nueva foto de perfil:</label>
+            <input type="file" class="form-control" id="new-photo">
+        </div> -->
+        <button type="submit" class="btn btn-primary" style="background-color: #b91a1d;">Actualizar</button>
+        </form>
+</div>
+<script src="{% static  'js/settings.js'%}"></script>
+{% endblock %}
