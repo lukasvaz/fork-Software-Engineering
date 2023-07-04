@@ -47,22 +47,22 @@
         <div>
             <label for="categoria">Categoria:</label>
             <select name="categoria" id="id_categoria">
-                <!-- <option value="" disabled selected></option> -->
-                <option value="comida" {% if entry.category == 'comida' %}selected{% endif %}>Comida</option>
-                <option value="trabajo" {% if entry.category == 'trabajo' %}selected{% endif %}>Trabajo</option>
-                <option value="transporte" {% if entry.category == 'transporte' %}selected{% endif %}>Transporte</option>
-                <option value="entretenimiento" {% if entry.category == 'entretenimiento' %}selected{% endif %}>Entretenimiento</option>
-                <option value="hogar" {% if entry.category == 'hogar' %}selected{% endif %}>Hogar</option>
-                <option value="salud" {% if entry.category == 'salud' %}selected{% endif %}>Salud</option>
-                <option value="ropa" {% if entry.category == 'ropa' %}selected{% endif %}>Ropa</option>
-                <option value="{{ entry.custom_categoria }} selected"></option>
+                <option value="{{ entry.category }}" selected>{{ entry.category }}</option>
+                <option value="Comida">Comida</option>
+                <option value="Trabajo">Trabajo</option>
+                <option value="Transporte">Transporte</option>
+                <option value="Entretenimiento">Entretenimiento</option>
+                <option value="Hogar">Hogar</option>
+                <option value="Salud">Salud</option>
+                <option value="Ropa">Ropa</option>
+                <option value="Otros">Otros</option>
+              </select>
             </select>
         </div>
-        <div id="id_custom_categoria" {% if entry.custom_categoria %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+        <div id="id_custom_categoria" style="display: none;">
             <label for="custom_categoria">Ingresar Categoria:</label>
-            <input type="text" name="custom_categoria" id="id_input_categoria" value="{{ entry.custom_categoria }}">
-        </div>
-        
+            <input type="text" name="custom_categoria" id="id_input_categoria">
+          </div>
         <div>
             <label for="descripcion">Descripcion:</label>
             <input type="text" name="descripcion" id="id_descripcion" value="{{ entry.description }}">
@@ -80,7 +80,7 @@
         let customCategoria = document.getElementById('id_custom_categoria');
 
         selectCategoria.addEventListener('change', function() {
-            if (selectCategoria.value === 'otros') {
+            if (selectCategoria.value === 'Otros') {
                 customCategoria.style.display = 'block';
             } else {
                 customCategoria.style.display = 'none';

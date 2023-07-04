@@ -6,8 +6,7 @@ from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
 
 
-
-@cache_control(private=True,no_cache=True, must_revalidate=True, no_store=True)
+@cache_control(private=True, no_cache=True, must_revalidate=True, no_store=True)
 @login_required()
 def transaction(request: HttpRequest):
     """(`POST`) Save the transaction (income/outcome) in database and redirect to the homepage.
@@ -25,7 +24,7 @@ def transaction(request: HttpRequest):
 
         account_status = AccountStatus.objects.get(user=user)
 
-        if category == "otros" and custom_category:
+        if category == "Otros" and custom_category:
             category = custom_category
 
         if "ingreso" == transaction_type:

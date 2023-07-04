@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 
 
-@cache_control(private=True,no_cache=True, must_revalidate=True, no_store=True)
+@cache_control(private=True, no_cache=True, must_revalidate=True, no_store=True)
 @login_required()
 def modify_income(request: HttpRequest, id):
     """(`POST`) Modify the Income's fields by the new parameters given in the request form, uses the `id`
@@ -34,7 +34,7 @@ def modify_income(request: HttpRequest, id):
         income_entry.income = new_income
         income_entry.category = request.POST['categoria']
         custom_category = request.POST.get('custom_categoria')
-        if income_entry.category == "otros" and custom_category:
+        if income_entry.category == "Otros" and custom_category:
             income_entry.category = custom_category
         income_entry.set_at = request.POST['fecha']
         income_entry.description = request.POST['descripcion']
@@ -44,7 +44,7 @@ def modify_income(request: HttpRequest, id):
         return redirect("/home/")
 
 
-@cache_control(private=True,no_cache=True, must_revalidate=True, no_store=True)
+@cache_control(private=True, no_cache=True, must_revalidate=True, no_store=True)
 @login_required()
 def modify_outcome(request: HttpRequest, id):
     """(`POST`) Modify the Outcome's fields by the new parameters given in the request form, uses
@@ -59,7 +59,6 @@ def modify_outcome(request: HttpRequest, id):
         }
         return render(request, "modify_entry.html", context)
 
-
     elif request.method == 'POST':
         outcome_entry = Outcomes.objects.get(pk=id)
         account_status = outcome_entry.account_status
@@ -73,7 +72,7 @@ def modify_outcome(request: HttpRequest, id):
         outcome_entry.outcome = new_outcome
         outcome_entry.category = request.POST['categoria']
         custom_category = request.POST.get('custom_categoria')
-        if outcome_entry.category == "otros" and custom_category:
+        if outcome_entry.category == "Otros" and custom_category:
             outcome_entry.category = custom_category
         outcome_entry.set_at = request.POST['fecha']
         outcome_entry.description = request.POST['descripcion']
