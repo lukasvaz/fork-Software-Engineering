@@ -9,12 +9,12 @@ async function updateTable(e) {
     var transaction = data[i];
     const type_url_parameter = transaction['type'] == 'Ingreso' ? 'income' : 'outcome';
     tableBody.innerHTML += `<tr>\
-      <th>${transaction['set_at']}</th>\
-      <td>${transaction['description']}</td>\
-      <td>$${addDots(transaction['amount'])}</td>\
-      <td>${transaction['category']}</td>\
-      <td>${transaction['type']}</td>\
-      <td><a href=${'../modify/' + type_url_parameter + '/' + transaction['id']}><i class="fa-solid fa-pen" id="edit_button" style="color: #b91a1d;"></i></a> \
+      <th style="text-align: justify;">${transaction['set_at']}</th>\
+      <td style="text-align: justify;">${transaction['description']}</td>\
+      <td style="text-align: justify;">$${addDots(transaction['amount'])}</td>\
+      <td style="text-align: justify;">${transaction['category']}</td>\
+      <td style="text-align: justify;">${transaction['type']}</td>\
+      <td style="text-align: justify;"><a href=${'../modify/' + type_url_parameter + '/' + transaction['id']}><i class="fa-solid fa-pen" id="edit_button" style="color: #b91a1d;"></i></a> \
       <a href=${'../delete/' + type_url_parameter + '/' + transaction['id']}><i class="fa-sharp fa-solid fa-trash" style="color: #b91a1d;"></i></a> \
       <a class="show-modal-transaction" style="border: none; cursor: pointer"><i class="fa-solid fa-eye" style="color: #b91a1d;"></i></a></td>\
     </tr>`;
