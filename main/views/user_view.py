@@ -22,7 +22,7 @@ def update_user(request: HttpRequest):
             print('test')
             form.save()
             password_form.save()
-            return redirect('home')  # Redirect to the user's profile page
+            return redirect('login')  # Redirect to the user's profile page
     else:
         form = UpdateUserForm(instance=request.user)
         password_form = PasswordChangeForm(user=request.user)
