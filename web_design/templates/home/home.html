@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {%load static %}
+{% load i18n %}
+{% load l10n %}
+{% load humanize %}
 {% block title %}Home{% endblock %}
-
 {% block content %}   
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -16,15 +18,17 @@
 
 <!-- top part -->
 <div style="display: flex; margin-top:10px;">
-    <!-- user information -->
-    <div style="width: 50%;">
-         <h1  > Bienvenido {{ name }}!</h1>    
-        <h1 class="monto">Monto Total de Todas las Transacciones:</h1>
-       <div style="display:inline-flex; ;margin-left:20% ;">
-        <div >
-          {% if actual_balance %}
-          <h2 class="balance" data-balance-value="${{ actual_balance }}">${{ actual_balance }}</h2>
-          {% else %}
+  <!-- user information -->
+  <div style="width: 50%;">
+    <h1  > Bienvenido {{ name }}!</h1>    
+    <h1 class="monto">Monto Total de Todas las Transacciones:</h1>
+    <div style="display:inline-flex; ;margin-left:20% ;">
+      <div >
+        {% if actual_balance %}
+        {% language 'de' %}
+        <h2 class="balance" data-balance-value="${{ actual_balance }}">${{ actual_balance|intcomma }}</h2>
+        {% endlanguage %}  
+        {% else %}
           <h2  data-balance-value="$0">$0</h2>
           {% endif %}
         </div>
