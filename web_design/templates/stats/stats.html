@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {%load static %}
+{% load i18n %}
+{% load l10n %}
+{% load humanize %}
+
 {% block title %}Estadísticas{% endblock %}
 
 {% block content %}   
@@ -30,7 +34,11 @@
 <!-- chart2 container -->
 <div style="display: flex;">
 <div id="line-plot" style="width: 80%;height:400px;"></div>
-<div style="width:20%;"><p class="margin centered" style="font-size: large;">Tu ahorro actual es de: </p> <p class="centered"><b   style="font-size: xx-large;">{{actual_balance}}</b></p></div>
+<div style="width:20%;"><p class="margin centered" style="font-size: large;">Tu ahorro actual es de: </p> <p class="centered"><b   style="font-size: xx-large;">
+  {% language 'de' %}
+  {{actual_balance|intcomma}}
+  {% endlanguage %}  
+</b></p></div>
 </div>
 </div>
 
