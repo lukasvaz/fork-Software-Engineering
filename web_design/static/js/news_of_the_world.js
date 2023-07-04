@@ -18,7 +18,7 @@ var mensajes = [
     "Se implementa un nuevo programa de mentoría entre estudiantes de ingeniería en computación de primer y último año.",
     "Investigadores del DCC obtienen fondos para desarrollar un proyecto de realidad virtual aplicada a la educación.",
     "Se abre una convocatoria para la creación de un centro de emprendimiento tecnológico en la facultad de Ingeniería.",
-    "Estudiantes del DCC participan en una competencia de robótica y obtienen el primer lugar.",
+    "Estudiantes del DCC participan en una competencia de programación competitiva y obtienen el primer lugar.",
     "Conferencia sobre inteligencia artificial y aprendizaje automático se lleva a cabo en la FCFM, con destacados ponentes internacionales."
 ];
 
