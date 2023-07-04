@@ -11,7 +11,7 @@ async function updateTable(e) {
     tableBody.innerHTML += `<tr>\
       <th>${transaction['set_at']}</th>\
       <td>${transaction['description']}</td>\
-      <td>${transaction['amount']}</td>\
+      <td>${addDots(transaction['amount'])}</td>\
       <td>${transaction['category']}</td>\
       <td>${transaction['type']}</td>\
       <td><a href=${'../modify/' + type_url_parameter + '/' + transaction['id']}><i class="fa-solid fa-pen" id="edit_button" style="color: #b91a1d;"></i></a> \
@@ -113,4 +113,15 @@ async function updateTable(e) {
           type,
       };
   }
+  function addDots(nStr) {
+        nStr += '';
+        x = nStr.split('.');
+        x1 = x[0];
+        x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + '.' + '$2'); // changed comma to dot here
+        }
+        return x1 + x2;
+    }
 }
