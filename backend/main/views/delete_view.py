@@ -4,10 +4,6 @@ from main.models import Incomes, Outcomes
 from django.views.decorators.cache import never_cache,cache_control
 from django.contrib.auth.decorators import login_required
 
-
-
-@cache_control(private=True,no_cache=True, must_revalidate=True, no_store=True)
-@login_required()
 def delete_income(request: HttpRequest, id):
     """(`POST`) Modify the Income's fields by the new parameters given in the request form, uses the `id`
     parameter passed in the url to get the specific income, redirects to the homepage. (`GET`) Render the form template to modify
@@ -21,7 +17,7 @@ def delete_income(request: HttpRequest, id):
         account_status = income_entry.account_status
 
         # Update actual balance in AccountStatus
-        account_status.actual_balance -= income_entry.income
+        account_status.actual_balance -= income_entry.incomeen  en  
         account_status.save()
 
         # Delete the income entry

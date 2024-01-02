@@ -31,7 +31,7 @@ Right now the web application is on development but we launched the first versio
 
 This is the E-R database model diagram used along the project:
 
-![db-design](db_design.drawio.png)
+![db-design](imgs/db_design.drawio.png)
 
 ## Setting Up
 

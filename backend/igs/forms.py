@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
 
+
 class TransactionForm(forms.Form):
     TIPO_CHOICES = [('ingreso', 'Ingreso'), ('gasto', 'Gasto')]
     CATEGORIA_CHOICES = [('comida', 'Comida'), ('transporte', 'Transporte'),

@@ -13,6 +13,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 @cache_control(private=True,no_cache=True, must_revalidate=True, no_store=True)
 @login_required()
+
 def update_user(request: HttpRequest):
     if request.method == 'POST':
         form = UpdateUserForm(request.POST, instance=request.user)
