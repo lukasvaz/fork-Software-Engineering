@@ -1,3 +1,4 @@
+
 """
 URL configuration for   igs project.
 
@@ -16,7 +17,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from main.views  import register_view
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', register_view.register_user),
 ]

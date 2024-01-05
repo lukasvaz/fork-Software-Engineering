@@ -10,42 +10,57 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+# import environ
+import os
+import environ
 from pathlib import Path
+
+# importing  and reading enviromental  variables
+env = environ.Env()
+environ.Env.read_env()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-eqm=3kal*zu70owtq7kploo7hygx9u72ft_fz(z=wy*x4(l7#k"
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS_DEV')
 
-# Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/home'
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "main",
     'django.contrib.humanize',
 ]
+
+PROHECT_APPS = [
+    "main"
+]
+
+THIRD_PARTY_APPS = [
+    'corsheaders',
+    'rest_framework'
+]
+
+INSTALLED_APPS = DJANGO_APPS + PROHECT_APPS + THIRD_PARTY_APPS
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -125,8 +140,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+CSRF_COOKIE_DOMAIN = ".localhost"
+CORS_ALLOWED_ORIGINS = []
 
-STATICFILES_DIRS = [
-    BASE_DIR / "web_design/static",
-]
-
+# CORS_ALLOW_ALL_ORIGINS = True #env.bool("CORS_ALLOW_ALL_ORIGINS_DEV")
+# CORS_URLS_REGEX = r"http://127.0.0.1:*\d*\w*"
