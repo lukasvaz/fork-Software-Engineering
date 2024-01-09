@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 from main.models import AccountStatus
 from django.http import HttpRequest, HttpResponse
 from django.contrib.auth import logout
+from django.views.decorators.csrf import csrf_exempt 
 
-
+# @csrf_exempt
 def register_user(request: HttpRequest):
     """"(`POST`) Save the registration user's information in the database"""
     # if request.method == 'POST':

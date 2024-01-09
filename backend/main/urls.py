@@ -1,5 +1,14 @@
 from django.urls import path, include
+from rest_framework import routers
+import main.views.rest_views as rest_views
 
-from main.views import register_view, home_views, log_in_views, transaction_views
+router = routers.DefaultRouter()
+router.register(r'api/users', rest_views.UserViewSet) 
 
-urlpatterns = []
+urlpatterns = [
+path('',include(router.urls)),
+path('api/transactions/',rest_views.TransactionsViewSet.as_view({'get':'list'})),
+path('api/transactions/<int:pk>/',rest_views.TransactionsViewSet.as_view({'get':'retrieve'}) ,name ="transactions-detail"),
+path('api/incomes/<int:pk>/',rest_views.IncomesViewSet.as_view({'patch':'partial_update','put':'update','post':'create','delete':'destroy'})),
+path('api/outcomes/<int:pk>/',rest_views.OutcomesViewSet.as_view({'patch':'partial_update','put':'update','post':'create','delete':'destroy'})),
+]

@@ -45,7 +45,7 @@ DJANGO_APPS = [
     'django.contrib.humanize',
 ]
 
-PROHECT_APPS = [
+PROJECT_APPS = [
     "main"
 ]
 
@@ -54,7 +54,7 @@ THIRD_PARTY_APPS = [
     'rest_framework'
 ]
 
-INSTALLED_APPS = DJANGO_APPS + PROHECT_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 
 MIDDLEWARE = [
@@ -145,3 +145,8 @@ CORS_ALLOWED_ORIGINS = []
 
 # CORS_ALLOW_ALL_ORIGINS = True #env.bool("CORS_ALLOW_ALL_ORIGINS_DEV")
 # CORS_URLS_REGEX = r"http://127.0.0.1:*\d*\w*"
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
