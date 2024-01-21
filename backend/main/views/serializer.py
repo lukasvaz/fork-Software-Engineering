@@ -7,7 +7,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     account_status = serializers.HyperlinkedRelatedField(read_only=True, view_name='transactions-detail')
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'account_status', 'actual_balance')
+        fields = ('id', 'username', 'email', 'last_name','account_status', 'actual_balance')
 
     def get_actual_balance(self, obj):
         try:
@@ -18,12 +18,12 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class IncomesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Incomes
-        fields = ('id','amount','category','created_at','set_at','description')
+        fields = '__all__'
 
 class OutcomesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Outcomes
-        fields = ('id','amount','category','created_at','set_at','description')
+        fields = '__all__'
    
 class TransactionsSerializer(serializers.HyperlinkedModelSerializer):
     incomes= IncomesSerializer(many=True)

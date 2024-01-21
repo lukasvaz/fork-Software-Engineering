@@ -3,8 +3,10 @@ from django.contrib.auth.models import  User
 from main.models import AccountStatus,Incomes,Outcomes
 from main.views.serializer import UserSerializer,TransactionsSerializer,IncomesSerializer,OutcomesSerializer
 from rest_framework.permissions import IsAuthenticated,IsAdminUser,AllowAny
-from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import mixins
+from rest_framework.viewsets import GenericViewSet
+from main.custom_permission import IndividualTransactionsPermission ,UserPermission
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -12,10 +14,15 @@ class UserViewSet(viewsets.ModelViewSet):
     """
     serializer_class = UserSerializer
     queryset=User.objects.all().order_by('-date_joined')
+    permission_classes = [UserPermission]
 
     def get_permissions(self):
-        if self.action == 'create' and  self.request.user.is_anonymous:
-            self.permission_classes = [AllowAny]
+        if self.action == 'create': 
+            if self.request.user.is_anonymous:
+                self.permission_classes = [AllowAny]
+            else:
+                self.permission_classes = [IsAdminUser]
+        
         else:
              self.permission_classes = [IsAuthenticated]
         return super().get_permissions()  
@@ -26,28 +33,9 @@ class UserViewSet(viewsets.ModelViewSet):
         else:
             return User.objects.filter(id=self.request.user.id).order_by('-date_joined')
 
-
-    def update(self, request, *args, **kwargs):     
-        if  self.request.user.is_superuser:
-            return super().update(request, *args, **kwargs)        
-        
-        elif self.request.user.id!=int(self.kwargs['pk']):
-            return Response("Not authorized",status=status.HTTP_401_UNAUTHORIZED)
-        
-        return super().update(request, *args, **kwargs)
-    
-    def destroy(self, request, *args, **kwargs):    
-        if  self.request.user.is_superuser:
-            return super().destroy(request, *args, **kwargs)        
-        
-        elif self.request.user.id!=int(self.kwargs['pk']):
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
-        return super().destroy(request, *args, **kwargs)
-
-
 class TransactionsViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows Accounts Status  be  viewed.
     """
     queryset = AccountStatus.objects.all()
     serializer_class = TransactionsSerializer
@@ -60,32 +48,41 @@ class TransactionsViewSet(viewsets.ModelViewSet):
             return AccountStatus.objects.filter(user=self.request.user.id)
 
 
-class IncomesViewSet(viewsets.ModelViewSet):
+class IncomesViewSet(
+                mixins.CreateModelMixin,
+                mixins.UpdateModelMixin,
+                mixins.DestroyModelMixin,
+                   GenericViewSet):
     
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows Incomes to be  edited.
     """
-    queryset = Incomes.objects.all()
     serializer_class = IncomesSerializer
-    permission_classes=[permissions.IsAuthenticated]    
+    permission_classes = [permissions.IsAuthenticated]
+    permission_classes=[IndividualTransactionsPermission]    
 
     def get_queryset(self):
         if self.request.user.is_superuser:
             return Incomes.objects.all()
         else:
-            return Incomes.objects.filter(user=self.request.user.id)
+            return Incomes.objects.filter(account_status=self.request.user.account_status.id)
 
-class OutcomesViewSet(viewsets.ModelViewSet):
     
+class OutcomesViewSet( mixins.CreateModelMixin,
+                mixins.UpdateModelMixin,
+                mixins.DestroyModelMixin,
+                   GenericViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows Outcomes to be edited.
     """
     queryset = Outcomes.objects.all()
     serializer_class = OutcomesSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [IndividualTransactionsPermission]
 
     def get_queryset(self):
         if self.request.user.is_superuser:
             return Outcomes.objects.all()
         else:
-            return Outcomes.objects.filter(user=self.request.user.id)
+            return Outcomes.objects.filter(account_status=self.request.user.account_status)
+
+    
