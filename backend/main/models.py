@@ -11,8 +11,6 @@ class AccountStatus(models.Model):
         User, related_name='account_status', on_delete=models.CASCADE, unique=True, null=True)
     actual_balance = models.BigIntegerField(default=0)
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"Estado de cuenta asociado a usuario: {self.user.username}"

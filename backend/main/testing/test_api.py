@@ -19,9 +19,15 @@ class APITestClass(TestCase):
         """Create 3 transactions for each user"""
         for user in User.objects.all():
             self.accountStatus = AccountStatus.objects.create(user=user)
-            for _ in range(3):
-                transaction = random.choice([Incomes, Outcomes])
-                transaction.objects.create(
+            for _ in range(2):
+                Incomes.objects.create(
+                    account_status=self.accountStatus,
+                    amount=100,
+                    description='test transaction',
+                    set_at='2021-10-10',
+                )
+            for _ in  range(2):
+                Outcomes.objects.create(
                     account_status=self.accountStatus,
                     amount=100,
                     description='test transaction',
@@ -105,7 +111,7 @@ class APIUserTestCase(APITestClass):
         response = self.client.put('/api/users/{}/'.format(user2.id), {'username': 'changed', 'last_name': 'changed'}, headers={
                                    "Authorization": "token {}".format(token)}, content_type='application/json')
         self.assertEqual(response.status_code, 404)
-        self.assertEqual(User.objects.get(user=user2).username, 'testuser2')
+        self.assertEqual(user2.username, 'testuser2')
 
     def test_update_superuser(self):
         """Test  for  update  user's  params  as  superuser"""
@@ -152,7 +158,7 @@ class APITransactionsTestCase(APITestClass):
                                    "Authorization": "token {}".format(token)}, content_type='application/json')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(response.data['results'][0]['incomes']) +
-                         len(response.data['results'][0]['outcomes']), 3)
+                         len(response.data['results'][0]['outcomes']), 4)
 
     def test_get_transactions_superuser(self):
         """Test  for  list  transactions  of  an  user  as  superuser"""
@@ -255,7 +261,7 @@ class APIIndividualTransactionsTestCase(APITestClass):
             amount=100
         )
         token = Token.objects.create(user=user1)
-        response = self.client.patch('/api/incomes/{}/'.format(income.id), {"amount": 10000}, headers={
+        response = self.client.patch('/api/incomes/{}/'.format(income.pk), {"amount": 10000}, headers={
                                      "Authorization": "token {}".format(token)}, content_type='application/json')
 
         self.assertEqual(response.status_code, 404)
@@ -344,6 +350,7 @@ class APIIndividualTransactionsTestCase(APITestClass):
         user1 = User.objects.get(username='testuser1')
         user2 = User.objects.get(username='testuser2')
         token = Token.objects.create(user=user1)
+        
         income = Incomes.objects.filter(
             account_status=user2.account_status).first()
 
