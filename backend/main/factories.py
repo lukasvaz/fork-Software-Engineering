@@ -31,7 +31,7 @@ class AccountStatusFactory(DjangoModelFactory):
         model = AccountStatus
 
     user = factory.SubFactory(UserFactory)
-    actual_balance = factory.LazyAttribute(lambda x: random.randint(1e5, 5e5))
+    actual_balance = 0
 
 
 class IncomesFactory(DjangoModelFactory):
@@ -39,7 +39,7 @@ class IncomesFactory(DjangoModelFactory):
         model = Incomes
 
     account_status = factory.SubFactory(AccountStatusFactory)
-    income = factory.LazyAttribute(lambda x: random.randint(1e5, 5e5))
+    amount = factory.LazyAttribute(lambda x: random.randint(1e5, 5e5))
     category = factory.LazyAttribute(
         lambda x: random.choice(income_categories))
     created_at = factory.LazyAttribute(lambda x: datetime.datetime.now())
@@ -52,7 +52,7 @@ class OutcomesFactory(DjangoModelFactory):
         model = Outcomes
 
     account_status = factory.SubFactory(AccountStatusFactory)
-    outcome = factory.LazyAttribute(lambda x: random.randint(1e5, 5e5))
+    amount = factory.LazyAttribute(lambda x: random.randint(1e5, 5e5))
     category = factory.LazyAttribute(
         lambda x: random.choice(outcome_categories))
     created_at = factory.LazyAttribute(lambda x: datetime.datetime.now())

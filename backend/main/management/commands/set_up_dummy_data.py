@@ -1,3 +1,7 @@
+import os
+import environ
+from pathlib import Path
+
 import random
 from typing import Any, Optional
 
@@ -15,11 +19,12 @@ NUM_IN_OUT = 10
 
 class Command(BaseCommand):
     help = "Generate dummy data"
-
+    
     @transaction.atomic
     def handle(self, *args: Any, **options: Any):
         self.stdout.write("Deleting old data...")
         models = [User, AccountStatus]
+
         for m in models:
             m.objects.all().delete()
 
@@ -41,6 +46,12 @@ class Command(BaseCommand):
             account_status = random.choice(account_statuses)
             income = IncomesFactory(account_status=account_status)
             outcome = OutcomesFactory(account_status=account_status)
-            account_status.actual_balance = income.income - outcome.outcome
-            account_status.save()
             account_statuses.remove(account_status)
+
+        env = environ.Env()
+        environ.Env.read_env()
+        
+        User.objects.create_superuser(
+        username=env("SUPERUSER"),
+        password=env("PASSWORD")
+        )

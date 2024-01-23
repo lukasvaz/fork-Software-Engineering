@@ -51,6 +51,7 @@ class TransactionsViewSet(viewsets.ModelViewSet):
 class IncomesViewSet(
                 mixins.CreateModelMixin,
                 mixins.UpdateModelMixin,
+                mixins.RetrieveModelMixin,
                 mixins.DestroyModelMixin,
                    GenericViewSet):
     
@@ -70,6 +71,7 @@ class IncomesViewSet(
     
 class OutcomesViewSet( mixins.CreateModelMixin,
                 mixins.UpdateModelMixin,
+                mixins.RetrieveModelMixin,
                 mixins.DestroyModelMixin,
                    GenericViewSet):
     """
@@ -79,6 +81,7 @@ class OutcomesViewSet( mixins.CreateModelMixin,
     serializer_class = OutcomesSerializer
     permission_classes = [IndividualTransactionsPermission]
 
+    
     def get_queryset(self):
         if self.request.user.is_superuser:
             return Outcomes.objects.all()

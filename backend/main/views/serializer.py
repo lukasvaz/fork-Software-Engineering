@@ -16,11 +16,19 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             return None
 
 class IncomesSerializer(serializers.ModelSerializer):
+    url=serializers.HyperlinkedIdentityField(view_name='incomes-detail')
     class Meta:
         model = Incomes
         fields = '__all__'
 
+    def update(self, instance, validated_data):
+        print(instance)
+        return super().update(instance, validated_data)
+
+
 class OutcomesSerializer(serializers.ModelSerializer):
+    url=serializers.HyperlinkedIdentityField(view_name='outcomes-detail')
+    
     class Meta:
         model = Outcomes
         fields = '__all__'
