@@ -2,7 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from main.models import AccountStatus, Incomes, Outcomes
 
-
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     actual_balance = serializers.SerializerMethodField()
     account_status = serializers.HyperlinkedRelatedField(

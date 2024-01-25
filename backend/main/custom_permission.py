@@ -14,7 +14,6 @@ class IndividualTransactionsPermission(BasePermission):
         """ Handles PATCH, PUT and DELETE requests"""
         if request.user.is_superuser:
             return True
-
         else:
             return obj.account_status.user.id == request.user.id
 
@@ -27,11 +26,11 @@ class UserPermission(BasePermission):
                 return True
             else:
                 return request.user.is_superuser
-
+        return True
+        
     def has_object_permission(self, request, view, obj):
-        """ Handles PATCH UPDATE PUT and DELETE requests"""
+        """ Handles PATCH, PUT and DELETE requests"""
         if request.user.is_superuser:
             return True
-
         else:
-            return obj.id == request.id
+            return obj == request.user
